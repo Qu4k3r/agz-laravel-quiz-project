@@ -1,5 +1,3 @@
-
-# Makefile
 build-and-serve:
 	@eval $(ssh-agent); docker run --rm --interactive --tty \
 		--volume ${PWD}:/app \
@@ -11,6 +9,9 @@ build-and-serve:
 
 serve:
 	@docker-compose -f ./docker-compose.yaml up
+
+run:
+	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "/var/www/artisan $(filter-out $@, $(MAKECMDGOALS))"
 
 shell:
 	@docker-compose -f ./docker-compose.yaml exec api bash
