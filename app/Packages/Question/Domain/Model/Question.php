@@ -36,7 +36,7 @@ class Question
          *     cascade={"persist", "remove"},
          * )
          */
-        private ?ArrayCollection $subjects,
+        private ArrayCollection $subjects,
     )
     {
         $this->subjects = new ArrayCollection();
