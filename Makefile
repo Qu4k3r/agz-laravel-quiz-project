@@ -13,6 +13,9 @@ serve:
 run:
 	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "/var/www/artisan $(filter-out $@, $(MAKECMDGOALS))"
 
+help:
+	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "/var/www/artisan doctrine:generate:proxies && composer dump-autoload && chmod -R 777 storage/proxies"
+
 shell:
 	@docker-compose -f ./docker-compose.yaml exec api bash
 
