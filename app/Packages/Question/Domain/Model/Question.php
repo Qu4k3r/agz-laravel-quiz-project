@@ -23,7 +23,7 @@ class Question
      *     cascade={"persist", "remove"},
      * )
      */
-    private Quiz $quiz;
+    private ?Quiz $quiz = null;
 
     public function __construct(
         /** @ORM\Column(type="string") */
@@ -40,5 +40,10 @@ class Question
     )
     {
         $this->subjects = new ArrayCollection();
+    }
+
+    public function getQuiz(): Quiz
+    {
+        return $this->quiz;
     }
 }
