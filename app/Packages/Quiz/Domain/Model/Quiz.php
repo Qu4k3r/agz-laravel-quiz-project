@@ -34,21 +34,22 @@ class Quiz
         /** @ORM\Column(type="smallint") */
         private int $totalQuestions,
 
-        /** @ORM\Column(type="smallint", nullable=true) */
-        private ?int $score = null,
-
         /**
          * @ORM\OneToMany(
          *     targetEntity="App\Packages\Question\Domain\Model\Question",
          *     mappedBy="quiz",
-         *     type="jsonb",
          *     cascade={"persist", "remove"},
-         *     nullable=true
          * )
          */
-        private ?ArrayCollection $questions = null,
+        private ArrayCollection $questions,
+
+        /** @ORM\Column(type="smallint", nullable=true) */
+        private ?int $score = null,
 
         /** @ORM\Column(type="string") */
         private string $status = self::OPENED,
-    ) {}
+    )
+    {
+        $this->questions = new ArrayCollection();
+    }
 }
