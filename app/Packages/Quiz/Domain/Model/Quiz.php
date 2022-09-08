@@ -3,8 +3,8 @@
 namespace App\Packages\Quiz\Domain\Model;
 
 use App\Packages\Doctrine\Domain\Behavior\Identifiable;
+use App\Packages\Quiz\Subject\Domain\Model\Subject;
 use App\Packages\Student\Domain\Model\Student;
-use App\Packages\Subject\Domain\Model\Subject;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
@@ -24,15 +24,15 @@ class Quiz
         /**
          * @ORM\OneToOne(
          *     targetEntity="App\Packages\Student\Domain\Model\Student",
-         *     inversedBy="student"
+         *     inversedBy="quiz"
          * )
          */
         private Student $student,
 
         /**
          * @ORM\OneToOne(
-         *     targetEntity="App\Packages\Subject\Domain\Model\Subject",
-         *     mappedBy="subject"
+         *     targetEntity="App\Packages\Quiz\Subject\Domain\Model\Subject",
+         *     mappedBy="quiz"
          * )
          */
         private Subject $subject,
@@ -42,7 +42,7 @@ class Quiz
 
         /**
          * @ORM\OneToMany(
-         *     targetEntity="App\Packages\Question\Domain\Model\Question",
+         *     targetEntity="App\Packages\Quiz\Question\Domain\Model\Question",
          *     mappedBy="quiz",
          *     cascade={"persist", "remove"},
          * )

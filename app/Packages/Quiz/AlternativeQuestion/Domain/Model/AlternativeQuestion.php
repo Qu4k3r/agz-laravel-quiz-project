@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Packages\Answer\Domain\Model;
+namespace App\Packages\Quiz\AlternativeQuestion\Domain\Model;
 
 use App\Packages\Doctrine\Domain\Behavior\Identifiable;
-use App\Packages\Question\Domain\Model\Question;
+use App\Packages\Quiz\Question\Domain\Model\Question;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="answers")
+ * @ORM\Table(name="alternative_questions")
  */
-class Answer
+class AlternativeQuestion
 {
     use Identifiable, TimestampableEntity;
 
@@ -21,8 +21,8 @@ class Answer
 
         /**
          * @ORM\ManyToOne   (
-         *     targetEntity="App\Packages\Question\Domain\Model\Question",
-         *     inversedBy="answers",
+         *     targetEntity="App\Packages\Quiz\Question\Domain\Model\Question",
+         *     inversedBy="alternativeQuestions",
          * )
          */
         private Question $question,

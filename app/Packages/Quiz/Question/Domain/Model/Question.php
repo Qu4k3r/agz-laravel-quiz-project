@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Packages\Question\Domain\Model;
+namespace App\Packages\Quiz\Question\Domain\Model;
 
 use App\Packages\Doctrine\Domain\Behavior\Identifiable;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -21,7 +21,7 @@ class Question
 
         /**
          * @ORM\OneToMany(
-         *     targetEntity="App\Packages\Subject\Domain\Model\Subject",
+         *     targetEntity="App\Packages\Quiz\Subject\Domain\Model\Subject",
          *     mappedBy="question",
          *     cascade={"persist", "remove"},
          * )
@@ -30,15 +30,15 @@ class Question
 
         /**
          * @ORM\OneToMany(
-         *     targetEntity="App\Packages\Answer\Domain\Model\Answer",
+         *     targetEntity="App\Packages\Quiz\AlternativeQuestion\Domain\Model\AlternativeQuestion",
          *     mappedBy="question",
          *     cascade={"persist", "remove"},
          * )
          */
-        private ?ArrayCollection $answers = null
+        private ?ArrayCollection $alternativeQuestions = null
     )
     {
         $this->subjects = new ArrayCollection();
-        $this->answers = new ArrayCollection();
+        $this->alternativeQuestions = new ArrayCollection();
     }
 }

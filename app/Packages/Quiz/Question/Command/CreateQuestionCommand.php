@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Packages\Question\Command;
+namespace App\Packages\Quiz\Question\Command;
 
-use App\Packages\Question\Domain\Model\Question;
-use App\Packages\Subject\Domain\Model\Subject;
+use App\Packages\Quiz\Question\Domain\Model\Question;
+use App\Packages\Quiz\Subject\Domain\Model\Subject;
 use Doctrine\Common\Collections\ArrayCollection;
 use Illuminate\Console\Command;
 

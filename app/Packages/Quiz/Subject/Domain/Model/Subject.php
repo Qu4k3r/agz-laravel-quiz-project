@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Packages\Subject\Domain\Model;
+namespace App\Packages\Quiz\Subject\Domain\Model;
 
 use App\Packages\Doctrine\Domain\Behavior\Identifiable;
 use Doctrine\ORM\Mapping as ORM;

@@ -17,7 +17,7 @@ class Student
     /**
      * @ORM\OneToOne(
      *     targetEntity="App\Packages\Quiz\Domain\Model\Quiz",
-     *     mappedBy="quiz",
+     *     mappedBy="student",
      * )
      */
     private ?Quiz $quiz = null;
