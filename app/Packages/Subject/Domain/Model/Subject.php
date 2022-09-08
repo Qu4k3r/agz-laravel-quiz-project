@@ -3,7 +3,6 @@
 namespace App\Packages\Subject\Domain\Model;
 
 use App\Packages\Doctrine\Domain\Behavior\Identifiable;
-use App\Packages\Question\Domain\Model\Question;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
@@ -14,14 +13,6 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 class Subject
 {
     use Identifiable, TimestampableEntity;
-
-    /**
-     * @ORM\ManyToOne(
-     *     targetEntity="App\Packages\Question\Domain\Model\Question",
-     *     inversedBy="subjects"
-     * )
-     */
-    private Question $question;
 
     public function __construct(
         /** @ORM\Column(type="string") */

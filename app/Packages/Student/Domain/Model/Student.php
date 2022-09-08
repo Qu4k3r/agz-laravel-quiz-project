@@ -20,7 +20,7 @@ class Student
      *     mappedBy="quiz",
      * )
      */
-    private Quiz $quiz;
+    private ?Quiz $quiz = null;
 
     public function __construct(
         /** @ORM\Column(type="uuid", unique=true) */
