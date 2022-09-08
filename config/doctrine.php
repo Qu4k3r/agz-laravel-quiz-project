@@ -1,5 +1,8 @@
 <?php
 
+use App\Packages\Doctrine\Domain\Types\JsonbType;
+use Ramsey\Uuid\Doctrine\UuidType;
+
 return [
 
     /*
@@ -112,6 +115,8 @@ return [
     |--------------------------------------------------------------------------
     */
     'custom_types'               => [
+        JsonbType::NAME => JsonbType::class,
+        UuidType::NAME => UuidType::class,
     ],
     /*
     |--------------------------------------------------------------------------

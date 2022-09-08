@@ -1,5 +1,3 @@
-
-# Makefile
 build-and-serve:
 	@eval $(ssh-agent); docker run --rm --interactive --tty \
 		--volume ${PWD}:/app \
@@ -12,6 +10,12 @@ build-and-serve:
 serve:
 	@docker-compose -f ./docker-compose.yaml up
 
+run:
+	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "/var/www/artisan $(filter-out $@, $(MAKECMDGOALS))"
+
+help:
+	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "/var/www/artisan doctrine:generate:proxies && composer dump-autoload && chmod -R 777 storage/proxies"
+
 shell:
 	@docker-compose -f ./docker-compose.yaml exec api bash
 
@@ -23,3 +27,18 @@ all-tests:
 
 key-generate:
 	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "php artisan key:generate"
+
+composer-install:
+	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "composer install"
+
+composer-update:
+	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "composer update"
+
+composer-dump-autoload:
+	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "composer dump-autoload"
+
+composer-require:
+	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "composer require $(filter-out $@, $(MAKECMDGOALS))"
+
+fix-migration-permissions:
+	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "chown -R 1000:1000 database/migrations"
