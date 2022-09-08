@@ -33,3 +33,12 @@ composer-install:
 
 composer-update:
 	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "composer update"
+
+composer-dump-autoload:
+	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "composer dump-autoload"
+
+composer-require:
+	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "composer require $(filter-out $@, $(MAKECMDGOALS))"
+
+fix-migration-permissions:
+	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "chown -R 1000:1000 database/migrations"

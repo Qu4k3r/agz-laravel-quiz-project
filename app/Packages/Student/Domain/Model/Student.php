@@ -2,6 +2,7 @@
 
 namespace App\Packages\Student\Domain\Model;
 
+use App\Packages\Quiz\Domain\Model\Quiz;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
@@ -12,6 +13,14 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 class Student
 {
     use TimestampableEntity;
+
+    /**
+     * @ORM\OneToOne(
+     *     targetEntity="App\Packages\Quiz\Domain\Model\Quiz",
+     *     mappedBy="student",
+     * )
+     */
+    private ?Quiz $quiz = null;
 
     public function __construct(
         /** @ORM\Column(type="uuid", unique=true) */
