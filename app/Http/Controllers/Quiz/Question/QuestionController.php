@@ -1,26 +1,31 @@
 <?php
 
-namespace App\Http\Controllers\Quiz\Subject;
+namespace App\Http\Controllers\Quiz\Question;
 
-use App\Packages\Quiz\Subject\Facade\SubjectFacade;
-use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use App\Packages\Quiz\Question\Facade\QuestionFacade;
+use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class SubjectController extends Controller
+class QuestionController extends Controller
 {
-    public function __construct(private SubjectFacade $subjectFacade) {}
+    public function __construct(private QuestionFacade $questionFacade) {}
 
     public function create(Request $request): JsonResponse
     {
         try {
-            $subject = $this->subjectFacade->getOrCreate(
+            $question = $this->questionFacade->create(
                 $request->get('name'),
+                $request->get('subjectName'),
             );
             $data = [
-                'id' => $subject->getId(),
-                'name' => $subject->getName(),
+                'id' => $question->getId(),
+                'name' => $question->getName(),
+                'subject' => [
+                    'id' => $question->getSubject()->getId(),
+                    'name' => $question->getSubject()->getName(),
+                ],
             ];
 
             return response()->success($data, statusCode: Response::HTTP_CREATED);

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Quiz\Subject;
+namespace App\Http\Controllers\Quiz\AlternativeQuestion;
 
 use App\Packages\Quiz\Subject\Facade\SubjectFacade;
 use Illuminate\Http\JsonResponse;
@@ -8,14 +8,14 @@ use App\Http\Controllers\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class SubjectController extends Controller
+class AlternativeQuestionController extends Controller
 {
-    public function __construct(private SubjectFacade $subjectFacade) {}
+    public function __construct(private AlternativeQuestionFacade $alternativeQuestionFacade) {}
 
     public function create(Request $request): JsonResponse
     {
         try {
-            $subject = $this->subjectFacade->getOrCreate(
+            $subject = $this->subjectFacade->create(
                 $request->get('name'),
             );
             $data = [

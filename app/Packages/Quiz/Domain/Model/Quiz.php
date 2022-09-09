@@ -6,6 +6,7 @@ use App\Packages\Doctrine\Domain\Behavior\Identifiable;
 use App\Packages\Quiz\Subject\Domain\Model\Subject;
 use App\Packages\Student\Domain\Model\Student;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
@@ -32,7 +33,7 @@ class Quiz
         /**
          * @ORM\OneToOne(
          *     targetEntity="App\Packages\Quiz\Subject\Domain\Model\Subject",
-         *     mappedBy="quiz"
+         *     inversedBy="quiz"
          * )
          */
         private Subject $subject,
@@ -47,7 +48,7 @@ class Quiz
          *     cascade={"persist", "remove"},
          * )
          */
-        private ArrayCollection $questions,
+        private Collection $questions,
 
         /** @ORM\Column(type="smallint", nullable=true) */
         private ?int $score = null,
