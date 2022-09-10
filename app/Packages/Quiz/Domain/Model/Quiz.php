@@ -42,13 +42,11 @@ class Quiz
         private int $totalQuestions,
 
         /**
-         * @ORM\OneToMany(
-         *     targetEntity="App\Packages\Quiz\Question\Domain\Model\Question",
-         *     mappedBy="quiz",
-         *     cascade={"persist", "remove"},
+         * @ORM\Column (
+         *     type="jsonb",
          * )
          */
-        private Collection $questions,
+        private array $questions,
 
         /** @ORM\Column(type="smallint", nullable=true) */
         private ?int $score = null,
@@ -57,6 +55,5 @@ class Quiz
         private string $status = self::OPENED,
     )
     {
-        $this->questions = new ArrayCollection();
     }
 }
