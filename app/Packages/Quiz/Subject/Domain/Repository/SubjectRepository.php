@@ -9,7 +9,7 @@ class SubjectRepository extends Repository
 {
     protected string $entityName = Subject::class;
 
-    public function findByName(string $name): ?Subject
+    public function findOneByName(string $name): ?Subject
     {
         return $this->findOneBy(['name' => $name]);
     }

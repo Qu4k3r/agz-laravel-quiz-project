@@ -2,35 +2,35 @@
 
 namespace App\Http\Controllers\Quiz\AlternativeQuestion;
 
-use App\Packages\Quiz\Subject\Facade\SubjectFacade;
-use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
-use Symfony\Component\HttpFoundation\Request;
+use App\Packages\Quiz\AlternativeQuestion\Domain\Model\AlternativeQuestion;
+use App\Packages\Quiz\AlternativeQuestion\Facade\AlternativeQuestionFacade;
+use App\Packages\Quiz\Question\Domain\Model\Question;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class AlternativeQuestionController extends Controller
 {
-    public function __construct(private AlternativeQuestionFacade $alternativeQuestionFacade) {}
+    public function __construct(
+        private AlternativeQuestionFacade $alternativeQuestionFacade,
+    ) {}
 
-    public function create(Request $request): JsonResponse
+    public function create(Request $request, Question $question): JsonResponse
     {
         try {
-            $subject = $this->subjectFacade->create(
-                $request->get('name'),
-            );
-            $data = [
-                'id' => $subject->getId(),
-                'name' => $subject->getName(),
-            ];
+            $requesttAlternativeQuestions = $request->all();
+            $alternativeQuestions = $this->alternativeQuestionFacade->getOrCreate($requesttAlternativeQuestions, $question);
+
+            $data = array_map(fn (AlternativeQuestion $alternativeQuestion) => [
+                'id' => $alternativeQuestion->getId(),
+                'name' => $alternativeQuestion->getName(),
+                'isCorrect' => $alternativeQuestion->isCorrect()
+            ], $alternativeQuestions);
 
             return response()->success($data, statusCode: Response::HTTP_CREATED);
         } catch (\Exception $exception) {
-            return response()->json(
-                [
-                    'message' => $exception->getMessage(),
-                ],
-                Response::HTTP_BAD_REQUEST,
-            );
+            return response()->error($exception->getMessage());
         }
     }
 }

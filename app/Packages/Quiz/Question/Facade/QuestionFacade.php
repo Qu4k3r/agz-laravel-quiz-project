@@ -13,12 +13,21 @@ class QuestionFacade
         private QuestionRepository $questionRepository,
     ) {}
 
-    public function create(string $name, string $subjectName): Question
+    public function getOrCreate(string $name, string $subjectName): Question
     {
+        $question = $this->questionRepository->findOneByNameAndSubjectName($name, $subjectName);
+        if ($question instanceof Question) {
+            return $question;
+        }
         $subject = $this->subjectFacade->getOrCreate($subjectName);
         $question = new Question($name, $subject);
         $this->questionRepository->add($question);
 
         return $question;
+    }
+
+    public function createAlternative()
+    {
+        
     }
 }

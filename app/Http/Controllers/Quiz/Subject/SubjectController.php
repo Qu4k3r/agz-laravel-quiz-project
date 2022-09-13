@@ -25,12 +25,7 @@ class SubjectController extends Controller
 
             return response()->success($data, statusCode: Response::HTTP_CREATED);
         } catch (\Exception $exception) {
-            return response()->json(
-                [
-                    'message' => $exception->getMessage(),
-                ],
-                Response::HTTP_BAD_REQUEST,
-            );
+            return response()->error($exception->getMessage());
         }
     }
 }
