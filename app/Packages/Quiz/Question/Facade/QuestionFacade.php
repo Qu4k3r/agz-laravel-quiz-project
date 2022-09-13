@@ -25,4 +25,9 @@ class QuestionFacade
 
         return $question;
     }
+
+    public function createAlternative()
+    {
+        
+    }
 }

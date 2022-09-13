@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Quiz\Question\QuestionController;
+use App\Http\Controllers\Quiz\AlternativeQuestion\AlternativeQuestionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['namespace' => 'Quiz\Question'], function () {
-    Route::post('/questions', [QuestionController::class, 'create']);
-    Route::post('/{question}/alternatives', [QuestionController::class, 'createAlternatives']);
+Route::group(['namespace' => 'Quiz\AlternativeQuestion'], function () {
+    Route::post('/{question}/alternatives', [AlternativeQuestionController::class, 'create']);
 });

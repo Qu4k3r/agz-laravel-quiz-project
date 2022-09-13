@@ -30,4 +30,14 @@ class AlternativeQuestion
         /** @ORM\Column(type="boolean") */
         private bool $isCorrect,
     ) {}
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function isCorrect(): bool
+    {
+        return $this->isCorrect;
+    }
 }
