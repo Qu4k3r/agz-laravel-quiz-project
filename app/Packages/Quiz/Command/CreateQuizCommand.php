@@ -23,7 +23,7 @@ class CreateQuizCommand extends Command
 
     public function handle(): void
     {
-        $student = new Student(name: 'João', lastname: 'Silva');
+        $student = new Student(name: 'João', lastname: 'Silva', registerId: 123456);
         EntityManager::persist($student);
         $subject = new Subject(name: 'MATEMATICA');
         EntityManager::persist($subject);

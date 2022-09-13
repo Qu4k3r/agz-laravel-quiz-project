@@ -28,9 +28,26 @@ class Student
         /** @ORM\Column(type="string") */
         private string $name,
         /** @ORM\Column(type="string") */
-        private string $lastname
+        private string $lastname,
+        /** @ORM\Column(type="integer", unique=true) */
+        private int $registerId,
     )
     {
         $this->quizzes = new ArrayCollection();
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function getLastname(): string
+    {
+        return $this->lastname;
+    }
+
+    public function getRegisterId(): int
+    {
+        return $this->registerId;
     }
 }

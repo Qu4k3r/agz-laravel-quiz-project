@@ -27,6 +27,7 @@ class RouteServiceProvider extends ServiceProvider
         'subject',
         'question',
         'alternative-question',
+        'student',
     ];
 
     protected function mapApiRoutes(): void
