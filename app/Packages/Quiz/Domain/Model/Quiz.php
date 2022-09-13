@@ -5,7 +5,6 @@ namespace App\Packages\Quiz\Domain\Model;
 use App\Packages\Doctrine\Domain\Behavior\Identifiable;
 use App\Packages\Quiz\Subject\Domain\Model\Subject;
 use App\Packages\Student\Domain\Model\Student;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
@@ -22,17 +21,19 @@ class Quiz
 
     public function __construct(
         /**
-         * @ORM\OneToOne(
+         * @ORM\ManyToOne(
          *     targetEntity="App\Packages\Student\Domain\Model\Student",
-         *     inversedBy="quiz"
+         *     inversedBy="student",
+         *     cascade={"persist", "remove"},
          * )
          */
         private Student $student,
 
         /**
-         * @ORM\OneToOne(
+         * @ORM\ManyToOne(
          *     targetEntity="App\Packages\Quiz\Subject\Domain\Model\Subject",
-         *     mappedBy="quiz"
+         *     inversedBy="quiz",
+         *     cascade={"persist", "remove"},
          * )
          */
         private Subject $subject,
@@ -40,22 +41,16 @@ class Quiz
         /** @ORM\Column(type="smallint") */
         private int $totalQuestions,
 
-        /**
-         * @ORM\OneToMany(
-         *     targetEntity="App\Packages\Quiz\Question\Domain\Model\Question",
-         *     mappedBy="quiz",
-         *     cascade={"persist", "remove"},
-         * )
-         */
-        private ArrayCollection $questions,
+        /** @ORM\Column (type="jsonb") */
+        private array $generatedQuestions,
+
+        /** @ORM\Column (type="jsonb", nullable=true) */
+        private ?array $answeredQuestions = null,
 
         /** @ORM\Column(type="smallint", nullable=true) */
         private ?int $score = null,
 
         /** @ORM\Column(type="string") */
         private string $status = self::OPENED,
-    )
-    {
-        $this->questions = new ArrayCollection();
-    }
+    ) {}
 }

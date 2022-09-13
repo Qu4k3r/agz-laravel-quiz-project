@@ -3,7 +3,10 @@
 namespace App\Packages\Quiz\Question\Domain\Model;
 
 use App\Packages\Doctrine\Domain\Behavior\Identifiable;
+use App\Packages\Quiz\Domain\Model\Quiz;
+use App\Packages\Quiz\Subject\Domain\Model\Subject;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
@@ -20,13 +23,13 @@ class Question
         private string $name,
 
         /**
-         * @ORM\OneToMany(
+         * @ORM\ManyToOne (
          *     targetEntity="App\Packages\Quiz\Subject\Domain\Model\Subject",
-         *     mappedBy="question",
+         *     inversedBy="subject",
          *     cascade={"persist", "remove"},
          * )
          */
-        private ArrayCollection $subjects,
+        private Subject $subject,
 
         /**
          * @ORM\OneToMany(
@@ -35,10 +38,33 @@ class Question
          *     cascade={"persist", "remove"},
          * )
          */
-        private ?ArrayCollection $alternativeQuestions = null
+        private ?Collection $alternativeQuestions = null
     )
     {
-        $this->subjects = new ArrayCollection();
         $this->alternativeQuestions = new ArrayCollection();
+    }
+
+    public function addAlternativeQuestions(Collection $alternativeQuestions): void
+    {
+        $alternativeQuestions->map(function ($alternativeQuestion) {
+            if (!$this->alternativeQuestions->contains($alternativeQuestion)) {
+                $this->alternativeQuestions->add($alternativeQuestion);
+            }
+        });
+    }
+
+    public function getAlternativeQuestions(): ?Collection
+    {
+        return $this->alternativeQuestions;
+    }
+
+    public function getSubject(): Subject
+    {
+        return $this->subject;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
     }
 }

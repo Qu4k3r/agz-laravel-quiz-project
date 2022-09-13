@@ -25,6 +25,7 @@ class RouteServiceProvider extends ServiceProvider
     private array $apiRouteFiles = [
         'api',
         'subject',
+        'question',
     ];
 
     protected function mapApiRoutes(): void

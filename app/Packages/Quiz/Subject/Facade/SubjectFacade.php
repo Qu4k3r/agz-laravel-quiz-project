@@ -9,9 +9,14 @@ class SubjectFacade
 {
     public function __construct(private SubjectRepository $subjectRepository) {}
 
-    public function create(string $name): Subject
+    public function getOrCreate(string $subjectName): Subject
     {
-        $subject = new Subject($name);
+        $subject = $this->subjectRepository->findByName($subjectName);
+        if ($subject instanceof Subject) {
+            return $subject;
+        }
+
+        $subject = new Subject($subjectName);
         $this->subjectRepository->add($subject);
 
         return $subject;

@@ -27,7 +27,8 @@ class Kernel extends ConsoleKernel
     {
         $this->load([
             __DIR__.'/Commands',
-            app_path('Packages/Question/Command'),
+            app_path('Packages/Quiz/Question/Command'),
+            app_path('Packages/Quiz/Command'),
         ]);
 
         require base_path('routes/console.php');

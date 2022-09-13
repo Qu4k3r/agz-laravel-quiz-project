@@ -2,7 +2,9 @@
 
 namespace App\Packages\Student\Domain\Model;
 
-use App\Packages\Quiz\Domain\Model\Quiz;
+use App\Packages\Doctrine\Domain\Behavior\Identifiable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
@@ -12,28 +14,23 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
  */
 class Student
 {
-    use TimestampableEntity;
+    use Identifiable, TimestampableEntity;
 
     /**
-     * @ORM\OneToOne(
+     * @ORM\OneToMany(
      *     targetEntity="App\Packages\Quiz\Domain\Model\Quiz",
      *     mappedBy="student",
      * )
      */
-    private ?Quiz $quiz = null;
+    private ?Collection $quizzes = null;
 
     public function __construct(
-        /** @ORM\Column(type="uuid", unique=true) */
-        private string $id,
-        /**
-         * @ORM\Id
-         * @ORM\Column(type="string")
-         */
+        /** @ORM\Column(type="string") */
         private string $name,
-        /**
-         * @ORM\Id
-         * @ORM\Column(type="string")
-         */
+        /** @ORM\Column(type="string") */
         private string $lastname
-    ) {}
+    )
+    {
+        $this->quizzes = new ArrayCollection();
+    }
 }
