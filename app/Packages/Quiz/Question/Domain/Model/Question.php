@@ -23,9 +23,9 @@ class Question
         private string $name,
 
         /**
-         * @ORM\OneToOne (
+         * @ORM\ManyToOne (
          *     targetEntity="App\Packages\Quiz\Subject\Domain\Model\Subject",
-         *     inversedBy="question",
+         *     inversedBy="subject",
          *     cascade={"persist", "remove"},
          * )
          */

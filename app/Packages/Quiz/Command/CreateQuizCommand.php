@@ -9,7 +9,6 @@ use App\Packages\Quiz\Subject\Domain\Model\Subject;
 use App\Packages\Student\Domain\Model\Student;
 use Doctrine\Common\Collections\ArrayCollection;
 use Illuminate\Console\Command;
-use Illuminate\Support\Str;
 use LaravelDoctrine\ORM\Facades\EntityManager;
 
 class CreateQuizCommand extends Command
@@ -24,7 +23,7 @@ class CreateQuizCommand extends Command
 
     public function handle(): void
     {
-        $student = new Student(id: Str::uuid(), name: 'João', lastname: 'Silva');
+        $student = new Student(name: 'João', lastname: 'Silva');
         EntityManager::persist($student);
         $subject = new Subject(name: 'MATEMATICA');
         EntityManager::persist($subject);
@@ -40,7 +39,7 @@ class CreateQuizCommand extends Command
             return (new QuestionDto($question))->toArray();
         });
 
-        $quiz = new Quiz(student: $student, subject: $subject, totalQuestions: $questionsCollection->count(), questions: $questions->toArray());
+        $quiz = new Quiz(student: $student, subject: $subject, totalQuestions: $questionsCollection->count(), generatedQuestions: $questions->toArray());
         EntityManager::persist($quiz);
         EntityManager::flush();
         $this->info('Quiz criado com sucesso!');
