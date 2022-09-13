@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Quiz\Question;
 
 use App\Http\Controllers\Controller;
+use App\Packages\Quiz\Question\Domain\Model\Question;
 use App\Packages\Quiz\Question\Facade\QuestionFacade;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +16,7 @@ class QuestionController extends Controller
     public function create(Request $request): JsonResponse
     {
         try {
-            $question = $this->questionFacade->create(
+            $question = $this->questionFacade->getOrCreate(
                 $request->get('name'),
                 $request->get('subjectName'),
             );
@@ -30,12 +31,18 @@ class QuestionController extends Controller
 
             return response()->success($data, statusCode: Response::HTTP_CREATED);
         } catch (\Exception $exception) {
-            return response()->json(
-                [
-                    'message' => $exception->getMessage(),
-                ],
-                Response::HTTP_BAD_REQUEST,
-            );
+            return response()->error($exception->getMessage());
+        }
+    }
+
+    public function createAlternative(Question $question): JsonResponse
+    {
+        try {
+            dd('qwdqw');
+//            dd($request->get('name'));
+            dd($question);
+        } catch (\Exception $exception) {
+            return response()->error($exception->getMessage());
         }
     }
 }

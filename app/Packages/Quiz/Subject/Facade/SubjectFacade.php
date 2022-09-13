@@ -11,7 +11,7 @@ class SubjectFacade
 
     public function getOrCreate(string $subjectName): Subject
     {
-        $subject = $this->subjectRepository->findByName($subjectName);
+        $subject = $this->subjectRepository->findOneByName($subjectName);
         if ($subject instanceof Subject) {
             return $subject;
         }
