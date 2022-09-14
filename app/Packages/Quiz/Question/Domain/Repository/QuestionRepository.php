@@ -3,7 +3,6 @@
 namespace App\Packages\Quiz\Question\Domain\Repository;
 
 use App\Packages\Base\Domain\Repository\Repository;
-use App\Packages\Doctrine\Extension\Query\Postgresql\Random;
 use App\Packages\Quiz\Question\Domain\Model\Question;
 use Doctrine\ORM\Query\Expr;
 

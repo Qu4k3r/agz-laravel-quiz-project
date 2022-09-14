@@ -10,8 +10,8 @@ class QuestionService
 
     public function generateRandomQuestions(): array
     {
-        $limit = rand(1, 20);
-        $questions = $this->questionRepository->getRandomQuestions($limit);
+        $totalQuestions = rand(1, 10);
+        $questions = $this->questionRepository->getRandomQuestions($totalQuestions);
         dd($questions);
     }
 }
