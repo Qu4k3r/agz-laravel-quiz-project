@@ -1,6 +1,7 @@
 <?php
 
 use App\Packages\Doctrine\Domain\Types\JsonbType;
+use App\Packages\Doctrine\Extension\Query\Postgresql\Random;
 use Ramsey\Uuid\Doctrine\UuidType;
 
 return [
@@ -129,7 +130,9 @@ return [
     | DQL custom numeric functions
     |--------------------------------------------------------------------------
     */
-    'custom_numeric_functions'   => [],
+    'custom_numeric_functions'   => [
+        'RANDOM' => Random::class, // actually this is more like a custom arithmetic function
+    ],
     /*
     |--------------------------------------------------------------------------
     | DQL custom string functions
