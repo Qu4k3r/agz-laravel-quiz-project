@@ -19,8 +19,14 @@ help:
 shell:
 	@docker-compose -f ./docker-compose.yaml exec api bash
 
-db_update:
-	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "php artisan migrate && php artisan db:seed"
+migrations-diff:
+	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "/var/www/artisan doctrine:migrations:diff"
+
+migrate:
+	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "/var/www/artisan doctrine:migrations:migrate"
+
+schema-update:
+	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "/var/www/artisan doctrine:schema:update"
 
 all-tests:
 	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "./vendor/bin/phpunit -d memory_limit=-1"

@@ -9,14 +9,9 @@ class StudentFacade
 {
     public function __construct(private StudentRepository $studentRepository) {}
 
-    public function getOrCreate(string $name, string $lastName, int $registerId): Student
+    public function create(string $name, string $lastName): Student
     {
-        $student = $this->studentRepository->findOneByRegisterId($registerId);
-        if ($student instanceof Student) {
-            return $student;
-        }
-
-        $student = new Student($name, $lastName, $registerId);
+        $student = new Student($name, $lastName);
         $this->studentRepository->add($student);
 
         return $student;

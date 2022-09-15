@@ -41,15 +41,6 @@ class Quiz
         /** @ORM\Column(type="smallint") */
         private int $totalQuestions,
 
-        /**
-         * @TODO Mover pacote Types para Extension
-         * @ORM\Column (type="jsonb")
-         */
-        private array $generatedQuestions,
-
-        /** @ORM\Column (type="jsonb", nullable=true) */
-        private ?array $answeredQuestions = null,
-
         /** @ORM\Column(type="smallint", nullable=true) */
         private ?int $score = null,
 

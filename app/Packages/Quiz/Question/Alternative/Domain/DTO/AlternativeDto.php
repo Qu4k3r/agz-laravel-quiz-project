@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Packages\Quiz\AlternativeQuestion\Domain\DTO;
+namespace App\Packages\Quiz\Question\Alternative\Domain\DTO;
 
-use App\Packages\Quiz\Question\Domain\Model\Question;
-
-class AlternativeQuestionDto
+class AlternativeDto
 {
     private string $name;
     private bool $isCorrect;
@@ -25,7 +23,7 @@ class AlternativeQuestionDto
         return $this->isCorrect;
     }
 
-    public static function fromArray(array $alternativeQuestions): AlternativeQuestionDto
+    public static function fromArray(array $alternativeQuestions): AlternativeDto
     {
         return new self($alternativeQuestions['name'], $alternativeQuestions['isCorrect']);
     }
