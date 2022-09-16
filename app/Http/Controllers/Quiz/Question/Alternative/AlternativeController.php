@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Quiz\AlternativeQuestion;
+namespace App\Http\Controllers\Quiz\Question\Alternative;
 
 use App\Http\Controllers\Controller;
-use App\Packages\Quiz\AlternativeQuestion\Domain\Model\AlternativeQuestion;
-use App\Packages\Quiz\AlternativeQuestion\Facade\AlternativeQuestionFacade;
+use App\Packages\Quiz\Question\Alternative\Domain\Model\Alternative;
+use App\Packages\Quiz\Question\Alternative\Facade\AlternativeFacade;
 use App\Packages\Quiz\Question\Domain\Model\Question;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class AlternativeQuestionController extends Controller
+class AlternativeController extends Controller
 {
     public function __construct(
-        private AlternativeQuestionFacade $alternativeQuestionFacade,
+        private AlternativeFacade $alternativeQuestionFacade,
     ) {}
 
     public function create(Request $request, Question $question): JsonResponse
@@ -22,7 +22,7 @@ class AlternativeQuestionController extends Controller
             $requesttAlternativeQuestions = $request->all();
             $alternativeQuestions = $this->alternativeQuestionFacade->getOrCreate($requesttAlternativeQuestions, $question);
 
-            $data = array_map(fn (AlternativeQuestion $alternativeQuestion) => [
+            $data = array_map(fn (Alternative $alternativeQuestion) => [
                 'id' => $alternativeQuestion->getId(),
                 'name' => $alternativeQuestion->getName(),
                 'isCorrect' => $alternativeQuestion->isCorrect()

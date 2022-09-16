@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Packages\Quiz\AlternativeQuestion\Domain\Model;
+namespace App\Packages\Quiz\Question\Alternative\Domain\Model;
 
 use App\Packages\Doctrine\Domain\Behavior\Identifiable;
 use App\Packages\Quiz\Question\Domain\Model\Question;
@@ -9,9 +9,9 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="alternative_questions")
+ * @ORM\Table(name="alternatives")
  */
-class AlternativeQuestion
+class Alternative
 {
     use Identifiable, TimestampableEntity;
 
@@ -19,10 +19,9 @@ class AlternativeQuestion
         /** @ORM\Column(type="string") */
         private string $name,
 
-        /**
-         * @ORM\ManyToOne   (
+        /** @ORM\ManyToOne (
          *     targetEntity="App\Packages\Quiz\Question\Domain\Model\Question",
-         *     inversedBy="alternativeQuestions",
+         *     cascade={"persist", "remove"},
          * )
          */
         private Question $question,

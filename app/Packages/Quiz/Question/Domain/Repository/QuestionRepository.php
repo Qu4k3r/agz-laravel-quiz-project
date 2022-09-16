@@ -23,4 +23,17 @@ class QuestionRepository extends Repository
             ->setMaxResults(1);
         return $queryBuilder->getQuery()->getOneOrNullResult();
     }
+
+    public function getRandomQuestionsBySubjectAndTotalQuestions(string $subjectName, int $limit): array
+    {
+        $queryBuilder = $this->createQueryBuilder('question');
+        $queryBuilder
+            ->join('question.subject', 'subject', Expr\Join::WITH, 'subject.name = :subjectName')
+            ->orderBy('RANDOM()')
+            ->setParameters([
+                'subjectName' => $subjectName,
+            ])
+            ->setMaxResults($limit);
+        return $queryBuilder->getQuery()->getResult();
+    }
 }

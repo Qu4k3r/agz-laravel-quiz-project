@@ -15,16 +15,14 @@ class StudentController extends Controller
     public function create(Request $request): JsonResponse
     {
         try {
-            $student = $this->studentFacade->getOrCreate(
+            $student = $this->studentFacade->create(
                 $request->get('name'),
                 $request->get('lastName'),
-                $request->get('registerId'),
             );
             $data = [
                 'id' => $student->getId(),
                 'name' => $student->getName(),
                 'lastName' => $student->getLastname(),
-                'registerId' => $student->getRegisterId(),
             ];
 
             return response()->success($data, statusCode: Response::HTTP_CREATED);

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Quiz\Subject;
 
+use App\Http\Controllers\Controller;
 use App\Packages\Quiz\Subject\Facade\SubjectFacade;
 use Illuminate\Http\JsonResponse;
-use App\Http\Controllers\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 

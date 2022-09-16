@@ -3,7 +3,6 @@
 namespace App\Packages\Quiz\Question\Domain\Model;
 
 use App\Packages\Doctrine\Domain\Behavior\Identifiable;
-use App\Packages\Quiz\Domain\Model\Quiz;
 use App\Packages\Quiz\Subject\Domain\Model\Subject;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -18,6 +17,15 @@ class Question
 {
     use Identifiable, TimestampableEntity;
 
+    /**
+     * @ORM\OneToMany (
+     *     targetEntity="App\Packages\Quiz\Question\Alternative\Domain\Model\Alternative",
+     *     mappedBy="question",
+     *     cascade={"persist", "remove"},
+     * )
+     */
+    private ?Collection $alternatives;
+
     public function __construct(
         /** @ORM\Column(type="string") */
         private string $name,
@@ -25,37 +33,13 @@ class Question
         /**
          * @ORM\ManyToOne (
          *     targetEntity="App\Packages\Quiz\Subject\Domain\Model\Subject",
-         *     inversedBy="subject",
          *     cascade={"persist", "remove"},
          * )
          */
         private Subject $subject,
-
-        /**
-         * @ORM\OneToMany(
-         *     targetEntity="App\Packages\Quiz\AlternativeQuestion\Domain\Model\AlternativeQuestion",
-         *     mappedBy="question",
-         *     cascade={"persist", "remove"},
-         * )
-         */
-        private ?Collection $alternativeQuestions = null
     )
     {
-        $this->alternativeQuestions = new ArrayCollection();
-    }
-
-    public function addAlternativeQuestions(Collection $alternativeQuestions): void
-    {
-        $alternativeQuestions->map(function ($alternativeQuestion) {
-            if (!$this->alternativeQuestions->contains($alternativeQuestion)) {
-                $this->alternativeQuestions->add($alternativeQuestion);
-            }
-        });
-    }
-
-    public function getAlternativeQuestions(): ?Collection
-    {
-        return $this->alternativeQuestions;
+        $this->alternatives = new ArrayCollection();
     }
 
     public function getSubject(): Subject
@@ -66,5 +50,10 @@ class Question
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function getAlternatives(): array
+    {
+        return $this->alternatives->toArray();
     }
 }

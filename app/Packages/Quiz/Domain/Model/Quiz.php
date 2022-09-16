@@ -3,7 +3,6 @@
 namespace App\Packages\Quiz\Domain\Model;
 
 use App\Packages\Doctrine\Domain\Behavior\Identifiable;
-use App\Packages\Quiz\Subject\Domain\Model\Subject;
 use App\Packages\Student\Domain\Model\Student;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
@@ -29,23 +28,11 @@ class Quiz
          */
         private Student $student,
 
-        /**
-         * @ORM\ManyToOne(
-         *     targetEntity="App\Packages\Quiz\Subject\Domain\Model\Subject",
-         *     inversedBy="quiz",
-         *     cascade={"persist", "remove"},
-         * )
-         */
-        private Subject $subject,
+        /** @ORM\Column(type="string") */
+        private string $subject,
 
         /** @ORM\Column(type="smallint") */
         private int $totalQuestions,
-
-        /** @ORM\Column (type="jsonb") */
-        private array $generatedQuestions,
-
-        /** @ORM\Column (type="jsonb", nullable=true) */
-        private ?array $answeredQuestions = null,
 
         /** @ORM\Column(type="smallint", nullable=true) */
         private ?int $score = null,
@@ -53,4 +40,14 @@ class Quiz
         /** @ORM\Column(type="string") */
         private string $status = self::OPENED,
     ) {}
+
+    public function isFinished(): bool
+    {
+        return $this->status === self::CLOSED;
+    }
+
+    public function getTotalQuestions(): int
+    {
+        return $this->totalQuestions;
+    }
 }
