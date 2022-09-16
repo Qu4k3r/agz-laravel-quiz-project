@@ -2,11 +2,12 @@
 
 namespace App\Packages\Quiz\Domain\DTO;
 
+use App\Packages\Quiz\Domain\Model\Quiz;
 use App\Packages\Student\Domain\Model\Student;
 
 class QuizDto
 {
-    private string $id;
+    private Quiz $quiz;
     private Student $student;
     private string $subjectName;
     private int $totalQuestions;
@@ -17,14 +18,14 @@ class QuizDto
 
     }
 
-    public function getId(): string
+    public function getQuiz(): Quiz
     {
-        return $this->id;
+        return $this->quiz;
     }
 
-    public function setId(string $id): QuizDto
+    public function setQuiz(Quiz $quiz): QuizDto
     {
-        $this->id = $id;
+        $this->quiz = $quiz;
         return $this;
     }
 

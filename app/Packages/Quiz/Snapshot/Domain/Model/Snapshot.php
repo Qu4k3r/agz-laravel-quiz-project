@@ -39,9 +39,9 @@ class Snapshot
         private string $alternativeName,
         /** @ORM\Column(type="boolean") */
         private bool $isCorrect,
-        /** @ORM\Column(type="boolean") */
+        /** @ORM\Column(type="boolean", nullable=true) */
         private ?bool $studentAlternative = null,
-        /** @ORM\Column(type="boolean") */
+        /** @ORM\Column(type="boolean", nullable=true) */
         private ?bool $rightAnswer = null,
     ) {}
 }

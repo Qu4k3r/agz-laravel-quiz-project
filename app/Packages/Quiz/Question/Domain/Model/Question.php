@@ -20,6 +20,7 @@ class Question
     /**
      * @ORM\OneToMany (
      *     targetEntity="App\Packages\Quiz\Question\Alternative\Domain\Model\Alternative",
+     *     mappedBy="question",
      *     cascade={"persist", "remove"},
      * )
      */
@@ -51,8 +52,8 @@ class Question
         return $this->name;
     }
 
-    public function getAlternatives(): Collection
+    public function getAlternatives(): array
     {
-        return $this->alternatives;
+        return $this->alternatives->toArray();
     }
 }
