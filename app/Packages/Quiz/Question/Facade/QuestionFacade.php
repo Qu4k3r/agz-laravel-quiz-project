@@ -25,4 +25,9 @@ class QuestionFacade
 
         return $question;
     }
+
+    public function getRandomQuestionsBySubjectAndTotalQuestions(string $subjectName, int $totalQuestions): array
+    {
+        return $this->questionRepository->getRandomQuestionsBySubjectAndTotalQuestions($subjectName, $totalQuestions);
+    }
 }

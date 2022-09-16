@@ -13,10 +13,10 @@ class AlternativeRepository extends Repository
 
     public function findOneByNameAndQuestion(string $name, Question $question): ?Alternative
     {
-        $queryBuilder = $this->createQueryBuilder('alternativeQuestion');
+        $queryBuilder = $this->createQueryBuilder('alternative');
         $queryBuilder
-            ->join('alternativeQuestion.question', 'question', Expr\Join::WITH, 'question.id = :questionId')
-            ->where('alternativeQuestion.name = :name')
+            ->join('alternative.question', 'question', Expr\Join::WITH, 'question.id = :questionId')
+            ->where('alternative.name = :name')
             ->setParameters([
                 'name' => $name,
                 'questionId' => $question->getId(),

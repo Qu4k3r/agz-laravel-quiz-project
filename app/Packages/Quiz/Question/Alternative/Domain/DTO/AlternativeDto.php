@@ -23,8 +23,16 @@ class AlternativeDto
         return $this->isCorrect;
     }
 
-    public static function fromArray(array $alternativeQuestions): AlternativeDto
+    public static function fromArray(array $alternatives): AlternativeDto
     {
-        return new self($alternativeQuestions['name'], $alternativeQuestions['isCorrect']);
+        return new self($alternatives['name'], $alternatives['isCorrect']);
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'name' => $this->name,
+            'isCorrect' => $this->isCorrect,
+        ];
     }
 }

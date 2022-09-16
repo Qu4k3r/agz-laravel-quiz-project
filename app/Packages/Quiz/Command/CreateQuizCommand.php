@@ -36,7 +36,7 @@ class CreateQuizCommand extends Command
 
         $questions = $questionsCollection->map(function (Question $question) {
             EntityManager::persist($question);
-            return (new QuestionDto($question))->toArray();
+            return (new QuestionDto($question))->toArray(true);
         });
 
         $quiz = new Quiz(student: $student, subject: $subject, totalQuestions: $questionsCollection->count(), generatedQuestions: $questions->toArray());

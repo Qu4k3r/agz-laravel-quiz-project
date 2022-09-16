@@ -4,6 +4,8 @@ namespace App\Packages\Quiz\Question\Domain\Model;
 
 use App\Packages\Doctrine\Domain\Behavior\Identifiable;
 use App\Packages\Quiz\Subject\Domain\Model\Subject;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
@@ -14,6 +16,14 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 class Question
 {
     use Identifiable, TimestampableEntity;
+
+    /**
+     * @ORM\OneToMany (
+     *     targetEntity="App\Packages\Quiz\Question\Alternative\Domain\Model\Alternative",
+     *     cascade={"persist", "remove"},
+     * )
+     */
+    private ?Collection $alternatives;
 
     public function __construct(
         /** @ORM\Column(type="string") */
@@ -26,7 +36,10 @@ class Question
          * )
          */
         private Subject $subject,
-    ) {}
+    )
+    {
+        $this->alternatives = new ArrayCollection();
+    }
 
     public function getSubject(): Subject
     {
@@ -36,5 +49,10 @@ class Question
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function getAlternatives(): Collection
+    {
+        return $this->alternatives;
     }
 }

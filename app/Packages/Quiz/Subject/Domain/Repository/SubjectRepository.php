@@ -13,4 +13,14 @@ class SubjectRepository extends Repository
     {
         return $this->findOneBy(['name' => $name]);
     }
+
+    public function getRandomSubject(): ?Subject
+    {
+        $queryBuilder = $this->createQueryBuilder('subject');
+        $queryBuilder
+            ->orderBy('RANDOM()')
+            ->setMaxResults(1);
+
+        return $queryBuilder->getQuery()->getOneOrNullResult();
+    }
 }

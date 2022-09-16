@@ -21,4 +21,9 @@ class SubjectFacade
 
         return $subject;
     }
+
+    public function getRandomSubject()
+    {
+        return $this->subjectRepository->getRandomSubject();
+    }
 }
