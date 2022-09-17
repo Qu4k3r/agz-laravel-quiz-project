@@ -1,0 +1,312 @@
+{
+  "sqlQuestions": [
+    {
+      "name": "What is Database?",
+      "subjectName": "SQL"
+    },
+    {
+      "name": "What is DBMS?",
+      "subjectName": "SQL"
+    },
+    {
+      "name": "What is RDBMS? How is it different from DBMS?",
+      "subjectName": "SQL"
+    },
+    {
+      "name": "What is SQL?",
+      "subjectName": "SQL"
+    },
+    {
+      "name": "What is the difference between SQL and MySQL?",
+      "subjectName": "SQL"
+    },
+    {
+      "name": "What are Tables and Fields?",
+      "subjectName": "SQL"
+    },
+    {
+      "name": "What are Constraints in SQL?",
+      "subjectName": "SQL"
+    },
+    {
+      "name": "What is a Primary Key?",
+      "subjectName": "SQL"
+    },
+    {
+      "name": "What is a UNIQUE constraint?",
+      "subjectName": "SQL"
+    },
+    {
+      "name": "What is a Foreign Key?",
+      "subjectName": "SQL"
+    },
+    {
+      "name": "What is a Join? List its different types.",
+      "subjectName": "SQL"
+    },
+    {
+      "name": "What is a Self-Join?",
+      "subjectName": "SQL"
+    },
+    {
+      "name": "What is a Cross-Join?",
+      "subjectName": "SQL"
+    },
+    {
+      "name": "What is an Index? Explain its different types.",
+      "subjectName": "SQL"
+    },
+    {
+      "name": "What is the difference between Clustered and Non-clustered index?",
+      "subjectName": "SQL"
+    },
+    {
+      "name": "What is Data Integrity?",
+      "subjectName": "SQL"
+    },
+    {
+      "name": "What is a Query?",
+      "subjectName": "SQL"
+    },
+    {
+      "name": "What is a Subquery? What are its types?",
+      "subjectName": "SQL"
+    },
+    {
+      "name": "What is the SELECT statement?",
+      "subjectName": "SQL"
+    },
+    {
+      "name": "What are some common clauses used with SELECT query in SQL?",
+      "subjectName": "SQL"
+    }
+  ],
+  "laravelQuestions": [
+    {
+      "name": "What is the latest Laravel version?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "Define Composer?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What is the templating engine used in Laravel?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What are available databases supported by Laravel?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What is an artisan?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "How to define environment variables in Laravel?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "Can we use Laravel for Full Stack Development (Frontend + Backend)?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "How to put Laravel applications in maintenance mode?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What are the default route files in Laravel?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What are migrations in Laravel?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What are seeders in Laravel?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What are factories in Laravel?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "How to implement soft deletes in Laravel?,",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What are Models?,",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What are Relationships in Laravel?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What is Eloquent in Laravel?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What is throttling and how to implement it in Laravel?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What are facades,?,",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What are Events in Laravel?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "Explain logging in Laravel?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What is Localization in Laravel?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What are Requests in Laravel?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "How to do request validation in Laravel?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What is a Service Container in Laravel?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What is a Service Provider?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What is the register and boot method in the Service Provider class?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "How to define routes in Laravel?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What are named routes?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What are route groups?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What is Middleware and how to create one in Laravel?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "How to create a route for resources in laravel?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What is dependency Injection in Laravel?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What are collections?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What are contracts?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What are queues in Laravel?",
+      "subjectName": "Laravel"
+    },
+    {
+      "name": "What are accessors and mutators?",
+      "subjectName": "Laravel"
+    }
+  ],
+  "javaScriptQuestions": [
+    {
+      "name": "What are the different data types present in javascript?",
+      "subjectName": "JavaScript"
+    },
+    {
+      "name": "Explain Hoisting in javascript.",
+      "subjectName": "JavaScript"
+    },
+    {
+      "name": "Why do we use the word “debugger” in javascript?",
+      "subjectName": "JavaScript"
+    },
+    {
+      "name": "What is the difference between “ == “ and “ === “ operators?",
+      "subjectName": "JavaScript"
+    },
+    {
+      "name": "Difference between var and let keyword in javascript.",
+      "subjectName": "JavaScript"
+    },
+    {
+      "name": "Explain Implicit Type Coercion in javascript.",
+      "subjectName": "JavaScript"
+    },
+    {
+      "name": "Is javascript a statically typed or a dynamically typed language?",
+      "subjectName": "JavaScript"
+    },
+    {
+      "name": "What is NaN property in JavaScript?",
+      "subjectName": "JavaScript"
+    },
+    {
+      "name": "Explain passed by value and passed by reference.",
+      "subjectName": "JavaScript"
+    },
+    {
+      "name": "What is an Immediately Invoked Function in JavaScript?",
+      "subjectName": "JavaScript"
+    },
+    {
+      "name": "What do you mean by strict mode in javascript and characteristics of javascript strict-mode?",
+      "subjectName": "JavaScript"
+    },
+    {
+      "name": "Explain Higher Order Functions in javascript.",
+      "subjectName": "JavaScript"
+    },
+    {
+      "name": "Explain “this” keyword.",
+      "subjectName": "JavaScript"
+    },
+    {
+      "name": "What do you mean by Self Invoking Functions?",
+      "subjectName": "JavaScript"
+    },
+    {
+      "name": "Explain call(), apply() and, bind() methods.",
+      "subjectName": "JavaScript"
+    },
+    {
+      "name": "What is the difference between exec () and test () methods in javascript?",
+      "subjectName": "JavaScript"
+    },
+    {
+      "name": "What is currying in JavaScript?",
+      "subjectName": "JavaScript"
+    },
+    {
+      "name": "What are some advantages of using External JavaScript?",
+      "subjectName": "JavaScript"
+    },
+    {
+      "name": "Explain Scope and Scope Chain in javascript.",
+      "subjectName": "JavaScript"
+    },
+    {
+      "name": "Explain Closures in JavaScript.",
+      "subjectName": "JavaScript"
+    }
+  ]
+}
