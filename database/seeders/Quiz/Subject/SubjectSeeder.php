@@ -10,32 +10,21 @@ class SubjectSeeder extends Seeder
 {
     public function run(): void
     {
-       $this->createSubject('fde5d485-e454-4156-bcd8-f0ccc8dc66be', 'Conhecimentos Gerais');
-       $this->createSubject('84e5dacc-8eb0-45b2-8286-73909f9acf40', 'JAVASCRIPT');
-       $this->createSubject('e1e7bebc-1802-412c-922d-929fde71cf9f', 'SQL');
-       $this->createSubject('98ed7ffe-7251-4adc-806f-449fde54a693', 'PHP');
+       $this->createSubject();
     }
 
-    private function createSubject(string $id = null, string $name = null): void
+    private function createSubject(): void
     {
-        if (!is_null($id) && EntityManager::getRepository(Subject::class)->findOneBy(['id' => $id]) instanceof Subject) {
+        if (EntityManager::getRepository(Subject::class)->findOneBy([]) instanceof Subject) {
             return;
         }
 
-        if (is_null($name)) {
-            $name = 'Conhecimentos Gerais';
-        }
+        $content = file_get_contents(base_path('database/seeders/Quiz/Subject/Resources/subjects.json'));
+        $data = json_decode($content);
 
-        $subjectRepository = EntityManager::getRepository(Subject::class);
-        $subject = $subjectRepository->findOneBy(['name' => $name]);
-        if (!$subject instanceof Subject) {
-            $subject = new Subject($name);
+        foreach ($data->subjects as $subject) {
+            $subject = new Subject($subject->name);
             EntityManager::persist($subject);
-            if (!is_null($id)) {
-                $subject->setId($id);
-                EntityManager::merge($subject);
-            }
-            EntityManager::flush();
         }
     }
 }

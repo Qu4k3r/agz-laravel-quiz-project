@@ -11,34 +11,24 @@ class QuestionSeeder extends Seeder
 {
     public function run(): void
     {
-       $this->createQuestionBySubject('05bbf3b3-5b7a-41a7-a7e7-6e6e001065a8');
-       $this->createQuestionBySubject('60d611d8-4100-4857-9d81-1d38b1c82e65', 'Qual o retorno da função "array_key_exists" quando a chave não existe?', 'PHP');
-       $this->createQuestionBySubject(name: 'Qual o nome da funcao que mostra o valor de uma variavel no console?', subjectName: 'JAVASCRIPT');
-       $this->createQuestionBySubject(name: 'O que faz a operacao JOIN?', subjectName: 'SQL');
+       $this->createQuestions();
     }
 
-    private function createQuestionBySubject(string $id = null, string $name = null, string $subjectName = null): void
+    private function createQuestions(): void
     {
-        if (!is_null($id) && EntityManager::getRepository(Question::class)->findOneBy(['id' => $id]) instanceof Question) {
+        if (EntityManager::getRepository(Question::class)->findOneBy([]) instanceof Question) {
             return;
         }
+        $content = file_get_contents(base_path('database/seeders/Quiz/Question/Resources/questions.json'));
+        $data = json_decode($content);
 
-        if (is_null($name)) {
-            $name = 'O que significa os numeros 0 e 1 no mundo da computação?';
-        }
-
-        if (is_null($subjectName)) {
-            $subjectName = 'Conhecimentos Gerais';
-        }
-
-        $subject = EntityManager::getRepository(Subject::class)->findOneBy(['name' => $subjectName]);
-
-        $question = new Question($name, $subject);
-
-        EntityManager::persist($question);
-        if (!is_null($id)) {
-            $question->setId($id);
-            EntityManager::merge($question);
+        foreach ($data->questions as $question) {
+            $subject = EntityManager::getRepository(Subject::class)->findOneBy(['name' => $question->subjectName]);
+            if (!$subject instanceof Subject) {
+                continue;
+            }
+            $question = new Question($question->name, $subject);
+            EntityManager::persist($question);
         }
         EntityManager::flush();
     }

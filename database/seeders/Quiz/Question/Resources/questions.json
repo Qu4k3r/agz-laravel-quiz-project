@@ -1,5 +1,5 @@
 {
-  "sqlQuestions": [
+  "questions": [
     {
       "name": "What is Database?",
       "subjectName": "SQL"
@@ -79,9 +79,7 @@
     {
       "name": "What are some common clauses used with SELECT query in SQL?",
       "subjectName": "SQL"
-    }
-  ],
-  "laravelQuestions": [
+    },
     {
       "name": "What is the latest Laravel version?",
       "subjectName": "Laravel"
@@ -225,9 +223,7 @@
     {
       "name": "What are accessors and mutators?",
       "subjectName": "Laravel"
-    }
-  ],
-  "javaScriptQuestions": [
+    },
     {
       "name": "What are the different data types present in javascript?",
       "subjectName": "JavaScript"

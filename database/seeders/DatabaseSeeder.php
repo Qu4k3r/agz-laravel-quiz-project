@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             SubjectSeeder::class,
             QuestionSeeder::class,
-            AlternativeSeeder::class,
+//            AlternativeSeeder::class,
         ]);
     }
 }
