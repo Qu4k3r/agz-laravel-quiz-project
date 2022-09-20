@@ -28,17 +28,9 @@ class QuestionSeeder extends Seeder
             if (!$subject instanceof Subject) {
                 $subject = new Subject($questionSeed->subjectName);
             }
+
             $question = new Question($questionSeed->name, $subject);
-
-            $alternativesData = $questionSeed->a;
-
-            foreach ($alternativesData as $alternativeData) {
-                $alternative = new Alternative($alternativeData->name, $question, $alternativeData->isCorrect);
-//                $question->addAlternative($alternative);
-                EntityManager::persist($alternative);
-            }
-
-//            EntityManager::persist($question);
+            $this->seedAlternatives($questionSeed->alternatives, $question);
         }
         EntityManager::flush();
     }
@@ -47,9 +39,8 @@ class QuestionSeeder extends Seeder
     {
         foreach ($alternatives as $alternativeSeed) {
             $alternative = new Alternative($alternativeSeed->name, $question, $alternativeSeed->isCorrect);
-//            $question->addAlternative($alternative);
+            $question->addAlternative($alternative);
             EntityManager::persist($alternative);
-//            EntityManager::merge($question);
         }
     }
 }

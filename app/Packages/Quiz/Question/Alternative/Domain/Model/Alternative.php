@@ -16,7 +16,7 @@ class Alternative
     use Identifiable, TimestampableEntity;
 
     public function __construct(
-        /** @ORM\Column(type="string", unique=true) */
+        /** @ORM\Column(type="text") */
         private string $name,
 
         /** @ORM\ManyToOne (

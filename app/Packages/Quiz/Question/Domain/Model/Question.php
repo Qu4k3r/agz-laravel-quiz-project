@@ -61,7 +61,7 @@ class Question
     public function addAlternative(Alternative $alternative): void
     {
        if (!$this->alternatives->contains($alternative)) {
-//           $alternative->setQuestion($this);
+           $alternative->setQuestion($this);
            $this->alternatives->add($alternative);
        }
     }

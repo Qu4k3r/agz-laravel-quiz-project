@@ -1,0 +1,9 @@
+{
+  "students": [
+    {"name": "Flavin", "lastname": "Do Pneu"},
+    {"name": "Xaolin", "lastname": "Matador de Porco"},
+    {"name": "Xoxana", "lastname": "Neves"},
+    {"name": "Claricesa", "lastname": "de Araujo"},
+    {"name": "Tchulinda", "lastname": "de Oliveira"}
+  ]
+}
