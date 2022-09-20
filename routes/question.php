@@ -16,4 +16,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'Quiz\Question'], function () {
     Route::post('/questions', [QuestionController::class, 'create']);
+    Route::get('/questions/{question}', [QuestionController::class, 'show']);
 });

@@ -15,6 +15,8 @@ class Alternative
 {
     use Identifiable, TimestampableEntity;
 
+    const MAX_ALTERNATIVES_PER_QUESTION = 4;
+
     public function __construct(
         /** @ORM\Column(type="text") */
         private string $name,
