@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\Quiz\Question;
 
+use App\Packages\Quiz\Question\Alternative\Domain\Model\Alternative;
 use App\Packages\Quiz\Question\Domain\Model\Question;
 use App\Packages\Quiz\Subject\Domain\Model\Subject;
 use Illuminate\Database\Seeder;
@@ -22,14 +23,33 @@ class QuestionSeeder extends Seeder
         $content = file_get_contents(base_path('database/seeders/Quiz/Question/Resources/questions.json'));
         $data = json_decode($content);
 
-        foreach ($data->questions as $question) {
-            $subject = EntityManager::getRepository(Subject::class)->findOneBy(['name' => $question->subjectName]);
+        foreach ($data->questions as $questionSeed) {
+            $subject = EntityManager::getRepository(Subject::class)->findOneBy(['name' => $questionSeed->subjectName]);
             if (!$subject instanceof Subject) {
-                continue;
+                $subject = new Subject($questionSeed->subjectName);
             }
-            $question = new Question($question->name, $subject);
-            EntityManager::persist($question);
+            $question = new Question($questionSeed->name, $subject);
+
+            $alternativesData = $questionSeed->a;
+
+            foreach ($alternativesData as $alternativeData) {
+                $alternative = new Alternative($alternativeData->name, $question, $alternativeData->isCorrect);
+//                $question->addAlternative($alternative);
+                EntityManager::persist($alternative);
+            }
+
+//            EntityManager::persist($question);
         }
         EntityManager::flush();
+    }
+
+    private function seedAlternatives(array $alternatives, Question $question): void
+    {
+        foreach ($alternatives as $alternativeSeed) {
+            $alternative = new Alternative($alternativeSeed->name, $question, $alternativeSeed->isCorrect);
+//            $question->addAlternative($alternative);
+            EntityManager::persist($alternative);
+//            EntityManager::merge($question);
+        }
     }
 }

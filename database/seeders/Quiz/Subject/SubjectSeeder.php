@@ -26,5 +26,6 @@ class SubjectSeeder extends Seeder
             $subject = new Subject($subject->name);
             EntityManager::persist($subject);
         }
+        EntityManager::flush();
     }
 }

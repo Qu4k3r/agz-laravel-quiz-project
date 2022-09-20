@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Database\Seeders\Quiz\Alternative\AlternativeSeeder;
 use Database\Seeders\Quiz\Question\QuestionSeeder;
 use Database\Seeders\Quiz\Subject\SubjectSeeder;
 use Illuminate\Database\Seeder;

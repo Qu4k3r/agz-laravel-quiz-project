@@ -2,307 +2,1675 @@
   "questions": [
     {
       "name": "What is Database?",
-      "subjectName": "SQL"
+      "subjectName": "SQL",
+      "a": [
+        {
+          "name": "A collection of organized data",
+          "isCorrect": true
+        },
+        {
+          "name": "A collection of unrelated data",
+          "isCorrect": false
+        },
+        {
+          "name": "A collection of related data and unrelated data",
+          "isCorrect": false
+        },
+        {
+          "name": "None of the above",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is DBMS?",
-      "subjectName": "SQL"
+      "subjectName": "SQL",
+      "a": [
+        {
+          "name": "A collection of organized data",
+          "isCorrect": false
+        },
+        {
+          "name": "A collection of unrelated data",
+          "isCorrect": false
+        },
+        {
+          "name": "A collection of related data and unrelated data",
+          "isCorrect": false
+        },
+        {
+          "name": "A software to manage database",
+          "isCorrect": true
+        }
+      ]
     },
     {
       "name": "What is RDBMS? How is it different from DBMS?",
-      "subjectName": "SQL"
+      "subjectName": "SQL",
+      "options": [
+        {
+          "name": "RDBMS stores data in the form of a collection of tables and relations can be defined between the common fields of these tables",
+          "isCorrect": true
+        },
+        {
+          "name": "RDBMS don't store data at all",
+          "isCorrect": false
+        },
+        {
+          "name": "RDBMS stores data as same as DBMS and there is no difference between them",
+          "isCorrect": false
+        },
+        {
+          "name": "A software to manage collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is SQL?",
-      "subjectName": "SQL"
+      "subjectName": "SQL",
+      "a": [
+        {
+          "name": "It is a programming language like Java, C and C++",
+          "isCorrect": false
+        },
+        {
+          "name": "It is a database property attribute like Primary Key, Foreign Key",
+          "isCorrect": false
+        },
+        {
+          "name": "It stands for String Query Language",
+          "isCorrect": false
+        },
+        {
+          "name": " It is the standard language for relational database management systems",
+          "isCorrect": true
+        }
+      ]
     },
     {
       "name": "What is the difference between SQL and MySQL?",
-      "subjectName": "SQL"
+      "subjectName": "SQL",
+      "a": [
+        {
+          "name": "SQL is a programming language and MySQL is a database",
+          "isCorrect": false
+        },
+        {
+          "name": "SQL is a database and MySQL is a programming language",
+          "isCorrect": false
+        },
+        {
+          "name": "SQL is a database and MySQL is a database",
+          "isCorrect": false
+        },
+        {
+          "name": "SQL is a standard language and MySQL is a database",
+          "isCorrect": true
+        }
+      ]
     },
     {
       "name": "What are Tables and Fields?",
-      "subjectName": "SQL"
+      "subjectName": "SQL",
+      "a": [
+        {
+          "name": "Tables are the collection of data and Fields are the attributes of the data",
+          "isCorrect": true
+        },
+        {
+          "name": "Tables are the attributes of the data and Fields are the collection of data",
+          "isCorrect": false
+        },
+        {
+          "name": "Tables are the collection of data and Fields are the attributes of the data and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Tables are the attributes of the data and Fields are the collection of data and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What are Constraints in SQL?",
-      "subjectName": "SQL"
+      "subjectName": "SQL",
+      "a": [
+        {
+          "name": "Constraints are the rules that are applied to the data in the database",
+          "isCorrect": true
+        },
+        {
+          "name": "Constraints are the rules that are applied to the data in the database and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Constraints are the rules that are applied to the data in the database and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Constraints are the rules that are applied to the data in the database and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is a Primary Key?",
-      "subjectName": "SQL"
+      "subjectName": "SQL",
+      "a": [
+        {
+          "name": "A Primary Key is a unique identifier for each record in a table",
+          "isCorrect": true
+        },
+        {
+          "name": "A Primary Key is a unique identifier for each record in a table and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "A Primary Key is a unique identifier for each record in a table and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "A Primary Key is a unique identifier for each record in a table and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is a UNIQUE constraint?",
-      "subjectName": "SQL"
+      "subjectName": "SQL",
+      "a": [
+        {
+          "name": "A UNIQUE constraint ensures that all values in a column are different",
+          "isCorrect": true
+        },
+        {
+          "name": "A UNIQUE constraint ensures that all values in a column are different and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "A UNIQUE constraint ensures that all values in a column are different and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "A UNIQUE constraint ensures that all values in a column are different and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is a Foreign Key?",
-      "subjectName": "SQL"
+      "subjectName": "SQL",
+      "a": [
+        {
+          "name": "A Foreign Key is a field (or collection of fields) in one table that uniquely identifies a row of another table or the same table. In simple words, the foreign key is defined in a second table, but it refers to the primary key in the first table",
+          "isCorrect": true
+        },
+        {
+          "name": "A Foreign Key is a field (or collection of fields) in one table that uniquely identifies a row of another table or the same table. In simple words, the foreign key is defined in a second table, but it refers to the primary key in the first table and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "A Foreign Key is a field (or collection of fields) in one table that uniquely identifies a row of another table or the same table. In simple words, the foreign key is defined in a second table, but it refers to the primary key in the first table and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "A Foreign Key is a field (or collection of fields) in one table that uniquely identifies a row of another table or the same table. In simple words, the foreign key is defined in a second table, but it refers to the primary key in the first table and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is a Join? List its different types.",
-      "subjectName": "SQL"
+      "subjectName": "SQL",
+      "a": [
+        {
+          "name": "A join is a means for combining fields from two tables by using values common to each",
+          "isCorrect": true
+        },
+        {
+          "name": "A join is a means for combining fields from two tables by using values common to each and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "A join is a means for combining fields from two tables by using values common to each and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "A join is a means for combining fields from two tables by using values common to each and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is a Self-Join?",
-      "subjectName": "SQL"
+      "subjectName": "SQL",
+      "a": [
+        {
+          "name": "A self join is a regular join, but the table is joined with itself",
+          "isCorrect": true
+        },
+        {
+          "name": "A self join is a regular join, but the table is joined with itself and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "A self join is a regular join, but the table is joined with itself and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "A self join is a regular join, but the table is joined with itself and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is a Cross-Join?",
-      "subjectName": "SQL"
+      "subjectName": "SQL",
+      "a": [
+        {
+          "name": "A cross join is a join that returns the Cartesian product of the sets of records from the joined tables",
+          "isCorrect": true
+        },
+        {
+          "name": "A cross join is a join that returns the Cartesian product of the sets of records from the joined tables and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "A cross join is a join that returns the Cartesian product of the sets of records from the joined tables and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "A cross join is a join that returns the Cartesian product of the sets of records from the joined tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is an Index? Explain its different types.",
-      "subjectName": "SQL"
+      "subjectName": "SQL",
+      "a": [
+        {
+          "name": "An index is a data structure that improves the speed of data retrieval operations on a database table at the cost of additional writes and storage space to maintain the index data structure",
+          "isCorrect": true
+        },
+        {
+          "name": "An index is a data structure that improves the speed of data retrieval operations on a database table at the cost of additional writes and storage space to maintain the index data structure and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "An index is a data structure that improves the speed of data retrieval operations on a database table at the cost of additional writes and storage space to maintain the index data structure and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "An index is a data structure that improves the speed of data retrieval operations on a database table at the cost of additional writes and storage space to maintain the index data structure and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is the difference between Clustered and Non-clustered index?",
-      "subjectName": "SQL"
+      "subjectName": "SQL",
+      "a": [
+        {
+          "name": "A clustered index is physically stored in the same order as the data in the table. A non-clustered index is physically stored in a different order than the data in the table",
+          "isCorrect": true
+        },
+        {
+          "name": "A clustered index is physically stored in the same order as the data in the table. A non-clustered index is physically stored in a different order than the data in the table and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "A clustered index is physically stored in the same order as the data in the table. A non-clustered index is physically stored in a different order than the data in the table and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "A clustered index is physically stored in the same order as the data in the table. A non-clustered index is physically stored in a different order than the data in the table and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is Data Integrity?",
-      "subjectName": "SQL"
+      "subjectName": "SQL",
+      "a": [
+        {
+          "name": "Data integrity is the maintenance of, and the assurance of the accuracy and consistency of, data over its entire life-cycle, and is a critical aspect to the design of any system that stores, processes, or retrieves data",
+          "isCorrect": true
+        },
+        {
+          "name": "Data integrity is the maintenance of, and the assurance of the accuracy and consistency of, data over its entire life-cycle, and is a critical aspect to the design of any system that stores, processes, or retrieves data and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Data integrity is the maintenance of, and the assurance of the accuracy and consistency of, data over its entire life-cycle, and is a critical aspect to the design of any system that stores, processes, or retrieves data and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Data integrity is the maintenance of, and the assurance of the accuracy and consistency of, data over its entire life-cycle, and is a critical aspect to the design of any system that stores, processes, or retrieves data and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is a Query?",
-      "subjectName": "SQL"
+      "subjectName": "SQL",
+      "a": [
+        {
+          "name": "A query is a request for data or information from a database table or combination of tables",
+          "isCorrect": true
+        },
+        {
+          "name": "A query is a request for data or information from a database table or combination of tables and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "A query is a request for data or information from a database table or combination of tables and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "A query is a request for data or information from a database table or combination of tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is a Subquery? What are its types?",
-      "subjectName": "SQL"
+      "subjectName": "SQL",
+      "a": [
+        {
+          "name": "A subquery is a query nested within another SQL statement and can be used wherever a normal value can be used. There are two types of subqueries: scalar and correlated",
+          "isCorrect": true
+        },
+        {
+          "name": "A subquery is a query nested within another SQL statement and can be used wherever a normal value can be used. There are two types of subqueries: scalar and correlated and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "A subquery is a query nested within another SQL statement and can be used wherever a normal value can be used. There are two types of subqueries: scalar and correlated and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "A subquery is a query nested within another SQL statement and can be used wherever a normal value can be used. There are two types of subqueries: scalar and correlated and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is the SELECT statement?",
-      "subjectName": "SQL"
+      "subjectName": "SQL",
+      "a": [
+        {
+          "name": "The SELECT statement is used to select data from a database",
+          "isCorrect": true
+        },
+        {
+          "name": "The SELECT statement is used to select data from a database and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "The SELECT statement is used to select data from a database and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "The SELECT statement is used to select data from a database and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What are some common clauses used with SELECT query in SQL?",
-      "subjectName": "SQL"
+      "subjectName": "SQL",
+      "a": [
+        {
+          "name": "The SELECT statement is used to select data from a database. Some common clauses used with SELECT query in SQL are: WHERE clause, ORDER BY clause, GROUP BY clause, HAVING clause, SELECT INTO clause, SELECT TOP clause, DISTINCT clause",
+          "isCorrect": true
+        },
+        {
+          "name": "The SELECT statement is used to select data from a database. Some common clauses used with SELECT query in SQL are: WHERE clause, ORDER BY clause, GROUP BY clause, HAVING clause, SELECT INTO clause, SELECT TOP clause, DISTINCT clause and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "The SELECT statement is used to select data from a database. Some common clauses used with SELECT query in SQL are: WHERE clause, ORDER BY clause, GROUP BY clause, HAVING clause, SELECT INTO clause, SELECT TOP clause, DISTINCT clause and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "The SELECT statement is used to select data from a database. Some common clauses used with SELECT query in SQL are: WHERE clause, ORDER BY clause, GROUP BY clause, HAVING clause, SELECT INTO clause, SELECT TOP clause, DISTINCT clause and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is the latest Laravel version?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Laravel 9",
+          "isCorrect": true
+        },
+        {
+          "name": "Laravel 8",
+          "isCorrect": false
+        },
+        {
+          "name": "Laravel 7",
+          "isCorrect": false
+        },
+        {
+          "name": "Laravel 6",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "Define Composer?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Composer is the package manager for the framework. It helps in adding new packages from the huge community into your laravel application",
+          "isCorrect": true
+        },
+        {
+          "name": "Composer is a dependency manager for PHP. It allows you to declare the libraries your project depends on and it will manage (install/update) them for you and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Composer is a dependency manager for PHP. It allows you to declare the libraries your project depends on and it will manage (install/update) them for you and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Composer is a dependency manager for PHP. It allows you to declare the libraries your project depends on and it will manage (install/update) them for you and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is the templating engine used in Laravel?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Blade",
+          "isCorrect": true
+        },
+        {
+          "name": "Twig",
+          "isCorrect": false
+        },
+        {
+          "name": "Smarty",
+          "isCorrect": false
+        },
+        {
+          "name": "Twig and Smarty",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What are available databases supported by Laravel?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "MySQL, PostgreSQL, SQLite, SQL Server",
+          "isCorrect": true
+        },
+        {
+          "name": "MySQL, PostgreSQL, SQLite, SQL Server and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "MySQL, PostgreSQL, SQLite, SQL Server and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "MySQL, PostgreSQL, SQLite, SQL Server and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is an artisan?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Artisan is the command-line interface included with Laravel. It provides a number of helpful commands that can assist you while you build your application",
+          "isCorrect": true
+        },
+        {
+          "name": "Artisan is the command-line interface included with Laravel. It provides a number of helpful commands that can assist you while you build your application and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Artisan is the command-line interface included with Laravel. It provides a number of helpful commands that can assist you while you build your application and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Artisan is the command-line interface included with Laravel. It provides a number of helpful commands that can assist you while you build your application and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "How to define environment variables in Laravel?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "You can define environment variables in Laravel by creating a .env file in the root directory of your project",
+          "isCorrect": true
+        },
+        {
+          "name": "You can define environment variables in Laravel by creating a .env file in the root directory of your project and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "You can define environment variables in Laravel by creating a .env file in the root directory of your project and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "You can define environment variables in Laravel by creating a .env file in the root directory of your project and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "Can we use Laravel for Full Stack Development (Frontend + Backend)?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Yes, we can use Laravel for Full Stack Development (Frontend + Backend)",
+          "isCorrect": true
+        },
+        {
+          "name": "No, we can use Laravel for Backend Development",
+          "isCorrect": false
+        },
+        {
+          "name": "No, we can use Laravel for Frontend Development",
+          "isCorrect": false
+        },
+        {
+          "name": "Yes, of course. We use Blade for Backend and Laravel Eloquent for Frontend",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "How to put Laravel applications in maintenance mode?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "You can put Laravel applications in maintenance mode by running the command php artisan down",
+          "isCorrect": true
+        },
+        {
+          "name": "You can put Laravel applications in maintenance mode by running the command php artisan down and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "You can put Laravel applications in maintenance mode by running the command php artisan down and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "You can put Laravel applications in maintenance mode by running the command php artisan down and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What are the default route files in Laravel?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "The default route files in Laravel are web.php and api.php",
+          "isCorrect": true
+        },
+        {
+          "name": "The default route files in Laravel are web.php and api.php and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "The default route files in Laravel are web.php and api.php and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "The default route files in Laravel are web.php and api.php and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What are migrations in Laravel?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Migrations are like version control for your database, allowing your team to easily modify and share the application's database schema",
+          "isCorrect": true
+        },
+        {
+          "name": "Migrations are like version control for your database, allowing your team to easily modify and share the application's database schema and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Migrations are like version control for your database, allowing your team to easily modify and share the application's database schema and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Migrations are like version control for your database, allowing your team to easily modify and share the application's database schema and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What are seeders in Laravel?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Seeders are classes that can be used to populate your database with test data",
+          "isCorrect": true
+        },
+        {
+          "name": "Seeders are classes that can be used to populate your database with test data and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Seeders are classes that can be used to populate your database with test data and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Seeders are classes that can be used to populate your database with test data and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What are factories in Laravel?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Factories are classes that can be used to generate large amounts of test data for your application's database",
+          "isCorrect": true
+        },
+        {
+          "name": "Factories are classes that can be used to generate large amounts of test data for your application's database and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Factories are classes that can be used to generate large amounts of test data for your application's database and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Factories are classes that can be used to generate large amounts of test data for your application's database and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "How to implement soft deletes in Laravel?,",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "You can implement soft deletes in Laravel by using the SoftDeletes trait",
+          "isCorrect": true
+        },
+        {
+          "name": "You can implement soft deletes in Laravel by using the SoftDeletes trait and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "You can implement soft deletes in Laravel by using the SoftDeletes trait and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "You can implement soft deletes in Laravel by using the SoftDeletes trait and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What are Models?,",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Models are classes that represent the data in your application, and they often correspond to tables in your database",
+          "isCorrect": true
+        },
+        {
+          "name": "Models are classes that represent the data in your application, and they often correspond to tables in your database and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Models are classes that represent the data in your application, and they often correspond to tables in your database and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Models are classes that represent the data in your application, and they often correspond to tables in your database and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What are Relationships in Laravel?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Relationships are a way to define how models are related to each other",
+          "isCorrect": true
+        },
+        {
+          "name": "Relationships are a way to define how models are related to each other and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Relationships are a way to define how models are related to each other and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Relationships are a way to define how models are related to each other and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is Eloquent in Laravel?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Eloquent is the Laravel's ORM (Object Relational Mapper) that provides a beautiful, simple ActiveRecord implementation for working with your database",
+          "isCorrect": true
+        },
+        {
+          "name": "Eloquent is the Laravel's ORM (Object Relational Mapper) that provides a beautiful, simple ActiveRecord implementation for working with your database and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Eloquent is the Laravel's ORM (Object Relational Mapper) that provides a beautiful, simple ActiveRecord implementation for working with your database and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Eloquent is the Laravel's ORM (Object Relational Mapper) that provides a beautiful, simple ActiveRecord implementation for working with your database and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is throttling and how to implement it in Laravel?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Throttling is a way to limit the number of requests that can be made to a given endpoint over a given time period",
+          "isCorrect": true
+        },
+        {
+          "name": "Throttling is a way to limit the number of requests that can be made to a given endpoint over a given time period and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Throttling is a way to limit the number of requests that can be made to a given endpoint over a given time period and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Throttling is a way to limit the number of requests that can be made to a given endpoint over a given time period and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What are facades,?,",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Facades are static classes that provide access to the underlying classes in the framework",
+          "isCorrect": true
+        },
+        {
+          "name": "Facades are static classes that provide access to the underlying classes in the framework and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Facades are static classes that provide access to the underlying classes in the framework and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Facades are static classes that provide access to the underlying classes in the framework and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What are Events in Laravel?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Events are a way to communicate between different parts of your application",
+          "isCorrect": true
+        },
+        {
+          "name": "Events are a way to communicate between different parts of your application and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Events are a way to communicate between different parts of your application and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Events are a way to communicate between different parts of your application and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
-      "name": "Explain logging in Laravel?",
-      "subjectName": "Laravel"
+      "name": "Explain logging in Laravel",
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Logging is a way to record information about the execution of your application",
+          "isCorrect": true
+        },
+        {
+          "name": "Logging is a way to record information about the execution of your application and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Logging is a way to record information about the execution of your application and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Logging is a way to record information about the execution of your application and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is Localization in Laravel?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Localization is a way to provide support for multiple languages in your application",
+          "isCorrect": true
+        },
+        {
+          "name": "Localization is a way to provide support for multiple languages in your application and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Localization is a way to provide support for multiple languages in your application and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Localization is a way to provide support for multiple languages in your application and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What are Requests in Laravel?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Requests are a way to validate incoming HTTP requests",
+          "isCorrect": true
+        },
+        {
+          "name": "Requests are a way to validate incoming HTTP requests and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Requests are a way to validate incoming HTTP requests and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Requests are a way to validate incoming HTTP requests and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "How to do request validation in Laravel?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Request validation is done by creating a form request class and defining the rules you wish to enforce on the incoming request",
+          "isCorrect": true
+        },
+        {
+          "name": "Request validation is done by creating a form request class and defining the rules you wish to enforce on the incoming request and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Request validation is done by creating a form request class and defining the rules you wish to enforce on the incoming request and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Request validation is done by creating a form request class and defining the rules you wish to enforce on the incoming request and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is a Service Container in Laravel?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "The service container is a powerful tool for managing class dependencies and performing dependency injection",
+          "isCorrect": true
+        },
+        {
+          "name": "The service container is a powerful tool for managing class dependencies and performing dependency injection and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "The service container is a powerful tool for managing class dependencies and performing dependency injection and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "The service container is a powerful tool for managing class dependencies and performing dependency injection and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is a Service Provider?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Service providers are the central place of all Laravel application bootstrapping",
+          "isCorrect": true
+        },
+        {
+          "name": "Service providers are the central place of all Laravel application bootstrapping and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Service providers are the central place of all Laravel application bootstrapping and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Service providers are the central place of all Laravel application bootstrapping and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is the register and boot method in the Service Provider class?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "The register method is used to bind things into the container and the boot method is used to boot any services the provider provides",
+          "isCorrect": true
+        },
+        {
+          "name": "The register method is used to bind things into the container and the boot method is used to boot any services the provider provides and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "The register method is used to bind things into the container and the boot method is used to boot any services the provider provides and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "The register method is used to bind things into the container and the boot method is used to boot any services the provider provides and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "How to define routes in Laravel?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Routes are defined in the routes/web.php file",
+          "isCorrect": true
+        },
+        {
+          "name": "Routes are defined in the routes/web.php file and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Routes are defined in the routes/web.php file and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Routes are defined in the routes/web.php file and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What are named routes?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Named routes allow the convenient generation of URLs or redirects for specific routes",
+          "isCorrect": true
+        },
+        {
+          "name": "Named routes allow the convenient generation of URLs or redirects for specific routes and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Named routes allow the convenient generation of URLs or redirects for specific routes and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Named routes allow the convenient generation of URLs or redirects for specific routes and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What are route groups?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Route groups allow you to share route attributes, such as middleware or namespaces, across a large number of routes without needing to define those attributes on each individual route",
+          "isCorrect": true
+        },
+        {
+          "name": "Route groups allow you to share route attributes, such as middleware or namespaces, across a large number of routes without needing to define those attributes on each individual route and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Route groups allow you to share route attributes, such as middleware or namespaces, across a large number of routes without needing to define those attributes on each individual route and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Route groups allow you to share route attributes, such as middleware or namespaces, across a large number of routes without needing to define those attributes on each individual route and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is Middleware and how to create one in Laravel?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Middleware provide a convenient mechanism for filtering HTTP requests entering your application. We can use the command php artisan make:middleware MiddlewareName to create a new middleware",
+          "isCorrect": true
+        },
+        {
+          "name": "Middleware provide a convenient mechanism for filtering HTTP requests entering your application and relations can be defined between the common fields of these tables. We can use the command php artisan doctrine:middleware MiddlewareName to create a new middleware",
+          "isCorrect": false
+        },
+        {
+          "name": "Middleware provide a convenient mechanism for filtering HTTP requests entering your application and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables. We can use the command php artisan migration:middleware MiddlewareName to create a new middleware",
+          "isCorrect": false
+        },
+        {
+          "name": "Middleware provide a convenient mechanism for filtering HTTP requests entering your application and the data can be stored in the form of a collection of tables. We can use the command php artisan route:middleware MiddlewareName to create a new middleware",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "How to create a route for resources in laravel?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "We can use the command php artisan make:resource ResourceName to create a new resource",
+          "isCorrect": true
+        },
+        {
+          "name": "We can use the command php artisan make:resource ResourceName to create a new resource and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "We can use the command php artisan make:resource ResourceName to create a new resource and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "We can use the command php artisan make:resource ResourceName to create a new resource and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is dependency Injection in Laravel?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Dependency injection is a software design pattern that implements inversion of control for resolving dependencies. It is a technique in which an object receives other objects that it depends on. These other objects are called dependencies",
+          "isCorrect": true
+        },
+        {
+          "name": "Dependency injection is a software design pattern that implements inversion of control for resolving dependencies. It is a technique in which an object receives other objects that it depends on. These other objects are called dependencies and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Dependency injection is a software design pattern that implements inversion of control for resolving dependencies. It is a technique in which an object receives other objects that it depends on. These other objects are called dependencies and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Dependency injection is a software design pattern that implements inversion of control for resolving dependencies. It is a technique in which an object receives other objects that it depends on. These other objects are called dependencies and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What are collections?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Collections are a convenient wrapper for working with arrays of data. They provide a fluent, convenient interface for working with arrays of data, and can help you to express your intentions more clearly",
+          "isCorrect": true
+        },
+        {
+          "name": "Collections are a convenient wrapper for working with arrays of data. They provide a fluent, convenient interface for working with arrays of data, and can help you to express your intentions more clearly and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Collections are a convenient wrapper for working with arrays of data. They provide a fluent, convenient interface for working with arrays of data, and can help you to express your intentions more clearly and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Collections are a convenient wrapper for working with arrays of data. They provide a fluent, convenient interface for working with arrays of data, and can help you to express your intentions more clearly and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What are contracts?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Contracts are a set of interfaces that define the core services provided by the framework. They serve as the base for a rich interop layer that enables different systems to work together",
+          "isCorrect": true
+        },
+        {
+          "name": "Contracts are a set of interfaces that define the core services provided by the framework. They serve as the base for a rich interop layer that enables different systems to work together and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Contracts are a set of interfaces that define the core services provided by the framework. They serve as the base for a rich interop layer that enables different systems to work together and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Contracts are a set of interfaces that define the core services provided by the framework. They serve as the base for a rich interop layer that enables different systems to work together and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What are queues in Laravel?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Queues are a great way to defer the processing of a time consuming task, such as sending an e-mail, until a later time, thus speeding up the web request to your application. Queues are also a great way to easily scale your application since the queue worker process may be run on a separate server or machine entirely",
+          "isCorrect": true
+        },
+        {
+          "name": "Queues are a great way to defer the processing of a time consuming task, such as sending an e-mail, until a later time, thus speeding up the web request to your application. Queues are also a great way to easily scale your application since the queue worker process may be run on a separate server or machine entirely and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Queues are a great way to defer the processing of a time consuming task, such as sending an e-mail, until a later time, thus speeding up the web request to your application. Queues are also a great way to easily scale your application since the queue worker process may be run on a separate server or machine entirely and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Queues are a great way to defer the processing of a time consuming task, such as sending an e-mail, until a later time, thus speeding up the web request to your application. Queues are also a great way to easily scale your application since the queue worker process may be run on a separate server or machine entirely and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What are accessors and mutators?",
-      "subjectName": "Laravel"
+      "subjectName": "Laravel",
+      "a": [
+        {
+          "name": "Accessors and mutators are methods that are used to get and set values to Eloquent model attributes. Accessors allow you to define an attribute on your Eloquent model that does not actually exist on the underlying database table",
+          "isCorrect": true
+        },
+        {
+          "name": "Accessors and mutators are methods that are used to get and set values to Eloquent model attributes. Accessors allow you to define an attribute on your Eloquent model that does not actually exist on the underlying database table and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Accessors and mutators are methods that are used to get and set values to Eloquent model attributes. Accessors allow you to define an attribute on your Eloquent model that does not actually exist on the underlying database table and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Accessors and mutators are methods that are used to get and set values to Eloquent model attributes. Accessors allow you to define an attribute on your Eloquent model that does not actually exist on the underlying database table and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What are the different data types present in javascript?",
-      "subjectName": "JavaScript"
+      "subjectName": "JavaScript",
+      "a": [
+        {
+          "name": "String, Number, Boolean, Object, Array, Null, Undefined",
+          "isCorrect": true
+        },
+        {
+          "name": "String, Number, Boolean, Object, Array, Null, Undefined, Function",
+          "isCorrect": false
+        },
+        {
+          "name": "String, Number, Boolean, Object, Array, Null, Undefined, Function, Symbol",
+          "isCorrect": false
+        },
+        {
+          "name": "String, Number, Boolean, Object, Array, Null, Undefined, Function, Symbol, Date",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "Explain Hoisting in javascript.",
-      "subjectName": "JavaScript"
+      "subjectName": "JavaScript",
+      "a": [
+        {
+          "name": "Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before code execution. Inevitably, this means that no matter where functions and variables are declared, they are moved to the top of their scope regardless of whether their scope is global or local",
+          "isCorrect": true
+        },
+        {
+          "name": "Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before code execution. Inevitably, this means that no matter where functions and variables are declared, they are moved to the top of their scope regardless of whether their scope is global or local and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before code execution. Inevitably, this means that no matter where functions and variables are declared, they are moved to the top of their scope regardless of whether their scope is global or local and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before code execution. Inevitably, this means that no matter where functions and variables are declared, they are moved to the top of their scope regardless of whether their scope is global or local and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "Why do we use the word “debugger” in javascript?",
-      "subjectName": "JavaScript"
+      "subjectName": "JavaScript",
+      "a": [
+        {
+          "name": "The debugger statement invokes any available debugging functionality, such as setting a breakpoint. If no debugging functionality is available, this statement has no effect",
+          "isCorrect": true
+        },
+        {
+          "name": "The debugger statement invokes any available debugging functionality, such as setting a breakpoint. If no debugging functionality is available, this statement has no effect and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "The debugger statement invokes any available debugging functionality, such as setting a breakpoint. If no debugging functionality is available, this statement has no effect and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "The debugger statement invokes any available debugging functionality, such as setting a breakpoint. If no debugging functionality is available, this statement has no effect and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is the difference between “ == “ and “ === “ operators?",
-      "subjectName": "JavaScript"
+      "subjectName": "JavaScript",
+      "a": [
+        {
+          "name": "The == operator compares objects by identity while the === operator compares objects by value",
+          "isCorrect": true
+        },
+        {
+          "name": "The == operator compares objects by identity while the === operator compares objects by value and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "The == operator compares objects by identity while the === operator compares objects by value and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "The == operator compares objects by identity while the === operator compares objects by value and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "Difference between var and let keyword in javascript.",
-      "subjectName": "JavaScript"
+      "subjectName": "JavaScript",
+      "a": [
+        {
+          "name": "The let statement declares a block scope local variable, optionally initializing it to a value",
+          "isCorrect": true
+        },
+        {
+          "name": "The let statement declares a block scope local variable, optionally initializing it to a value and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "The let statement declares a block scope local variable, optionally initializing it to a value and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "The let statement declares a block scope local variable, optionally initializing it to a value and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "Explain Implicit Type Coercion in javascript.",
-      "subjectName": "JavaScript"
+      "subjectName": "JavaScript",
+      "a": [
+        {
+          "name": "Implicit type coercion is the automatic or implicit conversion of values from one data type to another (such as strings to numbers)",
+          "isCorrect": true
+        },
+        {
+          "name": "Implicit type coercion is the automatic or implicit conversion of values from one data type to another (such as strings to numbers) and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Implicit type coercion is the automatic or implicit conversion of values from one data type to another (such as strings to numbers) and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Implicit type coercion is the automatic or implicit conversion of values from one data type to another (such as strings to numbers) and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "Is javascript a statically typed or a dynamically typed language?",
-      "subjectName": "JavaScript"
+      "subjectName": "JavaScript",
+      "a": [
+        {
+          "name": "JavaScript is a dynamically typed language",
+          "isCorrect": true
+        },
+        {
+          "name": "JavaScript is a dynamically typed language and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "JavaScript is a dynamically typed language and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "JavaScript is a dynamically typed language and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is NaN property in JavaScript?",
-      "subjectName": "JavaScript"
+      "subjectName": "JavaScript",
+      "a": [
+        {
+          "name": "NaN is a property of the global object. In other words, it is a variable in global scope. The initial value of NaN is Not-A-Number",
+          "isCorrect": true
+        },
+        {
+          "name": "NaN is a property of the global object. In other words, it is a variable in global scope. The initial value of NaN is Not-A-Number and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "NaN is a property of the global object. In other words, it is a variable in global scope. The initial value of NaN is Not-A-Number and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "NaN is a property of the global object. In other words, it is a variable in global scope. The initial value of NaN is Not-A-Number and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "Explain passed by value and passed by reference.",
-      "subjectName": "JavaScript"
+      "subjectName": "JavaScript",
+      "a": [
+        {
+          "name": "In JavaScript, all primitive types (such as a number, string, boolean, null, and undefined) are passed by value, and all objects (including functions and arrays) are passed by reference",
+          "isCorrect": true
+        },
+        {
+          "name": "In JavaScript, all primitive types (such as a number, string, boolean, null, and undefined) are passed by value, and all objects (including functions and arrays) are passed by reference and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "In JavaScript, all primitive types (such as a number, string, boolean, null, and undefined) are passed by value, and all objects (including functions and arrays) are passed by reference and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "In JavaScript, all primitive types (such as a number, string, boolean, null, and undefined) are passed by value, and all objects (including functions and arrays) are passed by reference and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is an Immediately Invoked Function in JavaScript?",
-      "subjectName": "JavaScript"
+      "subjectName": "JavaScript",
+      "a": [
+        {
+          "name": "An Immediately Invoked Function Expression (IIFE) is a JavaScript function that runs as soon as it is defined",
+          "isCorrect": true
+        },
+        {
+          "name": "An Immediately Invoked Function Expression (IIFE) is a JavaScript function that runs as soon as it is defined and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "An Immediately Invoked Function Expression (IIFE) is a JavaScript function that runs as soon as it is defined and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "An Immediately Invoked Function Expression (IIFE) is a JavaScript function that runs as soon as it is defined and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What do you mean by strict mode in javascript and characteristics of javascript strict-mode?",
-      "subjectName": "JavaScript"
+      "subjectName": "JavaScript",
+      "a": [
+        {
+          "name": "Strict mode is a way to opt in to a restricted variant of JavaScript, thereby implicitly opting-out of 'sloppy mode'. Strict mode isn't just a subset: it intentionally has different semantics from normal code",
+          "isCorrect": true
+        },
+        {
+          "name": "Strict mode is a way to opt in to a restricted variant of JavaScript, thereby implicitly opting-out of 'sloppy mode'. Strict mode isn't just a subset: it intentionally has different semantics from normal code and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Strict mode is a way to opt in to a restricted variant of JavaScript, thereby implicitly opting-out of 'sloppy mode'. Strict mode isn't just a subset: it intentionally has different semantics from normal code and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Strict mode is a way to opt in to a restricted variant of JavaScript, thereby implicitly opting-out of 'sloppy mode'. Strict mode isn't just a subset: it intentionally has different semantics from normal code and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "Explain Higher Order Functions in javascript.",
-      "subjectName": "JavaScript"
+      "subjectName": "JavaScript",
+      "a": [
+        {
+          "name": "A higher-order function is a function that takes a function as an argument, or returns a function",
+          "isCorrect": true
+        },
+        {
+          "name": "A higher-order function is a function that takes a function as an argument, or returns a function and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "A higher-order function is a function that takes a function as an argument, or returns a function and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "A higher-order function is a function that takes a function as an argument, or returns a function and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "Explain “this” keyword.",
-      "subjectName": "JavaScript"
+      "subjectName": "JavaScript",
+      "a": [
+        {
+          "name": "The this keyword refers to the object it belongs to. It has different values depending on where it is used",
+          "isCorrect": true
+        },
+        {
+          "name": "The this keyword refers to the object it belongs to. It has different values depending on where it is used and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "The this keyword refers to the object it belongs to. It has different values depending on where it is used and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "The this keyword refers to the object it belongs to. It has different values depending on where it is used and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What do you mean by Self Invoking Functions?",
-      "subjectName": "JavaScript"
+      "subjectName": "JavaScript",
+      "a": [
+        {
+          "name": "A self-invoking anonymous function is a function that is invoked immediately after it is created",
+          "isCorrect": true
+        },
+        {
+          "name": "A self-invoking anonymous function is a function that is invoked immediately after it is created and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "A self-invoking anonymous function is a function that is invoked immediately after it is created and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "A self-invoking anonymous function is a function that is invoked immediately after it is created and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "Explain call(), apply() and, bind() methods.",
-      "subjectName": "JavaScript"
+      "subjectName": "JavaScript",
+      "a": [
+        {
+          "name": "The call() method calls a function with a given this value and arguments provided individually. The apply() method calls a function with a given this value, and arguments provided as an array (or an array-like object). The bind() method creates a new function that, when called, has its this keyword set to the provided value",
+          "isCorrect": true
+        },
+        {
+          "name": "The call() method calls a function with a given this value and arguments provided individually. The apply() method calls a function with a given this value, and arguments provided as an array (or an array-like object). The bind() method creates a new function that, when called, has its this keyword set to the provided value and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "The call() method calls a function with a given this value and arguments provided individually. The apply() method calls a function with a given this value, and arguments provided as an array (or an array-like object). The bind() method creates a new function that, when called, has its this keyword set to the provided value and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "The call() method calls a function with a given this value and arguments provided individually. The apply() method calls a function with a given this value, and arguments provided as an array (or an array-like object). The bind() method creates a new function that, when called, has its this keyword set to the provided value and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is the difference between exec () and test () methods in javascript?",
-      "subjectName": "JavaScript"
+      "subjectName": "JavaScript",
+      "a": [
+        {
+          "name": "The exec() method executes a search for a match in a specified string. Returns a result array, or null. The test() method executes a search for a match between a regular expression and a specified string. Returns true or false",
+          "isCorrect": true
+        },
+        {
+          "name": "The exec() method executes a search for a match in a specified string. Returns a result array, or null. The test() method executes a search for a match between a regular expression and a specified string. Returns true or false and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "The exec() method executes a search for a match in a specified string. Returns a result array, or null. The test() method executes a search for a match between a regular expression and a specified string. Returns true or false and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "The exec() method executes a search for a match in a specified string. Returns a result array, or null. The test() method executes a search for a match between a regular expression and a specified string. Returns true or false and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What is currying in JavaScript?",
-      "subjectName": "JavaScript"
+      "subjectName": "JavaScript",
+      "a": [
+        {
+          "name": "Currying is a technique of evaluating a function with multiple arguments, into a sequence of functions with single arguments",
+          "isCorrect": true
+        },
+        {
+          "name": "Currying is a technique of evaluating a function with multiple arguments, into a sequence of functions with single arguments and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Currying is a technique of evaluating a function with multiple arguments, into a sequence of functions with single arguments and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Currying is a technique of evaluating a function with multiple arguments, into a sequence of functions with single arguments and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "What are some advantages of using External JavaScript?",
-      "subjectName": "JavaScript"
+      "subjectName": "JavaScript",
+      "a": [
+        {
+          "name": "It separates HTML and code, it makes HTML and JavaScript easier to read and maintain. Cached JavaScript files can speed up page loads",
+          "isCorrect": true
+        },
+        {
+          "name": "It separates HTML and code, it makes HTML and JavaScript easier to read and maintain. Cached JavaScript files can speed up page loads and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "It separates HTML and code, it makes HTML and JavaScript easier to read and maintain. Cached JavaScript files can speed up page loads and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "It separates HTML and code, it makes HTML and JavaScript easier to read and maintain. Cached JavaScript files can speed up page loads and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "Explain Scope and Scope Chain in javascript.",
-      "subjectName": "JavaScript"
+      "subjectName": "JavaScript",
+      "a": [
+        {
+          "name": "Scope refers to the current context of execution. The scope chain is a list of objects that are searched when trying to resolve identifiers. The scope chain is used to resolve identifiers in JavaScript. The scope chain is created when the code is run and is based on the location of functions within the object hierarchy",
+          "isCorrect": true
+        },
+        {
+          "name": "Scope refers to the current context of execution. The scope chain is a list of objects that are searched when trying to resolve identifiers. The scope chain is used to resolve identifiers in JavaScript. The scope chain is created when the code is run and is based on the location of functions within the object hierarchy and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Scope refers to the current context of execution. The scope chain is a list of objects that are searched when trying to resolve identifiers. The scope chain is used to resolve identifiers in JavaScript. The scope chain is created when the code is run and is based on the location of functions within the object hierarchy and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "Scope refers to the current context of execution. The scope chain is a list of objects that are searched when trying to resolve identifiers. The scope chain is used to resolve identifiers in JavaScript. The scope chain is created when the code is run and is based on the location of functions within the object hierarchy and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     },
     {
       "name": "Explain Closures in JavaScript.",
-      "subjectName": "JavaScript"
+      "subjectName": "JavaScript",
+      "a": [
+        {
+          "name": "A closure is a function having access to the parent scope, even after the parent function has closed",
+          "isCorrect": true
+        },
+        {
+          "name": "A closure is a function having access to the parent scope, even after the parent function has closed and relations can be defined between the common fields of these tables",
+          "isCorrect": false
+        },
+        {
+          "name": "A closure is a function having access to the parent scope, even after the parent function has closed and relations can be defined between the common fields of these tables and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        },
+        {
+          "name": "A closure is a function having access to the parent scope, even after the parent function has closed and the data can be stored in the form of a collection of tables",
+          "isCorrect": false
+        }
+      ]
     }
   ]
 }
