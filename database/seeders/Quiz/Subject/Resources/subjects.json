@@ -1,0 +1,7 @@
+{
+  "subjects": [
+    {"name": "SQL"},
+    {"name": "Laravel"},
+    {"name": "JavaScript"}
+  ]
+}

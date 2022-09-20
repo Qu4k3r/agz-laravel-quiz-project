@@ -16,12 +16,13 @@ class Alternative
     use Identifiable, TimestampableEntity;
 
     public function __construct(
-        /** @ORM\Column(type="string") */
+        /** @ORM\Column(type="text") */
         private string $name,
 
         /** @ORM\ManyToOne (
          *     targetEntity="App\Packages\Quiz\Question\Domain\Model\Question",
          *     cascade={"persist", "remove"},
+         *     inversedBy="alternatives",
          * )
          */
         private Question $question,
@@ -38,5 +39,10 @@ class Alternative
     public function isCorrect(): bool
     {
         return $this->isCorrect;
+    }
+
+    public function setQuestion(Question $question): void
+    {
+        $this->question = $question;
     }
 }

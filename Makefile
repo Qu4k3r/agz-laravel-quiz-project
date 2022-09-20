@@ -28,6 +28,9 @@ migrate:
 schema-update:
 	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "/var/www/artisan doctrine:schema:update"
 
+drop-db:
+	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "/var/www/artisan doctrine:schema:drop --force"
+
 all-tests:
 	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "./vendor/bin/phpunit -d memory_limit=-1"
 
