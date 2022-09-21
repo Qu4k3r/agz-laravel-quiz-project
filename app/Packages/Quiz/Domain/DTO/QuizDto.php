@@ -7,57 +7,55 @@ use App\Packages\Student\Domain\Model\Student;
 
 class QuizDto
 {
-    private Quiz $quiz;
-    private Student $student;
-    private string $subjectName;
-    private int $totalQuestions;
-    private array $questions;
+    public function __construct(
+        private ?Quiz $quiz = null,
+        private ?Student $student = null,
+        private ?string $subjectName = null,
+        private ?int $totalQuestions = null,
+        private ?float $score = null,
+        private ?array $questions = [],
+    ) {}
 
-    public function __construct()
-    {
-
-    }
-
-    public function getQuiz(): Quiz
+    public function getQuiz(): ?Quiz
     {
         return $this->quiz;
     }
 
-    public function setQuiz(Quiz $quiz): QuizDto
+    public function setQuiz(?Quiz $quiz): QuizDto
     {
         $this->quiz = $quiz;
         return $this;
     }
 
-    public function getStudent(): Student
+    public function getStudent(): ?Student
     {
         return $this->student;
     }
 
-    public function setStudent(Student $student): QuizDto
+    public function setStudent(?Student $student): QuizDto
     {
         $this->student = $student;
         return $this;
     }
 
-    public function getSubjectName(): string
+    public function getSubjectName(): ?string
     {
         return $this->subjectName;
     }
 
-    public function setSubjectName(string $subjectName): QuizDto
+    public function setSubjectName(?string $subjectName): QuizDto
     {
         $this->subjectName = $subjectName;
         return $this;
     }
 
-    public function setTotalQuestions(int $totalQuestions): QuizDto
+    public function setTotalQuestions(?int $totalQuestions): QuizDto
     {
         $this->totalQuestions = $totalQuestions;
         return $this;
     }
 
-    public function getTotalQuestions(): int
+    public function getTotalQuestions(): ?int
     {
         return $this->totalQuestions;
     }
@@ -70,6 +68,17 @@ class QuizDto
     public function setQuestions(array $questions): QuizDto
     {
         $this->questions = $questions;
+        return $this;
+    }
+
+    public function getScore(): ?float
+    {
+        return $this->score;
+    }
+
+    public function setScore(?float $score): QuizDto
+    {
+        $this->score = $score;
         return $this;
     }
 }

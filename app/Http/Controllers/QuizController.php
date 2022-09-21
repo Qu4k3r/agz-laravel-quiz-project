@@ -53,13 +53,9 @@ class QuizController extends Controller
     public function update(Request $request, Quiz $quiz): JsonResponse
     {
         try {
-            $this->snapshotRepository->updateByQuiz($quiz, [
-                'question' => 'What is RDBMS? How is it different from DBMS?',
-                'answer' => "RDBMS don't store data at all"
-            ]);
+            $answeredQuestions = $request->all();
+            $this->quizFacade->update($quiz, $answeredQuestions);
             dd('ok');
-            $answers = $request->all();
-            $this->quizFacade->update($quiz, $answers);
         } catch (\Exception $e) {
             return response()->error($e->getMessage(), Response::HTTP_BAD_REQUEST);
         }

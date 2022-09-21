@@ -40,18 +40,8 @@ class Snapshot
         /** @ORM\Column(type="boolean") */
         private bool $isCorrect,
         /** @ORM\Column(type="text", nullable=true) */
-        private ?bool $studentAlternative = null,
+        private ?string $studentAlternative = null,
         /** @ORM\Column(type="boolean", nullable=true) */
         private ?bool $rightAnswer = null,
     ) {}
-
-    public function setStudentAlternative(?bool $studentAlternative): void
-    {
-        $this->studentAlternative = $studentAlternative;
-    }
-
-    public function setRightAnswer(?bool $rightAnswer): void
-    {
-        $this->rightAnswer = $rightAnswer;
-    }
 }

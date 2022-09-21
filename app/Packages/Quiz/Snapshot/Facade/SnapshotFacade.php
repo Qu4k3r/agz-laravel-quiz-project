@@ -23,12 +23,36 @@ class SnapshotFacade
         }
     }
 
-    public function update(Quiz $quiz, array $answers): void
+    private function update(Quiz $quiz, array $answeredQuestions): array
     {
-        $snapshots = $this->snapshotRepository->getByQuiz($quiz);
-        foreach ($snapshots as $snapshot) {
-            $snapshot->setAnswer($answers[$snapshot->getQuestionName()]);
-            $this->snapshotRepository->update($snapshot);
+        foreach ($answeredQuestions as $question) {
+            $this->snapshotRepository->updateByQuiz($quiz, $question);
         }
+
+        return $this->snapshotRepository->getByQuiz($quiz);
+    }
+
+    public function getFormattedAnsweredQuestionsFromSnapshot(Quiz $quiz, array $answeredQuestions): array
+    {
+        $snapshots = $this->update($quiz, $answeredQuestions);
+
+        $questions = [];
+        foreach ($snapshots as $snapshot) {
+            if (!isset($questions[$snapshot['questionName']])) {
+                $questions[$snapshot['questionName']]['alternatives'] = [
+                    'name' => $snapshot['alternativeName'],
+                    'isCorrect' => $snapshot['isCorrect'],
+                ];
+            } else {
+                $questions[$snapshot['questionName']]['alternatives'][] = [
+                    'name' => $snapshot['alternativeName'],
+                    'isCorrect' => $snapshot['isCorrect'],
+                ];
+            }
+            $questions[$snapshot['questionName']]['studentAlternative'] = $snapshot['studentAlternative'];
+            $questions[$snapshot['questionName']]['rightAnswer'] = $snapshot['rightAnswer'];
+        }
+
+        return $questions;
     }
 }

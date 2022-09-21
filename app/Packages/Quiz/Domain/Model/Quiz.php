@@ -56,4 +56,19 @@ class Quiz
     {
         return Carbon::now()->diffInHours($this->createdAt) > 1;
     }
+
+    public function getStudent(): Student
+    {
+        return $this->student;
+    }
+
+    public function getSubjectName(): string
+    {
+        return $this->subject;
+    }
+
+    public static function generateTotalQuestions(): int
+    {
+        return rand(5, 10);
+    }
 }
