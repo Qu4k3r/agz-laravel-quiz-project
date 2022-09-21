@@ -44,4 +44,14 @@ class Snapshot
         /** @ORM\Column(type="boolean", nullable=true) */
         private ?bool $rightAnswer = null,
     ) {}
+
+    public function setStudentAlternative(?bool $studentAlternative): void
+    {
+        $this->studentAlternative = $studentAlternative;
+    }
+
+    public function setRightAnswer(?bool $rightAnswer): void
+    {
+        $this->rightAnswer = $rightAnswer;
+    }
 }

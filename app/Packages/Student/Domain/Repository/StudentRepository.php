@@ -8,9 +8,4 @@ use App\Packages\Student\Domain\Model\Student;
 class StudentRepository extends Repository
 {
     protected string $entityName = Student::class;
-
-    public function findOneByRegisterId(int $registerId): ?Student
-    {
-        return $this->findOneBy(['registerId' => $registerId]);
-    }
 }

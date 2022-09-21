@@ -6,6 +6,7 @@ use App\Packages\Quiz\Domain\DTO\QuizDto;
 use App\Packages\Quiz\Domain\Model\Quiz;
 use App\Packages\Quiz\Domain\Repository\QuizRepository;
 use App\Packages\Quiz\Exception\QuizAlreadyFinishedException;
+use App\Packages\Quiz\Exception\QuizFinishedAfterOneHourException;
 use App\Packages\Quiz\Exception\QuizNotFinishedException;
 use App\Packages\Quiz\Question\Facade\QuestionFacade;
 use App\Packages\Quiz\Snapshot\Facade\SnapshotFacade;
@@ -65,21 +66,23 @@ class QuizFacade
         return $quiz;
     }
 
-    public function update(Quiz $quiz): Quiz
+    public function update(Quiz $quiz, array $answers): Quiz
     {
-        $this->throwExceptionIfQuizDeliveredAfterOneHour($quiz);
-        $this->throwExceptionIfQuizAlreadyClosed($quiz);
+        $this->throwExceptionIfQuizFinishedAfterOneHour($quiz);
+        $this->throwExceptionIfQuizAlreadyFinished($quiz);
     }
 
-    private function throwExceptionIfQuizDeliveredAfterOneHour(Quiz $quiz)
+    private function throwExceptionIfQuizFinishedAfterOneHour(Quiz $quiz)
     {
-        if ($quiz->)
+        if ($quiz->wasFinishedAfterOneHour()) {
+            throw new QuizFinishedAfterOneHourException("Quiz delivered after one hour!", 1663721106);
+        }
     }
 
-    private function throwExceptionIfQuizAlreadyClosed(Quiz $quiz): void
+    private function throwExceptionIfQuizAlreadyFinished(Quiz $quiz): void
     {
         if ($quiz->isFinished()) {
-            throw new QuizAlreadyFinishedException("Quiz already closed!", 1663720546);
+            throw new QuizAlreadyFinishedException("Quiz already finished!", 1663720546);
         }
     }
 }

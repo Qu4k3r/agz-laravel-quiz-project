@@ -4,6 +4,7 @@ namespace App\Packages\Quiz\Snapshot\Facade;
 
 
 use App\Packages\Quiz\Domain\DTO\QuizDto;
+use App\Packages\Quiz\Domain\Model\Quiz;
 use App\Packages\Quiz\Snapshot\Domain\Model\Snapshot;
 use App\Packages\Quiz\Snapshot\Domain\Repository\SnapshotRepository;
 
@@ -19,6 +20,15 @@ class SnapshotFacade
                 $snapShot = new Snapshot($quizDto->getQuiz(), $quizDto->getStudent(), $quizDto->getSubjectName(), $question->getName(), $alternative->getName(), $alternative->isCorrect());
                 $this->snapshotRepository->add($snapShot);
             }
+        }
+    }
+
+    public function update(Quiz $quiz, array $answers): void
+    {
+        $snapshots = $this->snapshotRepository->getByQuiz($quiz);
+        foreach ($snapshots as $snapshot) {
+            $snapshot->setAnswer($answers[$snapshot->getQuestionName()]);
+            $this->snapshotRepository->update($snapshot);
         }
     }
 }

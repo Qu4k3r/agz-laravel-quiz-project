@@ -4,6 +4,7 @@ namespace App\Packages\Quiz\Domain\Model;
 
 use App\Packages\Doctrine\Domain\Behavior\Identifiable;
 use App\Packages\Student\Domain\Model\Student;
+use Carbon\Carbon;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
@@ -51,8 +52,8 @@ class Quiz
         return $this->totalQuestions;
     }
 
-    public function wasDeliveredAfterOneHour()
+    public function wasFinishedAfterOneHour(): bool
     {
-        return $this->getCreatedAt()->diff(new \DateTime())->h >= 1;
+        return Carbon::now()->diffInHours($this->createdAt) > 1;
     }
 }
