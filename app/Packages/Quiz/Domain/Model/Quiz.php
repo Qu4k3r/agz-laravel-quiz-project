@@ -50,4 +50,9 @@ class Quiz
     {
         return $this->totalQuestions;
     }
+
+    public function wasDeliveredAfterOneHour()
+    {
+        return $this->getCreatedAt()->diff(new \DateTime())->h >= 1;
+    }
 }

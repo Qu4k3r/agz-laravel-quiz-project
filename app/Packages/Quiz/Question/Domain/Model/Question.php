@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use function Psy\sh;
 
 /**
  * @ORM\Entity
@@ -19,7 +20,7 @@ class Question
     use Identifiable, TimestampableEntity;
 
     public function __construct(
-        /** @ORM\Column(type="string") */
+        /** @ORM\Column(type="text") */
         private string $name,
 
         /**
@@ -64,5 +65,12 @@ class Question
            $alternative->setQuestion($this);
            $this->alternatives->add($alternative);
        }
+    }
+
+    public function shuffleAlternatives(): void
+    {
+        $alternatives = $this->alternatives->toArray();
+        shuffle($alternatives);
+        $this->alternatives = new ArrayCollection($alternatives);
     }
 }

@@ -16,5 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['namespace' => 'Quiz'], function () {
-    Route::post('/{student}/quiz', [QuizController::class, 'create']);
+    Route::post('/students/{student}/quizzes', [QuizController::class, 'create']);
+    Route::put('/quizzes/{quiz}', [QuizController::class, 'update']);
 });

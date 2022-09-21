@@ -15,8 +15,7 @@ class SnapshotFacade
     {
         $questions = $quizDto->getQuestions();
         foreach ($questions as $question) {
-            $alternatives = $question->getAlternatives();
-            foreach ($alternatives as $alternative) {
+            foreach ($question->getAlternatives() as $alternative) {
                 $snapShot = new Snapshot($quizDto->getQuiz(), $quizDto->getStudent(), $quizDto->getSubjectName(), $question->getName(), $alternative->getName(), $alternative->isCorrect());
                 $this->snapshotRepository->add($snapShot);
             }

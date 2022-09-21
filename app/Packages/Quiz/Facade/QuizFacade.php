@@ -5,6 +5,7 @@ namespace App\Packages\Quiz\Facade;
 use App\Packages\Quiz\Domain\DTO\QuizDto;
 use App\Packages\Quiz\Domain\Model\Quiz;
 use App\Packages\Quiz\Domain\Repository\QuizRepository;
+use App\Packages\Quiz\Exception\QuizAlreadyFinishedException;
 use App\Packages\Quiz\Exception\QuizNotFinishedException;
 use App\Packages\Quiz\Question\Facade\QuestionFacade;
 use App\Packages\Quiz\Snapshot\Facade\SnapshotFacade;
@@ -28,6 +29,7 @@ class QuizFacade
         $questions = $this->questionFacade->getRandomQuestionsBySubjectAndTotalQuestions(
             $subject->getName(), $quiz->getTotalQuestions()
         );
+        $this->questionFacade->shuffleAlternatives($questions);
 
         $quizDto = new QuizDto();
         $quizDto->setQuiz($quiz)
@@ -51,7 +53,7 @@ class QuizFacade
 
     public static function generateTotalQuestions(): int
     {
-        return rand(1, 10);
+        return rand(5, 10);
     }
 
     private function generateQuiz(Student $student, string $subjectName): Quiz
@@ -61,5 +63,23 @@ class QuizFacade
         $this->quizRepository->add($quiz);
 
         return $quiz;
+    }
+
+    public function update(Quiz $quiz): Quiz
+    {
+        $this->throwExceptionIfQuizDeliveredAfterOneHour($quiz);
+        $this->throwExceptionIfQuizAlreadyClosed($quiz);
+    }
+
+    private function throwExceptionIfQuizDeliveredAfterOneHour(Quiz $quiz)
+    {
+        if ($quiz->)
+    }
+
+    private function throwExceptionIfQuizAlreadyClosed(Quiz $quiz): void
+    {
+        if ($quiz->isFinished()) {
+            throw new QuizAlreadyFinishedException("Quiz already closed!", 1663720546);
+        }
     }
 }
