@@ -71,4 +71,19 @@ class Quiz
     {
         return rand(5, 10);
     }
+
+    public function setScore(?int $score): void
+    {
+        $this->score = $score;
+    }
+
+    public function setStatus(string $status): void
+    {
+        $this->status = $status;
+    }
+
+    public function getScore(): ?int
+    {
+        return $this->score;
+    }
 }

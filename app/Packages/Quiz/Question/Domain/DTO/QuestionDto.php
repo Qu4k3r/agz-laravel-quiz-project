@@ -2,33 +2,28 @@
 
 namespace App\Packages\Quiz\Question\Domain\DTO;
 
+use App\Packages\Quiz\Domain\Model\Quiz;
 use App\Packages\Quiz\Question\Alternative\Domain\DTO\AlternativeDto;
-use App\Packages\Quiz\Question\Domain\Model\Question;
 
 class QuestionDto
 {
-    private string $name;
-    private string $subjectName;
-    private array $alternatives;
+    public function __construct(
+        private ?string $name = null,
+        private array $alternatives = [],
+        private ?string $studentAlternative = null,
+        private ?bool $rightAnswer = null,
+    ) {}
 
-    public function __construct(Question $question, ?array $alternatives = [])
+    public function toArray(string $quizStatus): array
     {
-        $this->name = $question->getName();
-        $this->subjectName = $question->getSubject()->getName();
-        $this->alternatives = $alternatives;
-    }
-
-    public function toArray(): array
-    {
-        return [
+        return $quizStatus === Quiz::OPENED ? [
             'name' => $this->name,
-            'subject' => [
-                'name' => $this->subjectName,
-            ],
-            'alternatives' => array_map(function (array $alternative) {
-                $alternativeDto = AlternativeDto::fromArray($alternative);
-                return $alternativeDto->toArray();
-            }, $this->alternatives),
+            'alternatives' => AlternativeDto::fromArray($this->alternatives)->toArray($quizStatus),
+        ] : [
+            'name' => $this->name,
+            'alternatives' => AlternativeDto::fromArray($this->alternatives)->toArray($quizStatus),
+            'studentAlternative' => $this->studentAlternative,
+            'rightAnswer' => $this->rightAnswer,
         ];
     }
 }

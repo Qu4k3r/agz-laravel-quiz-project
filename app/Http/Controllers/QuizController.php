@@ -6,6 +6,7 @@ use App\Packages\Quiz\Domain\Model\Quiz;
 use App\Packages\Quiz\Domain\Repository\QuizRepository;
 use App\Packages\Quiz\Facade\QuizFacade;
 use App\Packages\Quiz\Question\Alternative\Domain\Model\Alternative;
+use App\Packages\Quiz\Question\Domain\DTO\QuestionDto;
 use App\Packages\Quiz\Question\Domain\Model\Question;
 use App\Packages\Quiz\Snapshot\Domain\Model\Snapshot;
 use App\Packages\Quiz\Snapshot\Domain\Repository\SnapshotRepository;
@@ -22,7 +23,6 @@ class QuizController extends Controller
 
     public function __construct(
         private QuizFacade $quizFacade,
-        private SnapshotRepository $snapshotRepository,
     ) {}
 
     public function create(Student $student): JsonResponse
@@ -44,7 +44,7 @@ class QuizController extends Controller
                     ];
                 }, $quizDto->getQuestions()),
             ];
-            return response()->success($data, Response::HTTP_CREATED);
+            return response()->success($data, statusCode: Response::HTTP_CREATED);
         } catch (\Exception $e) {
             return response()->error($e->getMessage(), Response::HTTP_BAD_REQUEST);
         }
@@ -54,8 +54,18 @@ class QuizController extends Controller
     {
         try {
             $answeredQuestions = $request->all();
-            $this->quizFacade->update($quiz, $answeredQuestions);
-            dd('ok');
+            $quizDto = $this->quizFacade->update($quiz, $answeredQuestions);
+            $data = [
+                'quizId' => $quizDto->getQuiz()->getId(),
+                'studentId' => $quizDto->getStudent()->getId(),
+                'subjectName' => $quizDto->getSubjectName(),
+                'totalQuestions' => $quizDto->getTotalQuestions(),
+                'questions' => array_map(
+                    fn (QuestionDto $questionDto) => $questionDto->toArray(Quiz::CLOSED),
+                    $quizDto->getQuestions()
+                ),
+            ];
+            return response()->successWithoutFlush($data, statusCode: Response::HTTP_OK);
         } catch (\Exception $e) {
             return response()->error($e->getMessage(), Response::HTTP_BAD_REQUEST);
         }

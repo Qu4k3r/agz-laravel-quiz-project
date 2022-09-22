@@ -9,6 +9,7 @@ use App\Packages\Quiz\Domain\Repository\QuizRepository;
 use App\Packages\Quiz\Exception\QuizAlreadyFinishedException;
 use App\Packages\Quiz\Exception\QuizFinishedAfterOneHourException;
 use App\Packages\Quiz\Exception\QuizNotFinishedException;
+use App\Packages\Quiz\Question\Domain\DTO\QuestionDto;
 use App\Packages\Quiz\Question\Facade\QuestionFacade;
 use App\Packages\Quiz\Snapshot\Facade\SnapshotFacade;
 use App\Packages\Quiz\Subject\Facade\SubjectFacade;
@@ -34,20 +35,17 @@ class QuizFacade
         );
         $this->questionFacade->shuffleAlternatives($questions);
 
-        $quizDto = $this->generateQuizDto($quiz, $questions);
+        $quizDto = new QuizDto(
+            $quiz,
+            $student,
+            $subject->getName(),
+            $quiz->getTotalQuestions(),
+            status: Quiz::OPENED,
+            questions: $questions
+        );
         $this->snapshotFacade->create($quizDto);
 
         return $quizDto;
-    }
-
-    private function generateQuizDto(Quiz $quiz, array $questions = []): QuizDto
-    {
-        return (new QuizDto())
-            ->setQuiz($quiz)
-            ->setStudent($quiz->getStudent())
-            ->setSubjectName($quiz->getSubjectName())
-            ->setTotalQuestions($quiz->getTotalQuestions())
-            ->setQuestions($questions);
     }
 
     private function throwExceptionIfStudentHasOpenedQuiz(Student $student): void
@@ -60,8 +58,7 @@ class QuizFacade
 
     private function generateQuiz(Student $student, string $subjectName): Quiz
     {
-//        $totalQuestions = Quiz::generateTotalQuestions();
-        $totalQuestions = 3;
+        $totalQuestions = Quiz::generateTotalQuestions();
         $quiz = new Quiz($student, $subjectName, $totalQuestions);
         $this->quizRepository->add($quiz);
 
@@ -70,40 +67,49 @@ class QuizFacade
 
     public function update(Quiz $quiz, array $answeredQuestions): QuizDto
     {
-//        $this->throwExceptionIfQuizFinishedAfterOneHour($quiz);
-//        $this->throwExceptionIfQuizAlreadyFinished($quiz);
-        $quizDto = $this->generateAnsweredQuizDto($quiz, $answeredQuestions);
-        dd();
-        return $this->generateAnsweredQuizDto($quiz, $answeredQuestions);
-    }
+        $this->throwExceptionIfQuizFinishedAfterOneHour($quiz);
+        $this->throwExceptionIfQuizAlreadyFinished($quiz);
 
-    private function generateAnsweredQuizDto(Quiz $quiz, array $answeredQuestions): QuizDto
-    {
+        $quiz->setStatus(Quiz::CLOSED);
         $questions = $this->snapshotFacade->getFormattedAnsweredQuestionsFromSnapshot(
             $quiz, $answeredQuestions
         );
+        $score = $this->calculateScore($questions);
+        $quiz->setScore($score);
+        $questionsName = array_keys($questions);
 
-        dd(
-            array_reduce($questions, function ($carry, $question) {
-                return $question['rightAnswer'] ? $carry + Score::ONE_POINT : $carry;
-            }, Score::INITIAL)
+        $questionDtoArray = array_map(
+            fn (string $questionName) => new QuestionDto(
+                $questionName,
+                $questions[$questionName]['alternatives'],
+                $questions[$questionName]['studentAlternative'],
+                $questions[$questionName]['rightAnswer'],
+            ),
+            $questionsName
         );
 
-        $score = $this->calculateScore();
-        return $this->generateQuizDto($quiz, $questions);
+        return new QuizDto(
+            $quiz,
+            $quiz->getStudent(),
+            $quiz->getSubjectName(),
+            $quiz->getTotalQuestions(),
+            $quiz->getScore(),
+            Quiz::CLOSED,
+            $questionDtoArray
+        );
     }
 
     private function calculateScore(array $formattedAnsweredQuestions): float
     {
         $totalQuestions = count($formattedAnsweredQuestions);
-        $totalRightAnswers = array_reduce(
+        $rightAnswers = array_reduce(
             $formattedAnsweredQuestions,
             fn ($carry, $question) => $question['rightAnswer'] ?
                 $carry + Score::ONE_POINT :
                 $carry, Score::INITIAL
         );
 
-        return bcdiv($totalRightAnswers, $totalQuestions, Score::SCALE);
+        return bcdiv($rightAnswers, $totalQuestions, Score::SCALE);
     }
 
     private function throwExceptionIfQuizFinishedAfterOneHour(Quiz $quiz)

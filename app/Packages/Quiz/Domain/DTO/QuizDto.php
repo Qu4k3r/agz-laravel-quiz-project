@@ -13,6 +13,7 @@ class QuizDto
         private ?string $subjectName = null,
         private ?int $totalQuestions = null,
         private ?float $score = null,
+        private ?string $status = null,
         private ?array $questions = [],
     ) {}
 
@@ -21,21 +22,9 @@ class QuizDto
         return $this->quiz;
     }
 
-    public function setQuiz(?Quiz $quiz): QuizDto
-    {
-        $this->quiz = $quiz;
-        return $this;
-    }
-
     public function getStudent(): ?Student
     {
         return $this->student;
-    }
-
-    public function setStudent(?Student $student): QuizDto
-    {
-        $this->student = $student;
-        return $this;
     }
 
     public function getSubjectName(): ?string
@@ -43,32 +32,9 @@ class QuizDto
         return $this->subjectName;
     }
 
-    public function setSubjectName(?string $subjectName): QuizDto
-    {
-        $this->subjectName = $subjectName;
-        return $this;
-    }
-
-    public function setTotalQuestions(?int $totalQuestions): QuizDto
-    {
-        $this->totalQuestions = $totalQuestions;
-        return $this;
-    }
-
     public function getTotalQuestions(): ?int
     {
         return $this->totalQuestions;
-    }
-
-    public function getQuestions(): array
-    {
-        return $this->questions;
-    }
-
-    public function setQuestions(array $questions): QuizDto
-    {
-        $this->questions = $questions;
-        return $this;
     }
 
     public function getScore(): ?float
@@ -76,9 +42,13 @@ class QuizDto
         return $this->score;
     }
 
-    public function setScore(?float $score): QuizDto
+    public function getStatus(): ?string
     {
-        $this->score = $score;
-        return $this;
+        return $this->status;
+    }
+
+    public function getQuestions(): ?array
+    {
+        return $this->questions;
     }
 }

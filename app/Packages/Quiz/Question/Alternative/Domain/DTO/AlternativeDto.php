@@ -2,6 +2,8 @@
 
 namespace App\Packages\Quiz\Question\Alternative\Domain\DTO;
 
+use App\Packages\Quiz\Domain\Model\Quiz;
+
 class AlternativeDto
 {
     private string $name;
@@ -23,16 +25,15 @@ class AlternativeDto
         return $this->isCorrect;
     }
 
-    public static function fromArray(array $alternatives): AlternativeDto
+    public static function fromArray(array $alternative): AlternativeDto
     {
-        return new self($alternatives['name'], $alternatives['isCorrect']);
+        return new self($alternative['name'], $alternative['isCorrect']);
     }
 
-    public function toArray(): array
+    public function toArray(string $quizStatus): array
     {
-        return [
-            'name' => $this->name,
-            'isCorrect' => $this->isCorrect,
-        ];
+        return $quizStatus === Quiz::OPENED ?
+            ['name' => $this->name] :
+            ['name' => $this->name, 'isCorrect' => $this->isCorrect];
     }
 }

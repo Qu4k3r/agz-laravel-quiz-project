@@ -23,7 +23,7 @@ class SnapshotFacade
         }
     }
 
-    private function update(Quiz $quiz, array $answeredQuestions): array
+    private function getAndUpdate(Quiz $quiz, array $answeredQuestions): array
     {
         foreach ($answeredQuestions as $question) {
             $this->snapshotRepository->updateByQuiz($quiz, $question);
@@ -34,7 +34,7 @@ class SnapshotFacade
 
     public function getFormattedAnsweredQuestionsFromSnapshot(Quiz $quiz, array $answeredQuestions): array
     {
-        $snapshots = $this->update($quiz, $answeredQuestions);
+        $snapshots = $this->getAndUpdate($quiz, $answeredQuestions);
 
         $questions = [];
         foreach ($snapshots as $snapshot) {
