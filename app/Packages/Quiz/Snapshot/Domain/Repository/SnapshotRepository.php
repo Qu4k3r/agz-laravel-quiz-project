@@ -46,34 +46,4 @@ class SnapshotRepository extends Repository
     {
         return $this->_em->createQueryBuilder();
     }
-
-    public function teste(): array
-    {
-        return [
-             [
-                'questionName' => [
-                    'alternatives' => [
-                        'name',
-                        'isCorrect',
-                    ],
-                    'studentAlternative' => 'bla bla ...',
-                    'rightAnswer' => true
-                ]
-            ],
-            [
-                'question' => 'bla bla ...',
-                'alternative' => 'bla bla ...',
-                'isCorrect' => true,
-                'studentAlternative' => 'bla bla ...',
-                'rightAnswer' => true,
-            ],
-            [
-                'question' => 'bla bla ...',
-                'alternative' => 'bla bla ...',
-                'isCorrect' => true,
-                'studentAlternative' => 'bla bla ...',
-                'rightAnswer' => true,
-            ]
-        ];
-    }
 }

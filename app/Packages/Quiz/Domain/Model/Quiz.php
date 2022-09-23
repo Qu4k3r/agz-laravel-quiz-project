@@ -35,8 +35,8 @@ class Quiz
         /** @ORM\Column(type="smallint") */
         private int $totalQuestions,
 
-        /** @ORM\Column(type="smallint", nullable=true) */
-        private ?int $score = null,
+        /** @ORM\Column(type="float", nullable=true) */
+        private ?float $score = null,
 
         /** @ORM\Column(type="string") */
         private string $status = self::OPENED,
@@ -72,7 +72,7 @@ class Quiz
         return rand(5, 10);
     }
 
-    public function setScore(?int $score): void
+    public function setScore(?float $score): void
     {
         $this->score = $score;
     }
@@ -82,7 +82,7 @@ class Quiz
         $this->status = $status;
     }
 
-    public function getScore(): ?int
+    public function getScore(): ?float
     {
         return $this->score;
     }

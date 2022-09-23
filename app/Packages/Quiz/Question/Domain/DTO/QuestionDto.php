@@ -14,16 +14,31 @@ class QuestionDto
         private ?bool $rightAnswer = null,
     ) {}
 
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
     public function toArray(string $quizStatus): array
     {
         return $quizStatus === Quiz::OPENED ? [
             'name' => $this->name,
-            'alternatives' => AlternativeDto::fromArray($this->alternatives)->toArray($quizStatus),
+            'alternatives' => array_map(
+                fn (array $alternative) => AlternativeDto::fromArray($alternative)->toArray($quizStatus),
+                $this->alternatives
+            ),
         ] : [
             'name' => $this->name,
-            'alternatives' => AlternativeDto::fromArray($this->alternatives)->toArray($quizStatus),
+            'correctAlternative' => array_values($this->getOnlyCorrectAlternatives())[0]['name'],
             'studentAlternative' => $this->studentAlternative,
             'rightAnswer' => $this->rightAnswer,
         ];
+    }
+
+    private function getOnlyCorrectAlternatives(): array
+    {
+        return array_filter(
+            $this->alternatives, fn (array $alternative, ) => $alternative['isCorrect']
+        );
     }
 }

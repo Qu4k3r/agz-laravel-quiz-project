@@ -67,8 +67,8 @@ class QuizFacade
 
     public function update(Quiz $quiz, array $answeredQuestions): QuizDto
     {
-        $this->throwExceptionIfQuizFinishedAfterOneHour($quiz);
-        $this->throwExceptionIfQuizAlreadyFinished($quiz);
+//        $this->throwExceptionIfQuizFinishedAfterOneHour($quiz);
+//        $this->throwExceptionIfQuizAlreadyFinished($quiz);
 
         $quiz->setStatus(Quiz::CLOSED);
         $questions = $this->snapshotFacade->getFormattedAnsweredQuestionsFromSnapshot(
@@ -83,7 +83,7 @@ class QuizFacade
                 $questionName,
                 $questions[$questionName]['alternatives'],
                 $questions[$questionName]['studentAlternative'],
-                $questions[$questionName]['rightAnswer'],
+                in_array(true,$questions[$questionName]['rightAnswer']),
             ),
             $questionsName
         );
@@ -104,12 +104,14 @@ class QuizFacade
         $totalQuestions = count($formattedAnsweredQuestions);
         $rightAnswers = array_reduce(
             $formattedAnsweredQuestions,
-            fn ($carry, $question) => $question['rightAnswer'] ?
+            fn ($carry, $question) => in_array(true,$question['rightAnswer']) ?
                 $carry + Score::ONE_POINT :
                 $carry, Score::INITIAL
         );
 
-        return bcdiv($rightAnswers, $totalQuestions, Score::SCALE);
+        $score = bcdiv($rightAnswers, $totalQuestions, Score::SCALE);
+
+        return bcmul($score, Score::MAX, Score::SCALE);
     }
 
     private function throwExceptionIfQuizFinishedAfterOneHour(Quiz $quiz)

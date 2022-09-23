@@ -64,8 +64,10 @@ class QuizController extends Controller
                     fn (QuestionDto $questionDto) => $questionDto->toArray(Quiz::CLOSED),
                     $quizDto->getQuestions()
                 ),
+                'score' => $quizDto->getScore(),
+                'status' => $quizDto->getStatus(),
             ];
-            return response()->successWithoutFlush($data, statusCode: Response::HTTP_OK);
+            return response()->success($data, statusCode: Response::HTTP_OK);
         } catch (\Exception $e) {
             return response()->error($e->getMessage(), Response::HTTP_BAD_REQUEST);
         }

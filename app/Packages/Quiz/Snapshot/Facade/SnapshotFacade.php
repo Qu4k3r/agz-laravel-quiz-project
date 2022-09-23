@@ -38,19 +38,12 @@ class SnapshotFacade
 
         $questions = [];
         foreach ($snapshots as $snapshot) {
-            if (!isset($questions[$snapshot['questionName']])) {
-                $questions[$snapshot['questionName']]['alternatives'] = [
-                    'name' => $snapshot['alternativeName'],
-                    'isCorrect' => $snapshot['isCorrect'],
-                ];
-            } else {
-                $questions[$snapshot['questionName']]['alternatives'][] = [
-                    'name' => $snapshot['alternativeName'],
-                    'isCorrect' => $snapshot['isCorrect'],
-                ];
-            }
+            $questions[$snapshot['questionName']]['alternatives'][] = [
+                'name' => $snapshot['alternativeName'],
+                'isCorrect' => $snapshot['isCorrect'],
+            ];
             $questions[$snapshot['questionName']]['studentAlternative'] = $snapshot['studentAlternative'];
-            $questions[$snapshot['questionName']]['rightAnswer'] = $snapshot['rightAnswer'];
+            $questions[$snapshot['questionName']]['rightAnswer'][] = $snapshot['rightAnswer'];
         }
 
         return $questions;
