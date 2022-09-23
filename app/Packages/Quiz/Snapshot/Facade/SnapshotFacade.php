@@ -4,6 +4,7 @@ namespace App\Packages\Quiz\Snapshot\Facade;
 
 
 use App\Packages\Quiz\Domain\DTO\QuizDto;
+use App\Packages\Quiz\Domain\Model\Quiz;
 use App\Packages\Quiz\Snapshot\Domain\Model\Snapshot;
 use App\Packages\Quiz\Snapshot\Domain\Repository\SnapshotRepository;
 
@@ -15,11 +16,36 @@ class SnapshotFacade
     {
         $questions = $quizDto->getQuestions();
         foreach ($questions as $question) {
-            $alternatives = $question->getAlternatives();
-            foreach ($alternatives as $alternative) {
+            foreach ($question->getAlternatives() as $alternative) {
                 $snapShot = new Snapshot($quizDto->getQuiz(), $quizDto->getStudent(), $quizDto->getSubjectName(), $question->getName(), $alternative->getName(), $alternative->isCorrect());
                 $this->snapshotRepository->add($snapShot);
             }
         }
+    }
+
+    private function getAndUpdate(Quiz $quiz, array $answeredQuestions): array
+    {
+        foreach ($answeredQuestions as $question) {
+            $this->snapshotRepository->updateByQuiz($quiz, $question);
+        }
+
+        return $this->snapshotRepository->getByQuiz($quiz);
+    }
+
+    public function getFormattedAnsweredQuestionsFromSnapshot(Quiz $quiz, array $answeredQuestions): array
+    {
+        $snapshots = $this->getAndUpdate($quiz, $answeredQuestions);
+
+        $questions = [];
+        foreach ($snapshots as $snapshot) {
+            $questions[$snapshot['questionName']]['alternatives'][] = [
+                'name' => $snapshot['alternativeName'],
+                'isCorrect' => $snapshot['isCorrect'],
+            ];
+            $questions[$snapshot['questionName']]['studentAlternative'] = $snapshot['studentAlternative'];
+            $questions[$snapshot['questionName']]['rightAnswer'][] = $snapshot['rightAnswer'];
+        }
+
+        return $questions;
     }
 }

@@ -2,33 +2,43 @@
 
 namespace App\Packages\Quiz\Question\Domain\DTO;
 
+use App\Packages\Quiz\Domain\Model\Quiz;
 use App\Packages\Quiz\Question\Alternative\Domain\DTO\AlternativeDto;
-use App\Packages\Quiz\Question\Domain\Model\Question;
 
 class QuestionDto
 {
-    private string $name;
-    private string $subjectName;
-    private array $alternatives;
+    public function __construct(
+        private ?string $name = null,
+        private array $alternatives = [],
+        private ?string $studentAlternative = null,
+        private ?bool $rightAnswer = null,
+    ) {}
 
-    public function __construct(Question $question, ?array $alternatives = [])
+    public function getName(): string
     {
-        $this->name = $question->getName();
-        $this->subjectName = $question->getSubject()->getName();
-        $this->alternatives = $alternatives;
+        return $this->name;
     }
 
-    public function toArray(): array
+    public function toArray(string $quizStatus): array
     {
-        return [
+        return $quizStatus === Quiz::OPENED ? [
             'name' => $this->name,
-            'subject' => [
-                'name' => $this->subjectName,
-            ],
-            'alternatives' => array_map(function (array $alternative) {
-                $alternativeDto = AlternativeDto::fromArray($alternative);
-                return $alternativeDto->toArray();
-            }, $this->alternatives),
+            'alternatives' => array_map(
+                fn (array $alternative) => AlternativeDto::fromArray($alternative)->toArray($quizStatus),
+                $this->alternatives
+            ),
+        ] : [
+            'name' => $this->name,
+            'correctAlternative' => array_values($this->getOnlyCorrectAlternatives())[0]['name'],
+            'studentAlternative' => $this->studentAlternative,
+            'rightAnswer' => $this->rightAnswer,
         ];
+    }
+
+    private function getOnlyCorrectAlternatives(): array
+    {
+        return array_filter(
+            $this->alternatives, fn (array $alternative, ) => $alternative['isCorrect']
+        );
     }
 }

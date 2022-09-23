@@ -30,4 +30,12 @@ class QuestionFacade
     {
         return $this->questionRepository->getRandomQuestionsBySubjectAndTotalQuestions($subjectName, $totalQuestions);
     }
+
+    public function shuffleAlternatives(array $questions): void
+    {
+        /** @var Question $question */
+        foreach ($questions as $question) {
+            $question->shuffleAlternatives();
+        }
+    }
 }

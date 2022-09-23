@@ -33,14 +33,14 @@ class Snapshot
         private Student $student,
         /** @ORM\Column(type="string") */
         private string $subjectName,
-        /** @ORM\Column(type="string") */
+        /** @ORM\Column(type="text") */
         private string $questionName,
-        /** @ORM\Column(type="string") */
+        /** @ORM\Column(type="text") */
         private string $alternativeName,
         /** @ORM\Column(type="boolean") */
         private bool $isCorrect,
-        /** @ORM\Column(type="boolean", nullable=true) */
-        private ?bool $studentAlternative = null,
+        /** @ORM\Column(type="text", nullable=true) */
+        private ?string $studentAlternative = null,
         /** @ORM\Column(type="boolean", nullable=true) */
         private ?bool $rightAnswer = null,
     ) {}

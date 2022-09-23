@@ -4,8 +4,12 @@ namespace App\Packages\Quiz\Facade;
 
 use App\Packages\Quiz\Domain\DTO\QuizDto;
 use App\Packages\Quiz\Domain\Model\Quiz;
+use App\Packages\Quiz\Domain\Model\Score;
 use App\Packages\Quiz\Domain\Repository\QuizRepository;
+use App\Packages\Quiz\Exception\QuizAlreadyFinishedException;
+use App\Packages\Quiz\Exception\QuizFinishedAfterOneHourException;
 use App\Packages\Quiz\Exception\QuizNotFinishedException;
+use App\Packages\Quiz\Question\Domain\DTO\QuestionDto;
 use App\Packages\Quiz\Question\Facade\QuestionFacade;
 use App\Packages\Quiz\Snapshot\Facade\SnapshotFacade;
 use App\Packages\Quiz\Subject\Facade\SubjectFacade;
@@ -23,19 +27,22 @@ class QuizFacade
     public function create(Student $student): QuizDto
     {
         $this->throwExceptionIfStudentHasOpenedQuiz($student);
+
         $subject = $this->subjectFacade->getRandomSubject();
         $quiz = $this->generateQuiz($student, $subject->getName());
         $questions = $this->questionFacade->getRandomQuestionsBySubjectAndTotalQuestions(
             $subject->getName(), $quiz->getTotalQuestions()
         );
+        $this->questionFacade->shuffleAlternatives($questions);
 
-        $quizDto = new QuizDto();
-        $quizDto->setQuiz($quiz)
-            ->setStudent($student)
-            ->setSubjectName($subject->getName())
-            ->setTotalQuestions($quiz->getTotalQuestions())
-            ->setQuestions($questions);
-
+        $quizDto = new QuizDto(
+            $quiz,
+            $student,
+            $subject->getName(),
+            $quiz->getTotalQuestions(),
+            status: Quiz::OPENED,
+            questions: $questions
+        );
         $this->snapshotFacade->create($quizDto);
 
         return $quizDto;
@@ -49,17 +56,75 @@ class QuizFacade
         }
     }
 
-    public static function generateTotalQuestions(): int
-    {
-        return rand(1, 10);
-    }
-
     private function generateQuiz(Student $student, string $subjectName): Quiz
     {
-        $totalQuestions = self::generateTotalQuestions();
+        $totalQuestions = Quiz::generateTotalQuestions();
         $quiz = new Quiz($student, $subjectName, $totalQuestions);
         $this->quizRepository->add($quiz);
 
         return $quiz;
+    }
+
+    public function update(Quiz $quiz, array $answeredQuestions): QuizDto
+    {
+        $this->throwExceptionIfQuizFinishedAfterOneHour($quiz);
+        $this->throwExceptionIfQuizAlreadyFinished($quiz);
+
+        $quiz->setStatus(Quiz::CLOSED);
+        $questions = $this->snapshotFacade->getFormattedAnsweredQuestionsFromSnapshot(
+            $quiz, $answeredQuestions
+        );
+        $score = $this->calculateScore($questions);
+        $quiz->setScore($score);
+        $questionsName = array_keys($questions);
+
+        $questionDtoArray = array_map(
+            fn (string $questionName) => new QuestionDto(
+                $questionName,
+                $questions[$questionName]['alternatives'],
+                $questions[$questionName]['studentAlternative'],
+                in_array(true,$questions[$questionName]['rightAnswer']),
+            ),
+            $questionsName
+        );
+
+        return new QuizDto(
+            $quiz,
+            $quiz->getStudent(),
+            $quiz->getSubjectName(),
+            $quiz->getTotalQuestions(),
+            $quiz->getScore(),
+            Quiz::CLOSED,
+            $questionDtoArray
+        );
+    }
+
+    private function calculateScore(array $formattedAnsweredQuestions): float
+    {
+        $totalQuestions = count($formattedAnsweredQuestions);
+        $rightAnswers = array_reduce(
+            $formattedAnsweredQuestions,
+            fn ($carry, $question) => in_array(true,$question['rightAnswer']) ?
+                $carry + Score::ONE_POINT :
+                $carry, Score::INITIAL
+        );
+
+        $score = bcdiv($rightAnswers, $totalQuestions, Score::SCALE);
+
+        return bcmul($score, Score::MAX, Score::SCALE);
+    }
+
+    private function throwExceptionIfQuizFinishedAfterOneHour(Quiz $quiz)
+    {
+        if ($quiz->wasFinishedAfterOneHour()) {
+            throw new QuizFinishedAfterOneHourException("Quiz delivered after one hour!", 1663721106);
+        }
+    }
+
+    private function throwExceptionIfQuizAlreadyFinished(Quiz $quiz): void
+    {
+        if ($quiz->isFinished()) {
+            throw new QuizAlreadyFinishedException("Quiz already finished!", 1663720546);
+        }
     }
 }
