@@ -3,19 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Packages\Quiz\Domain\Model\Quiz;
-use App\Packages\Quiz\Domain\Repository\QuizRepository;
 use App\Packages\Quiz\Facade\QuizFacade;
 use App\Packages\Quiz\Question\Alternative\Domain\Model\Alternative;
 use App\Packages\Quiz\Question\Domain\DTO\QuestionDto;
 use App\Packages\Quiz\Question\Domain\Model\Question;
-use App\Packages\Quiz\Snapshot\Domain\Model\Snapshot;
-use App\Packages\Quiz\Snapshot\Domain\Repository\SnapshotRepository;
 use App\Packages\Student\Domain\Model\Student;
-use App\Packages\Student\Domain\Repository\StudentRepository;
-use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use LaravelDoctrine\ORM\Facades\EntityManager;
 use Symfony\Component\HttpFoundation\Response;
 
 class QuizController extends Controller

@@ -5,9 +5,6 @@ namespace App\Packages\Quiz\Snapshot\Domain\Repository;
 use App\Packages\Base\Domain\Repository\Repository;
 use App\Packages\Quiz\Domain\Model\Quiz;
 use App\Packages\Quiz\Snapshot\Domain\Model\Snapshot;
-use App\Packages\Student\Domain\Model\Student;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\QueryBuilder;
 
 class SnapshotRepository extends Repository

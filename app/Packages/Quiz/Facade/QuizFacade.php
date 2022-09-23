@@ -67,8 +67,8 @@ class QuizFacade
 
     public function update(Quiz $quiz, array $answeredQuestions): QuizDto
     {
-//        $this->throwExceptionIfQuizFinishedAfterOneHour($quiz);
-//        $this->throwExceptionIfQuizAlreadyFinished($quiz);
+        $this->throwExceptionIfQuizFinishedAfterOneHour($quiz);
+        $this->throwExceptionIfQuizAlreadyFinished($quiz);
 
         $quiz->setStatus(Quiz::CLOSED);
         $questions = $this->snapshotFacade->getFormattedAnsweredQuestionsFromSnapshot(
