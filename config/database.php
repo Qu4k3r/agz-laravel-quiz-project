@@ -16,6 +16,7 @@ return [
     */
 
     'default' => env('DB_CONNECTION', 'mysql'),
+    'testing' => env('DB_CONNECTION_TESTING', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -69,6 +70,7 @@ return [
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE', 'forge'),
+            'databaseInMemory' => env('DB_DATABASE_TESTING', ':memory:'),
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
@@ -76,6 +78,12 @@ return [
             'prefix_indexes' => true,
             'search_path' => 'public',
             'sslmode' => 'prefer',
+        ],
+
+        'pgsql_testing' => [
+            'driver' => 'pgsql',
+            'database' => ':memory:',
+            'prefix'   => '',
         ],
 
         'sqlsrv' => [
