@@ -34,6 +34,9 @@ drop-db:
 all-tests:
 	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "./vendor/bin/phpunit -d memory_limit=-1"
 
+test:
+	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "vendor/bin/phpunit --filter $(filter-out $@, $(MAKECMDGOALS))"
+
 key-generate:
 	@docker-compose -f ./docker-compose.yaml exec -T api sh -c "php artisan key:generate"
 
