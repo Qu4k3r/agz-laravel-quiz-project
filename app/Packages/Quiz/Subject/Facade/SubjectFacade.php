@@ -22,7 +22,7 @@ class SubjectFacade
         return $subject;
     }
 
-    public function getRandomSubject()
+    public function getRandomSubject(): ?Subject
     {
         return $this->subjectRepository->getRandomSubject();
     }
