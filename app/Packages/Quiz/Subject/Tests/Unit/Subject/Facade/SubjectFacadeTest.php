@@ -5,14 +5,12 @@ namespace App\Packages\Quiz\Subject\Tests\Unit\Subject\Facade;
 use App\Packages\Quiz\Subject\Domain\Model\Subject;
 use App\Packages\Quiz\Subject\Facade\SubjectFacade;
 use Database\Seeders\Quiz\Subject\SubjectSeeder;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use LaravelDoctrine\ORM\Facades\EntityManager;
 use Tests\TestCase;
 
 class SubjectFacadeTest extends TestCase
 {
-    use RefreshDatabase;
-
-    const STUDENT_TABLE = 'students',
+    const STUDENT_TABLE = 'subjects',
         QUANTITY_IF_NOT_EXISTS = 4,
         QUANTITY_IF_EXISTS = 3;
 
@@ -43,9 +41,46 @@ class SubjectFacadeTest extends TestCase
 
         // when
         $subject = $subjectFacade->getOrCreate($name);
+        EntityManager::flush();
+        $subjects = EntityManager::getRepository(Subject::class)->findAll();
 
         // then
         $this->assertInstanceOf(Subject::class, $subject);
-        $this->assertDatabaseCount(self::STUDENT_TABLE, $databaseCount);
+        $this->assertSame($databaseCount, count($subjects));
+    }
+
+    public function randomSubjectProvider(): array
+    {
+        return [
+            'Seeding database' => [
+                'seed' => true,
+            ],
+            'Not seeding database' => [
+                'seed' => false,
+            ],
+        ];
+    }
+
+    /** @dataProvider randomSubjectProvider */
+    public function testShouldReturnNullOrOneRandomSubject(bool $seed)
+    {
+        // given
+        if ($seed) {
+            $this->seed(SubjectSeeder::class);
+        }
+
+        /** @var SubjectFacade $subjectFacade */
+        $subjectFacade = app(SubjectFacade::class);
+
+        // when
+        $subject = $subjectFacade->getRandomSubject();
+
+        // then
+        if ($seed) {
+            $this->assertNotNull($subject);
+            $this->assertInstanceOf(Subject::class, $subject);
+            return;
+        }
+        $this->assertNull($subject);
     }
 }
