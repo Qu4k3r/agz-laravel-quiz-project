@@ -31,9 +31,11 @@ class QuestionFacadeTest extends TestCase
 
         $alternativesBeforeShuffle = $question->getAlternatives();
 
-        // then
+        // when
         app(QuestionFacade::class)->shuffleAlternatives([$question]);
         $alternativesAfterShuffle = $question->getAlternatives();
+
+        // then
         $this->assertNotSame($alternativesBeforeShuffle, $alternativesAfterShuffle);
     }
 
@@ -58,21 +60,24 @@ class QuestionFacadeTest extends TestCase
     /** @dataProvider randomQuestionsProvider */
     public function testShouldGetRandomQuestionsBySubjectAndTotalQuestions(string $subjectName, int $totalQuestions): void
     {
+        // given
         $this->seed(DatabaseTestSeeder::class);
 
         $firstNQuestions = collect(EntityManager::getRepository(Question::class)->findBy([], limit: $totalQuestions));
 
+        // when
         $randomQuestions = collect(app(QuestionFacade::class)->getRandomQuestionsBySubjectAndTotalQuestions($subjectName, $totalQuestions));
 
         /** @var Question $question */
         $question = $randomQuestions->first();
 
+        // then
         $this->assertSame($subjectName, $question->getSubject()->getName());
         $this->assertSame($totalQuestions, $randomQuestions->count());
         $this->assertNotSame($firstNQuestions, $randomQuestions);
     }
 
-    public function testCasesProvider(): array
+    public function casesProvider(): array
     {
         return [
             'question name already exists in database' => [
@@ -88,7 +93,7 @@ class QuestionFacadeTest extends TestCase
         ];
     }
 
-    /** @dataProvider testCasesProvider */
+    /** @dataProvider casesProvider */
     public function testShouldGetOrCreateQuestion(string $name, string $subjectName, int $totalQuestions)
     {
         $this->seed(DatabaseTestSeeder::class);
