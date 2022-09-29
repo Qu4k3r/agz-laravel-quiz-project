@@ -6,6 +6,7 @@ use App\Packages\Quiz\Question\Alternative\Domain\Model\Alternative;
 use App\Packages\Quiz\Question\Domain\Model\Question;
 use App\Packages\Quiz\Question\Facade\QuestionFacade;
 use App\Packages\Quiz\Subject\Domain\Model\Subject;
+use Carbon\Carbon;
 use Database\Seeders\DatabaseTestSeeder;
 use LaravelDoctrine\ORM\Facades\EntityManager;
 use Tests\TestCase;
@@ -55,7 +56,7 @@ class QuestionFacadeTest extends TestCase
     }
 
     /** @dataProvider randomQuestionsProvider */
-    public function testShouldSeedQuestion(string $subjectName, int $totalQuestions)
+    public function testShouldGetRandomQuestionsBySubjectAndTotalQuestions(string $subjectName, int $totalQuestions): void
     {
         $this->seed(DatabaseTestSeeder::class);
 
@@ -69,5 +70,35 @@ class QuestionFacadeTest extends TestCase
         $this->assertSame($subjectName, $question->getSubject()->getName());
         $this->assertSame($totalQuestions, $randomQuestions->count());
         $this->assertNotSame($firstNQuestions, $randomQuestions);
+    }
+
+    public function testCasesProvider(): array
+    {
+        return [
+            'question name already exists in database' => [
+                'name' => 'What is Database?',
+                'subjectName' => 'SQL',
+                'totalQuestions' => 10,
+            ],
+            'question name does not exist in database' => [
+                'name' => 'What are Models?',
+                'subjectName' => 'SQL',
+                'totalQuestions' => 11
+            ],
+        ];
+    }
+
+    /** @dataProvider testCasesProvider */
+    public function testShouldGetOrCreateQuestion(string $name, string $subjectName, int $totalQuestions)
+    {
+        $this->seed(DatabaseTestSeeder::class);
+
+        /** @var Question $question */
+        $question = app(QuestionFacade::class)->getOrCreate($name, $subjectName);
+        EntityManager::flush();
+        $questionsQuantity = count(EntityManager::getRepository(Question::class)->findAll());
+
+        $this->assertInstanceOf(Question::class, $question);
+        $this->assertSame($totalQuestions, $questionsQuantity);
     }
 }
