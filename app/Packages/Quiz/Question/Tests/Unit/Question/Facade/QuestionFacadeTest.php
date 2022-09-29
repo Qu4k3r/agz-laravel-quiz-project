@@ -6,7 +6,6 @@ use App\Packages\Quiz\Question\Alternative\Domain\Model\Alternative;
 use App\Packages\Quiz\Question\Domain\Model\Question;
 use App\Packages\Quiz\Question\Facade\QuestionFacade;
 use App\Packages\Quiz\Subject\Domain\Model\Subject;
-use Carbon\Carbon;
 use Database\Seeders\DatabaseTestSeeder;
 use LaravelDoctrine\ORM\Facades\EntityManager;
 use Tests\TestCase;
@@ -42,18 +41,18 @@ class QuestionFacadeTest extends TestCase
     public function randomQuestionsProvider(): array
     {
         return [
-          'provide 10 random questions' => [
-              'subjectName' => 'SQL',
-              'totalQuestions' => 10,
-          ],
-          'provide 7 random questions' => [
-              'subjectName' => 'SQL',
-              'totalQuestions' => 7,
-          ],
-          'provide 5 random questions' => [
-              'subjectName' => 'SQL',
-              'totalQuestions' => 5,
-          ],
+            'provide 10 random questions' => [
+                'subjectName' => 'SQL',
+                'totalQuestions' => 10,
+            ],
+            'provide 7 random questions' => [
+                'subjectName' => 'SQL',
+                'totalQuestions' => 7,
+            ],
+            'provide 5 random questions' => [
+                'subjectName' => 'SQL',
+                'totalQuestions' => 5,
+            ],
         ];
     }
 
