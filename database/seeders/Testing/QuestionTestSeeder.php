@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders\Quiz\Question;
+namespace Database\Seeders\Testing;
 
 use App\Packages\Quiz\Question\Alternative\Domain\Model\Alternative;
 use App\Packages\Quiz\Question\Domain\Model\Question;
@@ -8,22 +8,20 @@ use App\Packages\Quiz\Subject\Domain\Model\Subject;
 use Illuminate\Database\Seeder;
 use LaravelDoctrine\ORM\Facades\EntityManager;
 
-class QuestionSeeder extends Seeder
+class QuestionTestSeeder extends Seeder
 {
-    public function run(): void
+    public function run()
     {
-       $this->createQuestions();
+        $this->createQuestions();
     }
 
-    private function createQuestions(): void
+    private function createQuestions()
     {
-        if (EntityManager::getRepository(Question::class)->findOneBy([]) instanceof Question) {
-            return;
-        }
         $content = file_get_contents(base_path('database/seeders/Quiz/Question/Resources/questions.json'));
         $data = json_decode($content);
 
-        foreach ($data->questions as $questionSeed) {
+        for ($i = 0; $i < 10; $i++) {
+            $questionSeed = $data->questions[$i];
             $subject = EntityManager::getRepository(Subject::class)->findOneBy(['name' => $questionSeed->subjectName]);
             if (!$subject instanceof Subject) {
                 $subject = new Subject($questionSeed->subjectName);

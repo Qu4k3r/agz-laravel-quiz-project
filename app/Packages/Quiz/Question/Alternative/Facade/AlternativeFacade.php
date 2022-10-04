@@ -13,27 +13,17 @@ class AlternativeFacade
         private AlternativeService $alternativeService,
     ) {}
 
-    public function getOrCreate(array $alternatives, Question $question): array
+    public function create(array $alternatives, Question $question): array
     {
-        $this->throwExceptionWhenRegistersMoreThanFourAlternatives($alternatives, $question);
-        return $this->alternativeService->getOrCreate($alternatives, $question);
+        $this->throwExceptionWhenNotRegistersFourAlternatives($alternatives);
+        return $this->alternativeService->create($alternatives, $question);
     }
 
-    private function throwExceptionWhenRegistersMoreThanFourAlternatives(array $alternatives, Question $question): void
+    private function throwExceptionWhenNotRegistersFourAlternatives(array $alternatives): void
     {
-        $alternativeQuestionsQuantity = count($question->getAlternatives());
         $alternativesQuantity = count($alternatives);
-        $totalAlternatives = $alternativesQuantity + $alternativeQuestionsQuantity;
-        $remainingAlternatives = Alternative::MAX_ALTERNATIVES_PER_QUESTION - $alternativeQuestionsQuantity;
-
-        if ($alternativesQuantity > Alternative::MAX_ALTERNATIVES_PER_QUESTION ||
-            $alternativeQuestionsQuantity === Alternative::MAX_ALTERNATIVES_PER_QUESTION
-        ) {
-            throw new AlternativesLimitException("It's not possible to register more than four alternatives per question", 1663709674);
-        }
-
-        if ($totalAlternatives > Alternative::MAX_ALTERNATIVES_PER_QUESTION) {
-            throw new AlternativesLimitException("This question already has {$alternativeQuestionsQuantity} alternatives. It's possible to register only {$remainingAlternatives} more alternatives", 1663709675);
+        if ($alternativesQuantity !== Alternative::MAX_ALTERNATIVES_PER_QUESTION) {
+            throw new AlternativesLimitException('You must register four alternatives per question', 1663709674);
         }
     }
 }
