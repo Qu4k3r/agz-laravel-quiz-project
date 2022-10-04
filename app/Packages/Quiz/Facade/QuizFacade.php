@@ -8,6 +8,7 @@ use App\Packages\Quiz\Domain\Model\Score;
 use App\Packages\Quiz\Domain\Repository\QuizRepository;
 use App\Packages\Quiz\Exception\QuizAlreadyFinishedException;
 use App\Packages\Quiz\Exception\QuizFinishedAfterOneHourException;
+use App\Packages\Quiz\Exception\QuizIncompleteException;
 use App\Packages\Quiz\Exception\QuizNotFinishedException;
 use App\Packages\Quiz\Question\Domain\DTO\QuestionDto;
 use App\Packages\Quiz\Question\Facade\QuestionFacade;
@@ -67,8 +68,9 @@ class QuizFacade
 
     public function update(Quiz $quiz, array $answeredQuestions): QuizDto
     {
-        $this->throwExceptionIfQuizFinishedAfterOneHour($quiz);
         $this->throwExceptionIfQuizAlreadyFinished($quiz);
+        $this->throwExceptionIfQuizFinishedAfterOneHour($quiz);
+        $this->throwExceptionIfQuizIsIncomplete($quiz->getTotalQuestions(), $answeredQuestions);
 
         $quiz->setStatus(Quiz::CLOSED);
         $questions = $this->snapshotFacade->getFormattedAnsweredQuestionsFromSnapshot(
@@ -124,7 +126,14 @@ class QuizFacade
     private function throwExceptionIfQuizAlreadyFinished(Quiz $quiz): void
     {
         if ($quiz->isFinished()) {
-            throw new QuizAlreadyFinishedException("Quiz already finished!", 1663720546);
+            throw new QuizAlreadyFinishedException('Quiz already finished!', 1663720546);
+        }
+    }
+
+    private function throwExceptionIfQuizIsIncomplete(int $totalQuestions, array $answeredQuestions)
+    {
+        if (count($answeredQuestions) !== $totalQuestions) {
+            throw new QuizIncompleteException('Quiz is incomplete. Please, review your data!', 1664913055);
         }
     }
 }

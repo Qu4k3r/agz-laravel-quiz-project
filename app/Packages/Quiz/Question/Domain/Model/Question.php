@@ -70,7 +70,12 @@ class Question
     public function shuffleAlternatives(): void
     {
         $alternatives = $this->alternatives->toArray();
+        $alternativesClone = $alternatives;
         shuffle($alternatives);
+        if ($alternativesClone === $alternatives) {
+            $this->shuffleAlternatives();
+            return;
+        }
         $this->alternatives = new ArrayCollection($alternatives);
     }
 }

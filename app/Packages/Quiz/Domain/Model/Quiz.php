@@ -18,6 +18,7 @@ class Quiz
 
     const OPENED = 'OPENED';
     const CLOSED = 'CLOSED';
+    const LIMIT_TIME_IN_MINUTES = 60;
 
     public function __construct(
         /**
@@ -54,7 +55,7 @@ class Quiz
 
     public function wasFinishedAfterOneHour(): bool
     {
-        return Carbon::now()->diffInHours($this->createdAt) > 1;
+        return Carbon::now()->diffInRealMinutes(Carbon::instance($this->createdAt)) > self::LIMIT_TIME_IN_MINUTES;
     }
 
     public function getStudent(): Student
