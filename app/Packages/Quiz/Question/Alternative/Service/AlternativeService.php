@@ -13,14 +13,10 @@ class AlternativeService
         private AlternativeRepository $alternativeRepository,
     ) {}
 
-    public function getOrCreate(array $alternatives, Question $question): array
+    public function create(array $alternatives, Question $question): array
     {
         return array_map(function (array $alternative) use ($question) {
             $alternativeDto = AlternativeDto::fromArray($alternative);
-            $alternative = $this->alternativeRepository->findOneByNameAndQuestion($alternativeDto->getName(), $question);
-            if ($alternative instanceof Alternative) {
-                return $alternative;
-            }
             $alternative = new Alternative($alternativeDto->getName(), $question, $alternativeDto->isCorrect());
             $this->alternativeRepository->add($alternative);
 

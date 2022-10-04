@@ -13,19 +13,19 @@ use Symfony\Component\HttpFoundation\Response;
 class AlternativeController extends Controller
 {
     public function __construct(
-        private AlternativeFacade $alternativeQuestionFacade,
+        private AlternativeFacade $alternativeFacade,
     ) {}
 
     public function create(Request $request, Question $question): JsonResponse
     {
         try {
-            $requesttAlternativeQuestions = $request->all();
-            $alternativeQuestions = $this->alternativeQuestionFacade->getOrCreate($requesttAlternativeQuestions, $question);
+            $requestAlternativeQuestions = $request->all();
+            $alternativeQuestions = $this->alternativeFacade->create($requestAlternativeQuestions, $question);
 
-            $data = array_map(fn (Alternative $alternativeQuestion) => [
-                'id' => $alternativeQuestion->getId(),
-                'name' => $alternativeQuestion->getName(),
-                'isCorrect' => $alternativeQuestion->isCorrect()
+            $data = array_map(fn (Alternative $alternative) => [
+                'id' => $alternative->getId(),
+                'name' => $alternative->getName(),
+                'isCorrect' => $alternative->isCorrect()
             ], $alternativeQuestions);
 
             return response()->success($data, statusCode: Response::HTTP_CREATED);
