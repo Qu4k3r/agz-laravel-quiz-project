@@ -53,7 +53,7 @@ class QuizFacade
     {
         $quiz = $this->quizRepository->findOneByStudentAndStatus($student, Quiz::OPENED);
         if ($quiz instanceof Quiz) {
-            throw new QuizNotFinishedException("Please finish OPENED quiz before creating a new one!", 1663297548);
+            throw new QuizNotFinishedException('Please finish OPENED quiz before creating a new one!', 1663297548);
         }
     }
 
