@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220920011549 extends AbstractMigration
+final class Version20221006203922 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,20 +20,19 @@ final class Version20220920011549 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE alternatives (id UUID NOT NULL, question_id UUID DEFAULT NULL, name VARCHAR(255) NOT NULL, is_correct BOOLEAN NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(id))');
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_46682B545E237E06 ON alternatives (name)');
+        $this->addSql('CREATE TABLE alternatives (id UUID NOT NULL, question_id UUID DEFAULT NULL, name TEXT NOT NULL, is_correct BOOLEAN NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_46682B541E27F6BF ON alternatives (question_id)');
         $this->addSql('COMMENT ON COLUMN alternatives.id IS \'(DC2Type:uuid)\'');
         $this->addSql('COMMENT ON COLUMN alternatives.question_id IS \'(DC2Type:uuid)\'');
-        $this->addSql('CREATE TABLE questions (id UUID NOT NULL, subject_id UUID DEFAULT NULL, name VARCHAR(255) NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE questions (id UUID NOT NULL, subject_id UUID DEFAULT NULL, name TEXT NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_8ADC54D523EDC87 ON questions (subject_id)');
         $this->addSql('COMMENT ON COLUMN questions.id IS \'(DC2Type:uuid)\'');
         $this->addSql('COMMENT ON COLUMN questions.subject_id IS \'(DC2Type:uuid)\'');
-        $this->addSql('CREATE TABLE quizzes (id UUID NOT NULL, student_id UUID DEFAULT NULL, subject VARCHAR(255) NOT NULL, total_questions SMALLINT NOT NULL, score SMALLINT DEFAULT NULL, status VARCHAR(255) NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE quizzes (id UUID NOT NULL, student_id UUID DEFAULT NULL, subject VARCHAR(255) NOT NULL, total_questions SMALLINT NOT NULL, score DOUBLE PRECISION DEFAULT NULL, status VARCHAR(255) NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_94DC9FB5CB944F1A ON quizzes (student_id)');
         $this->addSql('COMMENT ON COLUMN quizzes.id IS \'(DC2Type:uuid)\'');
         $this->addSql('COMMENT ON COLUMN quizzes.student_id IS \'(DC2Type:uuid)\'');
-        $this->addSql('CREATE TABLE snapshots (id UUID NOT NULL, quiz_id UUID DEFAULT NULL, student_id UUID DEFAULT NULL, subject_name VARCHAR(255) NOT NULL, question_name VARCHAR(255) NOT NULL, alternative_name VARCHAR(255) NOT NULL, is_correct BOOLEAN NOT NULL, student_alternative BOOLEAN DEFAULT NULL, right_answer BOOLEAN DEFAULT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE snapshots (id UUID NOT NULL, quiz_id UUID DEFAULT NULL, student_id UUID DEFAULT NULL, subject_name VARCHAR(255) NOT NULL, question_name TEXT NOT NULL, alternative_name TEXT NOT NULL, is_correct BOOLEAN NOT NULL, student_alternative TEXT DEFAULT NULL, right_answer BOOLEAN DEFAULT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_4D91463D853CD175 ON snapshots (quiz_id)');
         $this->addSql('CREATE INDEX IDX_4D91463DCB944F1A ON snapshots (student_id)');
         $this->addSql('COMMENT ON COLUMN snapshots.id IS \'(DC2Type:uuid)\'');

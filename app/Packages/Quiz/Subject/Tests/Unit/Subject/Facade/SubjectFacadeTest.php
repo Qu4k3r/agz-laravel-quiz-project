@@ -49,38 +49,21 @@ class SubjectFacadeTest extends TestCase
         $this->assertSame($databaseCount, count($subjects));
     }
 
-    public function randomSubjectProvider(): array
-    {
-        return [
-            'Seeding database' => [
-                'seed' => true,
-            ],
-            'Not seeding database' => [
-                'seed' => false,
-            ],
-        ];
-    }
-
-    /** @dataProvider randomSubjectProvider */
-    public function testShouldReturnNullOrOneRandomSubject(bool $seed)
+    public function testShouldReturnRandomSubject(): void
     {
         // given
-        if ($seed) {
-            $this->seed(SubjectSeeder::class);
-        }
+        $this->seed(SubjectSeeder::class);
 
         /** @var SubjectFacade $subjectFacade */
         $subjectFacade = app(SubjectFacade::class);
 
         // when
         $subject = $subjectFacade->getRandomSubject();
+        do {
+            $subject1 = $subjectFacade->getRandomSubject();
+        } while ($subject === $subject1);
 
         // then
-        if ($seed) {
-            $this->assertNotNull($subject);
-            $this->assertInstanceOf(Subject::class, $subject);
-            return;
-        }
-        $this->assertNull($subject);
+        $this->assertNotSame($subject, $subject1);
     }
 }
