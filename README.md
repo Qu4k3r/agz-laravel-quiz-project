@@ -127,7 +127,8 @@ make drop-db
 * Substituir o atributo nome de alternativa para descrição;
 * Criar uma tabela de snapshot diferente, com id do quiz e descrição da pergunta (`snapshot_quiz_questions`) e uma outra tabela com o id do quiz e descrição das alternativas (`snapshot_quiz_alternativas`). Acho que seria melhor do que apenas uma tabela `snapshot`;
 * Melhorias de design em geral;
-* Melhorias na documentação (fiz correndo de última hora).
+* Melhorias na documentação (fiz correndo de última hora);
+* Implementação de mais testes (unitário e integração).
 
 ## 🛠️ Construído com
 O boilerplate desse projeto foi construído com as seguintes ferramentas:
