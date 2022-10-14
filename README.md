@@ -45,6 +45,7 @@ make test {nomeDoTeste}
 ## Regras para smoke test
 Antes de seguir adiante, eis aqui algumas regras de negócio adotas para esse projeto (além daquelas já descritas no documento anexado):
 
+* (Opcional) Importe esse [arquivo](Insomnia-All_2022-10-14.json) de configuração no Insomnia para facilitar os testes
 * No momento não é possível editar perguntas, alternativas ou provas;
 * Cada questão deve ter no máximo 4 alternativas e todas devem ser cadastradas ao mesmo tempo;
 * Cada prova gerada tem entre 5 e 10 questões;
