@@ -19,3 +19,18 @@ Route::group(['namespace' => 'Quiz'], function () {
     Route::post('/students/{student}/quizzes', [QuizController::class, 'create']);
     Route::put('/quizzes/{quiz}', [QuizController::class, 'update']);
 });
+
+Route::group(['namespace' => 'Quiz'], function () {
+    Route::post('/students/{student}/quizzes', [QuizController::class, 'create']);
+    Route::put('/quizzes/{quiz}', [QuizController::class, 'update']);
+});
+
+Route::group(['namespace' => 'Quiz'], function () {
+    Route::post('/students/{student}/quizzes', [QuizController::class, 'create']);
+    Route::put('/quizzes/{quiz}', [QuizController::class, 'update']);
+});
+
+Route::group(['namespace' => 'Quiz'], function () {
+    Route::post('/students/{student}/quizzes', [QuizController::class, 'create']);
+    Route::put('/quizzes/{quiz}', [QuizController::class, 'update']);
+});
