@@ -1,32 +1,17 @@
-FROM amazonlinux:2
+FROM php:8.1-fpm-alpine3.19
 
-RUN yum -y update; \
-    yum clean all; \
-    amazon-linux-extras install epel php8.0; \
-    yum install -y \
-        wget \
-        php \
-        git \
-        php-{pear,pecl,cgi,common,curl,mbstring,gd,gettext,bcmath,json,xml,fpm,intl,zip,pgsql,pdo,soap} \
-        postgresql-devel \
-        httpd \
-        supervisor; \
-    yum clean all; \
-    yum autoremove; \
-    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer;
+ARG user=1000
+ARG uid=1000
 
-ADD . /var/www
-ADD .docker/entrypoint.local /usr/sbin/entrypoint.local
-ADD .docker/update-application /usr/sbin/update-application
-COPY .docker/etc /etc
-
-RUN chmod -v +x /usr/sbin/entrypoint.local; \
-    chmod -v +x /usr/sbin/update-application; \
-    mkdir /var/www/storage/proxies; \
-    chmod 777 /var/www/bootstrap -Rf; \
-    chmod 777 /var/www/storage -Rf; \
-    chown apache.apache /var/www -Rf;
+RUN apk update; \
+    apk --no-cache add postgresql-dev oniguruma-dev zlib-dev libpng-dev; \
+    docker-php-ext-install pdo pdo_pgsql mbstring bcmath gd
 
 WORKDIR /var/www
 
-CMD [ "/usr/sbin/entrypoint" ]
+COPY .docker/php/custom.ini /usr/local/etc/php/conf.d/custom.ini
+COPY ./src/ /var/www
+
+RUN mkdir /var/log/nginx && chown ${user} /var/log/nginx
+
+USER $user

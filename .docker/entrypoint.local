@@ -1,6 +1,0 @@
-#!/bin/bash
-
-/bin/chmod 777 /var/www/bootstrap -Rf
-/bin/chmod 777 /var/www/storage -Rf
-
-/usr/bin/supervisord -c /etc/supervisord.conf

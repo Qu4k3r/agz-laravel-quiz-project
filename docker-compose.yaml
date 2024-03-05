@@ -16,28 +16,36 @@ services:
       - POSTGRES_DB=db
       - PGDATA=/var/lib/postgresql/data/db-files/
     networks:
-      - agilize
+      - application
 
-  api:
+  app:
     build:
       context: .
-    entrypoint: /usr/sbin/entrypoint.local
-    ports:
-      - "9999:80"
     networks:
-      - agilize
+      - application
     volumes:
-      - .:/var/www
+      - ./src:/var/www
     depends_on:
       - db
 
-#Docker networks
+  nginx:
+    image: nginx:alpine
+    restart: unless-stopped
+    ports:
+      - "9999:80"
+    volumes:
+      - ./src/:/var/www
+      - ./.docker/nginx/:/etc/nginx/conf.d/
+    networks:
+      - application
+    depends_on:
+      - app
+
 networks:
-  agilize:
-    name: agilize_agilize
+  application:
+    name: application
     driver: bridge
 
-#Docker volumes
 volumes:
   db_data:
     driver: local
