@@ -14,13 +14,15 @@ provider "aws" {
 }
 
 module "remote-state-s3-backend" {
-  enable_replication      = false
+  enable_replication      = true
   override_s3_bucket_name = true
   s3_bucket_name          = "tf-remote-state"
+  s3_bucket_name_replica  = "tf-replica-remote-state"
   source                  = "nozaq/remote-state-s3-backend/aws"
   version                 = "1.6.0"
 
   providers = {
     aws = aws
+    aws.replica = aws
   }
 }
