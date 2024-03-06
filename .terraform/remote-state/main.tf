@@ -14,7 +14,7 @@ provider "aws" {
 }
 
 module "remote-state-s3-backend" {
-  enable_replication      = true
+  enable_replication      = false
   override_s3_bucket_name = true
   s3_bucket_name          = "agz-laravel-quiz-project-tf-remote-state"
   s3_bucket_name_replica  = "agz-laravel-quiz-project-tf-replica-remote-state"
