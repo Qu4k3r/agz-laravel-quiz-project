@@ -1,0 +1,69 @@
+name: Deploy application
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  tf-infraestructure:
+    name: 'Terraform Infraestructure'
+    runs-on: ubuntu-latest
+    environment: Production
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Get current branch
+      shell: bash
+      id: extract_branch
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+    - name: Setup Terraform
+      run: |
+        wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+        echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+        sudo apt update -y && sudo apt install -y terraform
+    - name: Terraform apply
+      run: |
+        cd .terraform/infra-estructure
+        terraform init
+        terraform plan -input=false -var=env=${{ steps.extract_branch.outputs.branch }}
+        terraform apply -auto-approve -input=false -var=env=${{ steps.extract_branch.outputs.branch }}
+
+  laravel-deploy:
+    runs-on: ubuntu-latest
+    environment: Production
+    needs: tf-infraestructure
+
+    steps:
+    - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+      with:
+        php-version: '8.0'
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Copy .env
+      run: |
+        cd src
+        php -r "file_exists('.env') || copy('.env.example', '.env');"
+    - name: Install Dependencies
+      run: |
+        cd src
+        composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+    - name: Generate key
+      run: |
+        cd src
+        rm .env
+    - name: Directory Permissions
+      run: |
+        cd src
+        chmod -R 777 storage bootstrap/cache
