@@ -8,7 +8,7 @@ on:
 
 jobs:
   tf-remote-state:
-    name: 'Terraform Remote State'
+    name: 'Terraform Infraestructure'
     runs-on: ubuntu-latest
     environment: Production
     defaults:
@@ -31,7 +31,7 @@ jobs:
         sudo apt update -y && sudo apt install -y terraform
     - name: Terraform apply
       run: |
-        cd .terraform/remote-state
+        cd .terraform/infra-estructure
         terraform init
         terraform plan -input=false
         terraform apply -auto-approve -input=false
