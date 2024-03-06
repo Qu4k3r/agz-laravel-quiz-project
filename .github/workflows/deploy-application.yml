@@ -19,7 +19,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - name: Get current branch
-      run: echo "Current branch is ${{ env.GITHUB_REF }}"
       shell: bash
       id: extract_branch
       run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
