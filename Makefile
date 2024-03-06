@@ -15,3 +15,6 @@ shell-nginx:
 
 composer-install:
 	@docker-compose exec -T app sh -c "composer install; cp .env.example .env"
+
+key-generate:
+	@docker-compose exec -T app sh -c "php artisan key:generate"
