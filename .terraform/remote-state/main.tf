@@ -22,7 +22,7 @@ module "remote-state-s3-backend" {
   version                 = "1.6.0"
 
   providers = {
-    aws = aws
+    aws         = aws
     aws.replica = aws
   }
 }
