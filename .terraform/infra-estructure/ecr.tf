@@ -1,5 +1,5 @@
 resource "aws_ecr_repository" "this" {
-  name                 = "${local.env}-${local.name}"
+  name                 = local.name
   image_tag_mutability = "IMMUTABLE"
   tags                 = local.tags
 
