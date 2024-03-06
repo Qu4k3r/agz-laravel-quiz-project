@@ -7,19 +7,16 @@ on:
     branches: [ "main" ]
 
 jobs:
-  laravel-tests:
-
+  laravel-deploy:
     runs-on: ubuntu-latest
+    environment: production
 
     steps:
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
         php-version: '8.0'
-    - uses: actions/checkout@v3
-    - name: Copy .env
-      run: |
-        cd src
-        php -r "file_exists('.env') || copy('.env.example', '.env');"
+    - name: Checkout
+      uses: actions/checkout@v3
     - name: Install Dependencies
       run: |
         cd src
@@ -32,15 +29,7 @@ jobs:
       run: |
         cd src
         chmod -R 777 storage bootstrap/cache
-    - name: Create Database
+    - name: Prepara imagem
       run: |
-        cd src
-        mkdir -p database
-        touch database/database.sqlite
-    - name: Execute tests (Unit and Feature tests) via PHPUnit
-      env:
-        DB_CONNECTION: sqlite
-        DB_DATABASE: database/database.sqlite
-      run: |
-        cd src
-        vendor/bin/phpunit
+        echo ${{ secrets.AWS_ACCESS_KEY_ID }}
+        echo ${{ secrets.AWS_ACCOUNT_ID }}
