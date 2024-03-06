@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  tf-remote-state:
+  tf-infraestructure:
     name: 'Terraform Infraestructure'
     runs-on: ubuntu-latest
     environment: Production
@@ -39,6 +39,7 @@ jobs:
   laravel-deploy:
     runs-on: ubuntu-latest
     environment: Production
+    needs: tf-infraestructure
 
     steps:
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
