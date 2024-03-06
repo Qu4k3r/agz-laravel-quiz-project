@@ -7,6 +7,32 @@ on:
     branches: [ "main" ]
 
 jobs:
+  tf-remote-state:
+    name: 'Terraform Remote State'
+    runs-on: ubuntu-latest
+    environment: Production
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    - name: Terraform Init
+      run: terraform init
+    - name: Terraform Format
+      run: terraform fmt -check
+    - name: Terraform Plan
+      run: terraform plan -input=false
+    - name: Terraform Apply
+      if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
+      run: terraform apply -auto-approve -input=false
+
   laravel-deploy:
     runs-on: ubuntu-latest
     environment: Production
@@ -33,7 +59,3 @@ jobs:
       run: |
         cd src
         chmod -R 777 storage bootstrap/cache
-    - name: Prepara imagem
-      run: |
-        echo ${{ secrets.AWS_ACCESS_KEY_ID }}
-        echo ${{ secrets.AWS_ACCOUNT_ID }}
