@@ -1,6 +1,6 @@
 resource "aws_ecr_repository" "this" {
   name                 = local.name
-  image_tag_mutability = "IMMUTABLE"
+  image_tag_mutability = "MUTABLE"
   tags                 = local.tags
 
   image_scanning_configuration {
