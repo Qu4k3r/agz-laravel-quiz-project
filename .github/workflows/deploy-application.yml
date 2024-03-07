@@ -91,3 +91,8 @@ jobs:
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:${{ steps.extract_branch.outputs.branch }} .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:${{ steps.extract_branch.outputs.branch }}
+    - name: Update server application
+      run: |
+        echo "${{ secrets.KEY_PAIR }}" | base64 -d > ./key_pair.pem
+        chmod 600 ./key_pair.pem
+        ssh -i ./key_pair.pem -p 35222 ec2-user@52.90.155.29 'bash -s' < ~/deploy.sh
