@@ -50,6 +50,13 @@ module "sg_application" {
       protocol    = "tcp"
       description = "Acesso SSH da rede externa para o appserver"
       cidr_blocks = "0.0.0.0/0"
+    },
+    {
+      from_port   = 8080
+      to_port     = 8080
+      protocol    = "tcp"
+      description = "Acesso HTTP da rede externa para o appserver"
+      cidr_blocks = "0.0.0.0/0"
     }
   ]
 
