@@ -4,7 +4,7 @@ module "vpc" {
 
   azs  = local.azs
   cidr = local.cidr
-  name = "${var.env}-${var.name}-vpc"
+  name = "${local.env}-${local.name}-vpc"
 
   database_subnets = local.database_subnet_cidrs
   private_subnets  = local.private_subnet_cidrs
@@ -28,44 +28,44 @@ module "vpc" {
   single_nat_gateway = true
 
   tags = merge(local.tags, {
-    Name = "${var.env}-${var.name}"
+    Name = "${local.env}-${local.name}"
   })
 
   igw_tags = merge(local.tags, {
-    Name = "${var.env}-${var.name}-igw"
+    Name = "${local.env}-${local.name}-igw"
     Type = "database"
   })
 
   nat_gateway_tags = merge(local.tags, {
-    Name = "${var.env}-${var.name}-ngw"
+    Name = "${local.env}-${local.name}-ngw"
     Type = "database"
   })
 
   default_route_table_tags = merge(local.tags, {
-    Name = "${var.env}-${var.name}-rt-default"
+    Name = "${local.env}-${local.name}-rt-default"
   })
 
   database_subnet_tags = merge(local.tags, {
-    Name = "${var.env}-${var.name}-subnet-database"
+    Name = "${local.env}-${local.name}-subnet-database"
     Type = "database"
   })
   database_route_table_tags = merge(local.tags, {
-    Name = "${var.env}-${var.name}-rt-database"
+    Name = "${local.env}-${local.name}-rt-database"
   })
 
   private_subnet_tags = merge(local.tags, {
-    Name = "${var.env}-${var.name}-subnet-private"
+    Name = "${local.env}-${local.name}-subnet-private"
     Type = "private"
   })
   private_route_table_tags = merge(local.tags, {
-    Name = "${var.env}-${var.name}-rt-private"
+    Name = "${local.env}-${local.name}-rt-private"
   })
 
   public_subnet_tags = merge(local.tags, {
-    Name = "${var.env}-${var.name}-subnet-public"
+    Name = "${local.env}-${local.name}-subnet-public"
     Type = "public"
   })
   public_route_table_tags = merge(local.tags, {
-    Name = "${var.env}-${var.name}-rt-public"
+    Name = "${local.env}-${local.name}-rt-public"
   })
 }
