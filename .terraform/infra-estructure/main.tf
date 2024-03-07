@@ -4,7 +4,6 @@ locals {
   database_subnet_cidrs = [for k, v in local.azs : cidrsubnet(local.cidr, 8, k + (length(local.azs) * 2))]
   env                   = var.env
   key_name              = "${var.env}-${local.name}"
-  key_pair              = base64decode(var.key_pair)
   name                  = "application"
   private_subnet_cidrs  = [for k, v in local.azs : cidrsubnet(local.cidr, 8, k)]
   public_subnet_cidrs   = [for k, v in local.azs : cidrsubnet(local.cidr, 8, k + length(local.azs))]
