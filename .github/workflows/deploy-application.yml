@@ -37,8 +37,8 @@ jobs:
       run: |
         cd .terraform/infra-estructure
         terraform init
-        terraform plan -input=false -var=env=${{ steps.extract_branch.outputs.branch }}
-        terraform apply -auto-approve -input=false -var=env=${{ steps.extract_branch.outputs.branch }}
+        terraform plan -input=false -var=env=${{ steps.extract_branch.outputs.branch }} -var=key_pair=${{ secrets.KEY_PAIR }}
+        terraform apply -auto-approve -input=false -var=env=${{ steps.extract_branch.outputs.branch }} -var=key_pair=${{ secrets.KEY_PAIR }}
 
   laravel-deploy:
     runs-on: ubuntu-latest

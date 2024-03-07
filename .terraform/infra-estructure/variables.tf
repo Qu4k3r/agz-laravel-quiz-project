@@ -13,6 +13,11 @@ variable "env" {
   type        = string
 }
 
+variable "key_pair" {
+  description = "Key pair in whiche resources are set up"
+  type        = string
+}
+
 variable "region" {
   description = "The AWS region in which resources are set up."
   type        = string
