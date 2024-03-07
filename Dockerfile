@@ -4,7 +4,7 @@ ARG user=1000
 ARG uid=1000
 
 RUN apk update; \
-    apk --no-cache add postgresql-dev oniguruma-dev zlib-dev libpng-dev; \
+    apk --no-cache add postgresql-dev oniguruma-dev zlib-dev libpng-dev npm; \
     docker-php-ext-install pdo pdo_pgsql mbstring bcmath gd
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=2.3.10; \
