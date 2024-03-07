@@ -8,7 +8,7 @@ resource "aws_lb" "this" {
   enable_http2       = local.alb_enable_http2
 
   access_logs {
-    bucket  = module.alb_log_bucket[0].s3_bucket_id
+    bucket  = module.alb_log_bucket.s3_bucket_id
     enabled = true
     prefix  = null
   }
