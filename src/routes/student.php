@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'Quiz\Student'], function () {
     Route::post('/students', [StudentController::class, 'create']);
 });
+
+Route::group(['namespace' => 'Quiz\Student'], function () {
+    Route::get('/students', [StudentController::class, 'list']);
+});
