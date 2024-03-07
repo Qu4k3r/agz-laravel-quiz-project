@@ -98,4 +98,4 @@ jobs:
         mkdir -p /home/runner/.ssh
         touch /home/runner/.ssh/known_hosts
         ssh-keygen -R 52.90.155.29
-        ssh -o "StrictHostKeyChecking no" -i ./key_pair.pem -p 35222 ec2-user@52.90.155.29 ~/deploy.sh
+        ssh -o "StrictHostKeyChecking no" -i ./key_pair.pem -p 35222 ec2-user@52.90.155.29 '~/deploy.sh'
