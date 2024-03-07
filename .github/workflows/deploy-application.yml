@@ -95,5 +95,7 @@ jobs:
       run: |
         echo "${{ secrets.KEY_PAIR }}" | base64 -d > ./key_pair.pem
         chmod 600 ./key_pair.pem
+        mkdir -p /home/runner/.ssh
+        touch /home/runner/.ssh/known_hosts
         ssh-keygen -R 52.90.155.29
-        ssh -i ./key_pair.pem -p 35222 ec2-user@52.90.155.29 'bash -s ~/deploy.sh'
+        ssh -o "StrictHostKeyChecking no" -i ./key_pair.pem -p 35222 ec2-user@52.90.155.29 'bash -s ~/deploy.sh'
