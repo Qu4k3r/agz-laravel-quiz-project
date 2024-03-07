@@ -5,11 +5,11 @@ module "ec2_application" {
   ami                         = "ami-0f403e3180720dd7e"
   associate_public_ip_address = true
   availability_zone           = element(module.vpc.azs, 0)
-  enable_volume_tags = false
+  enable_volume_tags          = false
   instance_type               = "t2.micro"
   key_name                    = "${local.env}-${local.name}"
   monitoring                  = true
-  name   = "${local.env}-${local.name}"
+  name                        = "${local.env}-${local.name}"
   subnet_id                   = element(module.vpc.public_subnets, 0)
   user_data_base64            = base64encode(data.template_file.user_data_application.rendered)
   user_data_replace_on_change = true

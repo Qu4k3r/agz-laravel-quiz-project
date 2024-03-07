@@ -95,4 +95,4 @@ jobs:
       run: |
         echo "${{ secrets.KEY_PAIR }}" | base64 -d > ./key_pair.pem
         chmod 600 ./key_pair.pem
-        ssh -i ./key_pair.pem -p 35222 ec2-user@52.90.155.29 'bash -s' < ~/deploy.sh
+        ssh -i ./key_pair.pem -p 35222 -A -t ec2-user@52.90.155.29 'bash -s ~/deploy.sh'
