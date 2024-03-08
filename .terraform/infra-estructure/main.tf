@@ -1,6 +1,6 @@
 locals {
-  alb_enable_http2      = true
-  alb_idle_timeout      = 60
+  # alb_enable_http2      = true
+  # alb_idle_timeout      = 60
   azs                   = slice(data.aws_availability_zones.available.names, 0, (var.env == "main" ? 6 : 3))
   cidr                  = var.cidrs[var.env]
   database_subnet_cidrs = [for k, v in local.azs : cidrsubnet(local.cidr, 8, k + (length(local.azs) * 2))]
