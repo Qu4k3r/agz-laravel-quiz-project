@@ -19,7 +19,8 @@ services:
       - application
 
   app:
-    image: 992382525114.dkr.ecr.us-east-1.amazonaws.com/application:main
+    build:
+      context: .
     networks:
       - application
     volumes:
