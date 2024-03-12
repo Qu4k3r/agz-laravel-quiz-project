@@ -1,0 +1,15 @@
+*/vendor
+/.idea
+node_modules
+Homestead.json
+Homestead.yaml
+.phpunit.result.cache
+*/public/storage
+*/storage/*.key
+*/storage/proxies
+*/storage/logs
+*/xdebug-report
+*/tests/_reports
+.php_cs.cache
+/aws
+.env

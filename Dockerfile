@@ -8,6 +8,9 @@ RUN apk update; \
     apk add --update nodejs npm; \
     docker-php-ext-install pdo pdo_pgsql mbstring bcmath gd;
 
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=2.3.10; \
+    chown -R ${user} /usr/local/bin/composer
+
 WORKDIR /var/www
 
 COPY .docker/php/custom.ini /usr/local/etc/php/conf.d/custom.ini

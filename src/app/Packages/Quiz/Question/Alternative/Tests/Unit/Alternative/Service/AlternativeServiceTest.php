@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Packages\Quiz\Question\Alternative\Tests\Unit\Alternative\Facade;
+namespace App\Packages\Quiz\Question\Alternative\Tests\Unit\Alternative\Service;
 
 use App\Packages\Quiz\Exception\AlternativesLimitException;
 use App\Packages\Quiz\Question\Alternative\Domain\Model\Alternative;
