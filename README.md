@@ -1,5 +1,5 @@
 # Projeto Quiz
-[![Laravel](https://github.com/eaojunior/agz-laravel-quiz-project/actions/workflows/laravel.yml/badge.svg)](https://github.com/eaojunior/agz-laravel-quiz-project/actions/workflows/laravel.yml)
+[![Laravel](https://github.com/Qu4k3r/agz-laravel-quiz-project/actions/workflows/deploy-application.yml/badge.svg)](https://github.com/Qu4k3r/agz-laravel-quiz-project/actions/workflows/deploy-application.yml)
 
 ## Contextualização
 Bem-vindo ao meu projeto de desenvolvimento pessoal.
