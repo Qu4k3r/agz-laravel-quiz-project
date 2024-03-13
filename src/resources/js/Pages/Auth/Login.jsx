@@ -34,7 +34,7 @@ export default function Login({ status, canResetPassword }) {
         <GuestLayout>
             <Head title="Log in" />
 
-            {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
+            {status && <div className="mb-4 font-medium text-sm text-pink-800">{status}</div>}
 
             <form onSubmit={submit}>
                 <div>
@@ -86,7 +86,7 @@ export default function Login({ status, canResetPassword }) {
                         </Link>
                     )}
 
-                    <PrimaryButton className="ml-4 text-orange-600" processing={processing}>
+                    <PrimaryButton className="ml-4 text-pink-800" processing={processing}>
                         Log in
                     </PrimaryButton>
                 </div>

@@ -19,3 +19,5 @@ COPY ./src/ /var/www
 RUN mkdir /var/log/nginx && chown ${user} /var/log/nginx && mkdir /.npm && chown ${user} /.npm -Rf
 
 USER $user
+
+#CMD ["npm", "run", "dev", "--", "--host=0.0.0.0", "--port=9000"]

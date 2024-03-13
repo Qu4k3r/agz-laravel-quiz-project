@@ -23,6 +23,8 @@ services:
       context: .
     networks:
       - application
+    ports:
+      - "9000:9000"
     volumes:
       - ./src:/var/www
     depends_on:
@@ -33,6 +35,7 @@ services:
     restart: unless-stopped
     ports:
       - "9999:80"
+#      - "9000:9000"
     volumes:
       - ./src/:/var/www
       - ./.docker/nginx/:/etc/nginx/conf.d/
