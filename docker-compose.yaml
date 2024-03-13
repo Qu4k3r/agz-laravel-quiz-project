@@ -24,7 +24,8 @@ services:
     networks:
       - application
     ports:
-      - "9000:9000"
+      - 9000:9000
+      - 5173:5173
     volumes:
       - ./src:/var/www
     depends_on:
@@ -34,8 +35,7 @@ services:
     image: nginx:alpine
     restart: unless-stopped
     ports:
-      - "9999:80"
-#      - "9000:9000"
+      - 9999:80
     volumes:
       - ./src/:/var/www
       - ./.docker/nginx/:/etc/nginx/conf.d/
