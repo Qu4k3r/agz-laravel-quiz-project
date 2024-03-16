@@ -13,3 +13,4 @@ Homestead.yaml
 .php_cs.cache
 /aws
 .env
+src/public/hot
