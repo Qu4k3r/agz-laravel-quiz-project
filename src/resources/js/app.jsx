@@ -17,6 +17,6 @@ createInertiaApp({
 
         root.render(<App {...props} />);
     },
-});
+}).then(r =>(console.log(r)));
 
 InertiaProgress.init({ color: '#4B5563' });
