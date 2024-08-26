@@ -11,7 +11,7 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
  * @ORM\Entity
  * @ORM\Table(name="alternatives")
  */
-class Alternative
+class Option
 {
     use Identifiable, TimestampableEntity;
 

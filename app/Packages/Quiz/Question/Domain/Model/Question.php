@@ -3,8 +3,8 @@
 namespace App\Packages\Quiz\Question\Domain\Model;
 
 use App\Packages\Doctrine\Domain\Behavior\Identifiable;
-use App\Packages\Quiz\Question\Alternative\Domain\Model\Alternative;
-use App\Packages\Quiz\Subject\Domain\Model\Subject;
+use App\Packages\Quiz\Question\Alternative\Domain\Model\Option;
+use App\Packages\Quiz\Subject\Domain\Model\Theme;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -29,7 +29,7 @@ class Question
          *     cascade={"persist", "remove"},
          * )
          */
-        private Subject $subject,
+        private Theme $subject,
 
         /**
          * @ORM\OneToMany (
@@ -44,7 +44,7 @@ class Question
         $this->alternatives = new ArrayCollection();
     }
 
-    public function getSubject(): Subject
+    public function getSubject(): Theme
     {
         return $this->subject;
     }
@@ -59,7 +59,7 @@ class Question
         return $this->alternatives->toArray();
     }
 
-    public function addAlternative(Alternative $alternative): void
+    public function addAlternative(Option $alternative): void
     {
        if (!$this->alternatives->contains($alternative)) {
            $alternative->setQuestion($this);

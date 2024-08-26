@@ -10,7 +10,7 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
  * @ORM\Entity
  * @ORM\Table(name="subjects")
  */
-class Subject
+class Theme
 {
     use Identifiable, TimestampableEntity;
 

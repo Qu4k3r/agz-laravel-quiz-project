@@ -42,49 +42,4 @@ class Quiz
         /** @ORM\Column(type="string") */
         private string $status = self::OPENED,
     ) {}
-
-    public function isFinished(): bool
-    {
-        return $this->status === self::CLOSED;
-    }
-
-    public function getTotalQuestions(): int
-    {
-        return $this->totalQuestions;
-    }
-
-    public function wasFinishedAfterOneHour(): bool
-    {
-        return Carbon::now()->diffInRealMinutes(Carbon::instance($this->createdAt)) > self::LIMIT_TIME_IN_MINUTES;
-    }
-
-    public function getStudent(): Student
-    {
-        return $this->student;
-    }
-
-    public function getSubjectName(): string
-    {
-        return $this->subject;
-    }
-
-    public static function generateTotalQuestions(): int
-    {
-        return rand(5, 10);
-    }
-
-    public function setScore(?float $score): void
-    {
-        $this->score = $score;
-    }
-
-    public function setStatus(string $status): void
-    {
-        $this->status = $status;
-    }
-
-    public function getScore(): ?float
-    {
-        return $this->score;
-    }
 }

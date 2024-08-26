@@ -3,18 +3,13 @@
 namespace App\Packages\Quiz\Subject\Domain\Repository;
 
 use App\Packages\Base\Domain\Repository\Repository;
-use App\Packages\Quiz\Subject\Domain\Model\Subject;
+use App\Packages\Quiz\Subject\Domain\Model\Theme;
 
-class SubjectRepository extends Repository
+class ThemeRepository extends Repository
 {
-    protected string $entityName = Subject::class;
+    protected string $entityName = Theme::class;
 
-    public function findOneByName(string $name): ?Subject
-    {
-        return $this->findOneBy(['name' => $name]);
-    }
-
-    public function getRandomSubject(): ?Subject
+    public function getRandom(): ?Theme
     {
         $queryBuilder = $this->createQueryBuilder('subject');
         $queryBuilder
@@ -22,5 +17,10 @@ class SubjectRepository extends Repository
             ->setMaxResults(1);
 
         return $queryBuilder->getQuery()->getOneOrNullResult();
+    }
+
+    public function find($id)
+    {
+        // TODO: Implement find() method.
     }
 }

@@ -24,4 +24,9 @@ class QuizRepository extends Repository
 
         return $queryBuilder->getQuery()->getOneOrNullResult();
     }
+
+    public function find($id)
+    {
+        // TODO: Implement find() method.
+    }
 }

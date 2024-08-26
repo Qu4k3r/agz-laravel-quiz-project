@@ -3,15 +3,15 @@
 namespace App\Packages\Quiz\Question\Alternative\Domain\Repository;
 
 use App\Packages\Base\Domain\Repository\Repository;
-use App\Packages\Quiz\Question\Alternative\Domain\Model\Alternative;
+use App\Packages\Quiz\Question\Alternative\Domain\Model\Option;
 use App\Packages\Quiz\Question\Domain\Model\Question;
 use Doctrine\ORM\Query\Expr;
 
 class AlternativeRepository extends Repository
 {
-    protected string $entityName = Alternative::class;
+    protected string $entityName = Option::class;
 
-    public function findOneByNameAndQuestion(string $name, Question $question): ?Alternative
+    public function findOneByNameAndQuestion(string $name, Question $question): ?Option
     {
         $queryBuilder = $this->createQueryBuilder('alternative');
         $queryBuilder
